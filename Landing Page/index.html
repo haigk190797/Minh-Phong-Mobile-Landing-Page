@@ -6,9 +6,10 @@
 <title>Minh Phong Mobile - iPhone Chính Hãng & Máy 99% Giá Tốt</title>
 <style>
   :root{
-    --accent:#C2670E;
-    --accent-dark:#9B5209;
-    --accent-soft:#FBEADA;
+    --accent:#FF7A00;
+    --accent-dark:#E35F00;
+    --accent-soft:#FFEEDC;
+    --accent-gradient:linear-gradient(135deg,var(--accent),var(--accent-dark));
     --dark:#2A2723;
     --dark-2:#3A362F;
     --gray:#6E6A64;
@@ -26,7 +27,7 @@
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
     background:var(--bg);
     color:var(--dark);
-    padding-bottom:64px; /* room for sticky mobile bar */
+    padding-bottom:68px; /* room for sticky mobile bar */
   }
   img{max-width:100%;display:block;}
   a{text-decoration:none;color:inherit;}
@@ -34,7 +35,7 @@
 
   /* Header */
   .site-header{
-    background:var(--dark);
+    background:var(--accent-gradient);
     color:#fff;
     position:sticky;
     top:0;
@@ -45,17 +46,37 @@
     max-width:1160px;margin:0 auto;padding:14px 20px;
     display:flex;align-items:center;justify-content:space-between;gap:16px;
   }
+  .menu-wrap{position:relative;}
+  .menu-btn{
+    width:38px;height:38px;border-radius:8px;border:none;
+    background:rgba(255,255,255,.18);color:#fff;font-size:18px;
+    cursor:pointer;display:flex;align-items:center;justify-content:center;
+  }
+  .menu-btn:hover{background:rgba(255,255,255,.3);}
+  .menu-dropdown{
+    position:absolute;top:calc(100% + 10px);left:0;
+    background:#fff;border-radius:10px;min-width:170px;
+    box-shadow:0 14px 34px rgba(0,0,0,.22);
+    padding:8px;display:none;z-index:80;
+  }
+  .menu-dropdown.show{display:block;}
+  .menu-dropdown a{
+    display:flex;align-items:center;gap:10px;
+    padding:10px 12px;border-radius:8px;
+    font-size:14.5px;font-weight:600;color:var(--dark);
+  }
+  .menu-dropdown a:hover{background:var(--accent-soft);color:var(--accent);}
   .logo{font-size:20px;font-weight:800;letter-spacing:.3px;white-space:nowrap;}
   .logo span{font-weight:400;opacity:.75;}
   .nav-links{display:flex;gap:24px;font-size:15px;font-weight:600;}
-  .nav-links a:hover{color:var(--accent);}
+  .nav-links a:hover{opacity:.8;text-decoration:underline;}
   .btn-call{
-    background:var(--accent);color:#fff;
-    font-weight:700;font-size:14px;
+    background:#fff;color:var(--accent);
+    font-weight:800;font-size:14px;
     padding:9px 16px;border-radius:999px;
     white-space:nowrap;
   }
-  .btn-call:hover{background:var(--accent-dark);}
+  .btn-call:hover{background:var(--accent-soft);}
   @media (max-width:720px){
     .nav-links{display:none;}
     .logo{font-size:17px;}
@@ -63,109 +84,110 @@
 
   /* Hero */
   .hero{
-    background:linear-gradient(135deg,#221F1B,#3A342C);
+    background:var(--accent-gradient);
     color:#fff;
-    display:grid;
-    grid-template-columns:1.1fr 1fr;
-    align-items:center;
-    gap:24px;
-    overflow:hidden;
+    text-align:center;
+    padding:60px 20px;
   }
-  .hero-content{padding:56px 20px 56px 40px;}
+  .hero-content{max-width:640px;margin:0 auto;}
   .hero-content h1{
     font-size:clamp(26px,4vw,42px);
     line-height:1.2;
     margin-bottom:14px;
   }
   .hero-content p{
-    color:#cfcfcf;font-size:16px;margin-bottom:26px;max-width:460px;
+    color:#fbe6d6;font-size:16px;margin:0 auto 26px;max-width:460px;
   }
-  .hero-cta{display:flex;gap:12px;flex-wrap:wrap;}
+  .hero-cta{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;}
   .btn{
     display:inline-block;padding:13px 24px;border-radius:8px;
     font-weight:700;font-size:15px;
   }
-  .btn-primary{background:var(--accent);color:#fff;}
-  .btn-primary:hover{background:var(--accent-dark);}
+  .btn-primary{background:#fff;color:var(--accent);}
+  .btn-primary:hover{background:var(--accent-soft);}
   .btn-outline{border:2px solid #fff;color:#fff;}
   .btn-outline:hover{background:#fff;color:var(--dark);}
-  .hero-slider{
-    position:relative;height:100%;padding:20px;
-    display:flex;align-items:center;
-  }
-  .hero-slider-viewport{
-    width:100%;overflow:hidden;border-radius:12px;
-  }
-  .hero-slider-track{
-    display:flex;transition:transform .5s ease;
-  }
-  .hero-slide{
-    flex:0 0 100%;
-    display:flex;flex-direction:column;align-items:center;justify-content:center;
-    padding:10px;
-  }
-  .hero-slide img{
-    max-height:340px;width:auto;margin:0 auto;
-    border-radius:12px;
-    box-shadow:0 20px 50px rgba(0,0,0,.4);
-  }
-  .hero-slide-info{
-    margin-top:16px;text-align:center;
-  }
-  .hero-slide-info .name{font-size:16px;font-weight:700;color:#fff;margin-bottom:4px;}
-  .hero-slide-info .price{font-size:22px;font-weight:800;color:var(--accent);}
-  .hero-slider-btn{
-    position:absolute;top:50%;transform:translateY(-50%);
-    width:38px;height:38px;border-radius:50%;border:none;
-    background:rgba(255,255,255,.15);color:#fff;font-size:20px;
-    cursor:pointer;display:flex;align-items:center;justify-content:center;
-    z-index:5;
-  }
-  .hero-slider-btn:hover{background:rgba(255,255,255,.3);}
-  .hero-slider-btn.prev{left:6px;}
-  .hero-slider-btn.next{right:6px;}
-  .hero-slider-dots{
-    position:absolute;bottom:2px;left:0;right:0;
-    display:flex;gap:8px;justify-content:center;z-index:5;
-  }
-  .hero-slider-dots .dot{
-    width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.35);
-    cursor:pointer;border:none;padding:0;
-  }
-  .hero-slider-dots .dot.active{background:var(--accent);}
   @media (max-width:800px){
-    .hero{grid-template-columns:1fr;text-align:center;}
-    .hero-content{padding:40px 20px 10px;}
-    .hero-content p{margin-left:auto;margin-right:auto;}
-    .hero-cta{justify-content:center;}
-    .hero-slide img{max-height:240px;}
+    .hero{padding:44px 20px;}
   }
 
-  /* Trust bar */
-  .trust-bar{
-    background:#fff;border-bottom:1px solid var(--line);
+  /* Slogan bar */
+  .slogan-bar{
+    background:linear-gradient(135deg,#1E1B17,#2E2820);
+    padding:22px 20px;
   }
-  .trust-bar .wrap{
-    display:grid;grid-template-columns:repeat(4,1fr);gap:16px;
-    padding:22px 20px;text-align:center;
+  .slogan-text{
+    text-align:center;font-family:Georgia,'Times New Roman',serif;
+    font-size:clamp(14.5px,2.4vw,19px);font-weight:600;letter-spacing:.4px;
+    color:#F3DFC2;max-width:900px;margin:0 auto;line-height:1.6;
   }
-  .trust-item{font-size:13.5px;font-weight:600;color:var(--dark);}
-  .trust-item .ic{font-size:26px;display:block;margin-bottom:6px;}
-  @media (max-width:640px){
-    .trust-bar .wrap{grid-template-columns:repeat(2,1fr);}
+  .slogan-text .dot{color:var(--accent);margin:0 12px;font-weight:900;}
+  @media (max-width:600px){
+    .slogan-text .dot{display:block;margin:4px 0;}
   }
+
+  /* Hot Sale section */
+  .hotsale-section{
+    background:linear-gradient(135deg,#1E1B17,#2E2820);
+    padding:44px 0 48px;overflow:hidden;
+  }
+  .hotsale-badge-row{
+    display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:8px;
+    padding:0 20px;max-width:1160px;margin-left:auto;margin-right:auto;
+  }
+  .hotsale-badge-row h2{color:#fff;font-size:20px;font-weight:800;text-transform:uppercase;}
+  .hotsale-flash{
+    background:var(--accent-gradient);color:#fff;font-size:12px;font-weight:800;
+    padding:5px 12px;border-radius:999px;animation:hotsalePulse 1.4s infinite;
+    white-space:nowrap;
+  }
+  @keyframes hotsalePulse{0%,100%{transform:scale(1);}50%{transform:scale(1.08);}}
+  .hotsale-sub{
+    color:#C9C4BC;font-size:13.5px;padding:0 20px;
+    max-width:1160px;margin:0 auto 24px;
+  }
+  .hotsale-track-wrap{
+    overflow:hidden;
+    -webkit-mask-image:linear-gradient(90deg,transparent,#000 40px,#000 calc(100% - 40px),transparent);
+    mask-image:linear-gradient(90deg,transparent,#000 40px,#000 calc(100% - 40px),transparent);
+  }
+  .hotsale-track{
+    display:flex;gap:16px;width:max-content;
+    animation:hotsaleScroll 22s linear infinite;
+  }
+  .hotsale-track:hover{animation-play-state:paused;}
+  @keyframes hotsaleScroll{
+    from{transform:translateX(0);}
+    to{transform:translateX(-50%);}
+  }
+  .hotsale-card{
+    flex:0 0 190px;background:#fff;border-radius:14px;padding:14px;
+    box-shadow:0 12px 28px rgba(0,0,0,.35);
+  }
+  .hotsale-card .card-image{height:150px;margin-bottom:10px;}
+  .hotsale-card .card-image img{max-height:130px;}
+  .hotsale-card h4{font-size:14px;margin-bottom:6px;color:var(--dark);}
+  .hotsale-limit{
+    display:inline-block;font-size:10.5px;font-weight:800;color:#fff;
+    background:#E4262B;padding:3px 8px;border-radius:6px;margin-bottom:8px;
+  }
+  .hotsale-price{color:var(--accent);font-size:17px;font-weight:800;margin-bottom:10px;}
+  .hotsale-card .btn-order{padding:9px;font-size:12.5px;}
 
   /* Product sections */
   .product-section{padding:52px 0;}
   .section-heading{text-align:center;margin-bottom:32px;}
-  .tag{
-    display:inline-block;padding:5px 14px;border-radius:999px;
-    font-size:12.5px;font-weight:800;letter-spacing:.5px;margin-bottom:12px;
-  }
-  .tag-new{background:var(--accent-soft);color:var(--accent);}
-  .tag-used{background:var(--used-bg);color:var(--used-text);}
   .section-heading h2{font-size:26px;margin-bottom:8px;}
   .section-heading p{color:var(--gray);font-size:15px;}
+  .section-bar{
+    background:var(--accent-gradient);border-radius:10px;
+    padding:14px 20px;margin-bottom:10px;
+  }
+  .section-bar h2{
+    color:#fff;font-size:19px;font-weight:800;
+    text-transform:uppercase;letter-spacing:.3px;
+  }
+  .section-sub{color:var(--gray);font-size:14.5px;margin-bottom:26px;}
 
   .product-grid{
     display:grid;
@@ -186,11 +208,33 @@
     box-shadow:0 14px 30px rgba(0,0,0,.08);
   }
   .card-image{
+    position:relative;
     background:var(--gray-soft);border-radius:10px;
     height:200px;display:flex;align-items:center;justify-content:center;
     margin-bottom:14px;overflow:hidden;
   }
   .card-image img{max-height:190px;width:auto;object-fit:contain;}
+  .badge-installment{
+    position:absolute;top:8px;left:8px;z-index:2;
+    background:var(--accent-gradient);color:#fff;font-size:11px;font-weight:800;
+    padding:4px 9px;border-radius:6px;
+  }
+  .badge-hot{
+    position:absolute;bottom:8px;left:8px;z-index:2;
+    background:#E4262B;color:#fff;font-size:11px;font-weight:800;
+    padding:4px 9px;border-radius:6px;
+  }
+  .card-float-icons{
+    position:absolute;top:8px;right:8px;z-index:2;
+    display:flex;flex-direction:column;gap:6px;
+  }
+  .card-float-icons a{
+    width:28px;height:28px;border-radius:50%;color:#fff;font-size:13px;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 2px 6px rgba(0,0,0,.25);
+  }
+  .card-float-icons a.ic-call{background:#25D366;}
+  .card-float-icons a.ic-zalo{background:#0068FF;}
   .product-card h3{font-size:16.5px;margin-bottom:8px;}
   .badge-condition{
     font-size:11.5px;font-weight:700;color:var(--gray);
@@ -201,10 +245,11 @@
     color:var(--accent);font-size:20px;font-weight:800;margin-bottom:16px;
   }
   .btn-order{
-    background:var(--accent);color:#fff;font-weight:700;font-size:14.5px;
+    background:var(--accent-gradient);color:#fff;font-weight:700;font-size:14.5px;
     padding:11px;border-radius:8px;margin-top:auto;
+    border:none;cursor:pointer;font-family:inherit;text-align:center;width:100%;
   }
-  .btn-order:hover{background:var(--accent-dark);}
+  .btn-order:hover{filter:brightness(.94);}
 
   .lead-form{
     margin-top:14px;padding-top:14px;border-top:1px dashed var(--line);
@@ -230,6 +275,13 @@
 
   .may99-section{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
 
+  .repair-placeholder{
+    background:#fff;border:1px dashed var(--line);border-radius:14px;
+    padding:40px 20px;text-align:center;
+  }
+  .repair-placeholder .ic{font-size:40px;margin-bottom:12px;}
+  .repair-placeholder p{color:var(--gray);font-size:14.5px;line-height:1.6;}
+
   /* Why choose us */
   .why-section{padding:52px 0;}
   .why-grid{
@@ -252,10 +304,54 @@
   .contact-section h2{font-size:24px;margin-bottom:10px;}
   .contact-section p{opacity:.85;margin-bottom:24px;font-size:15px;}
   .contact-buttons{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
-  .btn-white{background:var(--accent);color:#fff;font-weight:800;padding:13px 26px;border-radius:8px;font-size:15px;}
-  .btn-white:hover{background:var(--accent-dark);}
+  .btn-white{background:var(--accent-gradient);color:#fff;font-weight:800;padding:13px 26px;border-radius:8px;font-size:15px;}
+  .btn-white:hover{filter:brightness(.94);}
   .btn-ghost{border:2px solid #fff;color:#fff;font-weight:800;padding:11px 26px;border-radius:8px;font-size:15px;}
   .btn-ghost:hover{background:#fff;color:var(--dark);}
+
+  /* Customers section */
+  .customers-section{padding:52px 0;background:#fff;border-top:1px solid var(--line);overflow:hidden;}
+  .customer-track-wrap{
+    overflow:hidden;margin-bottom:26px;
+    -webkit-mask-image:linear-gradient(90deg,transparent,#000 40px,#000 calc(100% - 40px),transparent);
+    mask-image:linear-gradient(90deg,transparent,#000 40px,#000 calc(100% - 40px),transparent);
+  }
+  .customer-track{
+    display:flex;gap:14px;width:max-content;padding:0 20px;
+    animation:customerScroll 18s linear infinite;
+  }
+  .customer-track:hover{animation-play-state:paused;}
+  @keyframes customerScroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+  .customer-photo{
+    flex:0 0 130px;aspect-ratio:1/1;background:var(--gray-soft);border-radius:12px;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;
+    border:1px dashed var(--line);color:var(--gray);
+  }
+  .customer-photo .ic{font-size:26px;}
+  .customer-photo .lbl{font-size:11px;font-weight:600;text-align:center;padding:0 6px;}
+  .customer-thanks{
+    text-align:center;font-size:16px;font-style:italic;font-weight:600;
+    color:var(--dark);max-width:560px;margin:0 auto;line-height:1.6;padding:0 20px;
+  }
+
+  /* Video reviews */
+  .video-section{padding:52px 0;background:var(--gray-soft);}
+  .video-grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+    gap:20px;
+  }
+  .video-card{
+    background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;
+  }
+  .video-thumb{
+    aspect-ratio:9/16;background:linear-gradient(135deg,var(--dark),var(--dark-2));
+    display:flex;align-items:center;justify-content:center;
+  }
+  .video-thumb .play{
+    width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,.92);
+    display:flex;align-items:center;justify-content:center;font-size:20px;color:var(--accent);
+  }
+  .video-caption{padding:12px;font-size:13.5px;color:var(--gray);text-align:center;font-weight:600;}
 
   footer{
     background:var(--dark);color:#B8B2A8;font-size:13.5px;
@@ -288,16 +384,40 @@
   .mobile-bar{
     position:fixed;bottom:0;left:0;right:0;
     background:#fff;border-top:1px solid var(--line);
-    display:flex;gap:10px;padding:10px 14px;
+    display:flex;
     box-shadow:0 -4px 14px rgba(0,0,0,.08);
     z-index:60;
   }
-  .mobile-bar a{
-    flex:1;text-align:center;padding:12px;border-radius:8px;
-    font-weight:700;font-size:14.5px;
+  .mb-item{
+    flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    gap:2px;padding:8px 4px 10px;font-size:11px;font-weight:700;color:var(--dark);
   }
-  .mobile-bar .call{background:var(--dark);color:#fff;}
-  .mobile-bar .zalo{background:var(--accent);color:#fff;}
+  .mb-ic{font-size:19px;}
+  .mb-item.mb-call{color:var(--accent);}
+  .mb-item.mb-zalo{color:#0068FF;}
+
+  /* Floating fixed contact icons */
+  .floating-contacts{
+    position:fixed;right:14px;bottom:96px;z-index:70;
+    display:flex;flex-direction:column;gap:10px;
+  }
+  .floating-contacts a{
+    width:48px;height:48px;border-radius:50%;color:#fff;font-size:21px;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 6px 16px rgba(0,0,0,.28);
+    animation:fcPulse 2s infinite;
+  }
+  .floating-contacts .fc-call{background:#25D366;}
+  .floating-contacts .fc-zalo{background:#fff;padding:9px;}
+  .floating-contacts .fc-messenger{background:transparent;box-shadow:none;padding:0;}
+  .floating-contacts .fc-zalo svg,
+  .floating-contacts .fc-messenger svg{width:100%;height:100%;display:block;}
+  .floating-contacts .fc-top{
+    background:#fff;color:var(--dark);font-size:18px;font-weight:800;
+    border:1px solid var(--line);animation:none;width:40px;height:40px;align-self:center;
+  }
+  .floating-contacts .fc-top:hover{background:var(--gray-soft);}
+  @keyframes fcPulse{0%,100%{transform:scale(1);}50%{transform:scale(1.08);}}
 
   /* Thank-you modal */
   .thankyou-overlay{
@@ -318,16 +438,55 @@
   .thankyou-box p{font-size:14.5px;color:var(--gray);line-height:1.6;margin-bottom:22px;}
   .thankyou-box strong{color:var(--accent);}
   .thankyou-close{
-    background:var(--accent);color:#fff;border:none;border-radius:8px;
+    background:var(--accent-gradient);color:#fff;border:none;border-radius:8px;
     padding:11px 30px;font-weight:700;font-size:14.5px;cursor:pointer;
   }
-  .thankyou-close:hover{background:var(--accent-dark);}
+  .thankyou-close:hover{filter:brightness(.94);}
+
+  /* Order modal */
+  .order-overlay{
+    position:fixed;inset:0;background:rgba(20,18,15,.6);
+    display:none;align-items:center;justify-content:center;
+    z-index:100;padding:20px;
+  }
+  .order-overlay.show{display:flex;}
+  .order-box{
+    background:#fff;border-radius:16px;padding:30px 26px;
+    max-width:380px;width:100%;position:relative;text-align:left;
+    box-shadow:0 24px 60px rgba(0,0,0,.35);
+    animation:thankyouPop .25s ease;
+  }
+  .order-close-x{
+    position:absolute;top:12px;right:14px;background:none;border:none;
+    font-size:20px;color:var(--gray);cursor:pointer;line-height:1;
+  }
+  .order-box h3{font-size:19px;margin-bottom:4px;color:var(--dark);}
+  .order-product{font-size:13.5px;color:var(--accent);font-weight:700;margin-bottom:18px;}
+  .order-box label{font-size:12.5px;color:var(--gray);display:block;margin:12px 0 5px;}
+  .order-box input{
+    width:100%;padding:10px 12px;border:1px solid var(--line);
+    border-radius:8px;font-size:14px;font-family:inherit;
+  }
+  .order-box input:focus{outline:2px solid var(--accent);outline-offset:1px;}
+  .order-submit-btn{
+    width:100%;margin-top:18px;background:var(--accent-gradient);color:#fff;
+    border:none;border-radius:8px;padding:12px;font-weight:700;font-size:14.5px;cursor:pointer;
+  }
+  .order-submit-btn:hover{filter:brightness(.94);}
 </style>
 </head>
 <body>
 
-  <header class="site-header">
+  <header class="site-header" id="top">
     <div class="header-inner">
+      <div class="menu-wrap">
+        <button type="button" class="menu-btn" onclick="toggleMenu(event)" aria-label="Danh mục">☰</button>
+        <div class="menu-dropdown" id="menuDropdown">
+          <a href="#may-moi" onclick="closeMenu()">🆕 Máy NEW</a>
+          <a href="#may-99" onclick="closeMenu()">♻️ Máy 99%</a>
+          <a href="sua-chua.html">🔧 Sửa chữa</a>
+        </div>
+      </div>
       <div class="logo">Minh Phong <span>Mobile</span></div>
       <nav class="nav-links">
         <a href="#may-moi">Máy Mới</a>
@@ -343,66 +502,96 @@
       <h1>iPhone Chính Hãng &amp; Máy 99% Like-New Giá Tốt</h1>
       <p>Đầy đủ dòng máy mới nguyên seal và máy cũ like-new 99%, kiểm tra kỹ 100%, bảo hành rõ ràng, giao hàng nhanh toàn quốc.</p>
       <div class="hero-cta">
-        <a href="#may-moi" class="btn btn-primary">Xem Máy Mới</a>
-        <a href="#may-99" class="btn btn-outline">Xem Máy 99%</a>
+        <a href="#may-moi" class="btn btn-primary">Máy Mới</a>
+        <a href="#may-99" class="btn btn-outline">Máy 99%</a>
+        <a href="#hot-sale" class="btn btn-outline">Máy Hot Sale</a>
+        <a href="sua-chua.html" class="btn btn-outline">Sửa Chữa</a>
       </div>
-    </div>
-    <div class="hero-slider" id="heroSlider">
-      <div class="hero-slider-viewport">
-        <div class="hero-slider-track" id="heroSliderTrack">
-          <div class="hero-slide">
-            <img src="assets/new-17-promax.png" alt="iPhone 17 Pro Max">
-            <div class="hero-slide-info"><div class="name">iPhone 17 Pro Max (Máy Mới)</div><div class="price">33.968.000đ</div></div>
-          </div>
-          <div class="hero-slide">
-            <img src="assets/new-18-promax.jpg" alt="iPhone 18 Pro Max">
-            <div class="hero-slide-info"><div class="name">iPhone 18 Pro Max (Máy Mới)</div><div class="price">41.968.000đ</div></div>
-          </div>
-          <div class="hero-slide">
-            <img src="assets/used-14-promax.jpg" alt="iPhone 14 Pro Max 99%">
-            <div class="hero-slide-info"><div class="name">iPhone 14 Pro Max (99%)</div><div class="price">14.568.000đ</div></div>
-          </div>
-          <div class="hero-slide">
-            <img src="assets/used-15-promax.jpg" alt="iPhone 15 Pro Max 99%">
-            <div class="hero-slide-info"><div class="name">iPhone 15 Pro Max (99%)</div><div class="price">18.568.000đ</div></div>
-          </div>
-          <div class="hero-slide">
-            <img src="assets/used-16-promax.png" alt="iPhone 16 Pro Max 99%">
-            <div class="hero-slide-info"><div class="name">iPhone 16 Pro Max (99%)</div><div class="price">22.968.000đ</div></div>
-          </div>
-        </div>
-      </div>
-      <button class="hero-slider-btn prev" onclick="heroSlideMove(-1)" aria-label="Ảnh trước">‹</button>
-      <button class="hero-slider-btn next" onclick="heroSlideMove(1)" aria-label="Ảnh sau">›</button>
-      <div class="hero-slider-dots" id="heroSliderDots"></div>
     </div>
   </section>
 
-  <section class="trust-bar">
+  <section class="slogan-bar">
     <div class="wrap">
-      <div class="trust-item"><span class="ic">✅</span>Chính hãng 100%</div>
-      <div class="trust-item"><span class="ic">🛡️</span>Bảo hành uy tín</div>
-      <div class="trust-item"><span class="ic">🔄</span>Đổi trả trong 7 ngày</div>
-      <div class="trust-item"><span class="ic">🚚</span>Giao hàng toàn quốc</div>
+      <p class="slogan-text">iPhone Chính Hãng <span class="dot">•</span> Giá Cả Cạnh Tranh <span class="dot">•</span> Hậu Mãi Trọn Đời</p>
+    </div>
+  </section>
+
+  <!-- HOT SALE -->
+  <section id="hot-sale" class="hotsale-section">
+    <div class="hotsale-badge-row">
+      <h2>🔥 Máy Hot Sale Hôm Nay</h2>
+      <span class="hotsale-flash">⚡ Số lượng có hạn</span>
+    </div>
+    <p class="hotsale-sub">Cập nhật mỗi ngày — giá tốt nhất, nhanh tay kẻo hết!</p>
+    <div class="hotsale-track-wrap">
+      <div class="hotsale-track" id="hotsaleTrack">
+        <div class="hotsale-card">
+          <div class="card-image"><img src="assets/new-18-promax.jpg" alt="iPhone 18 Pro Max"></div>
+          <span class="hotsale-limit">⚡ Số lượng có hạn</span>
+          <h4>iPhone 18 Pro Max</h4>
+          <div class="hotsale-price">41.968.000đ</div>
+          <button type="button" class="btn-order" onclick="openOrderModal('iPhone 18 Pro Max (Hot Sale)')">Đặt Hàng Ngay</button>
+        </div>
+        <div class="hotsale-card">
+          <div class="card-image"><img src="assets/used-16-promax.png" alt="iPhone 16 Pro Max 99%"></div>
+          <span class="hotsale-limit">⚡ Số lượng có hạn</span>
+          <h4>iPhone 16 Pro Max (99%)</h4>
+          <div class="hotsale-price">22.968.000đ</div>
+          <button type="button" class="btn-order" onclick="openOrderModal('iPhone 16 Pro Max Hot Sale (Máy 99%)')">Đặt Hàng Ngay</button>
+        </div>
+        <div class="hotsale-card">
+          <div class="card-image"><img src="assets/used-14-promax.jpg" alt="iPhone 14 Pro Max 99%"></div>
+          <span class="hotsale-limit">⚡ Số lượng có hạn</span>
+          <h4>iPhone 14 Pro Max (99%)</h4>
+          <div class="hotsale-price">14.568.000đ</div>
+          <button type="button" class="btn-order" onclick="openOrderModal('iPhone 14 Pro Max Hot Sale (Máy 99%)')">Đặt Hàng Ngay</button>
+        </div>
+        <div class="hotsale-card" aria-hidden="true">
+          <div class="card-image"><img src="assets/new-18-promax.jpg" alt="iPhone 18 Pro Max"></div>
+          <span class="hotsale-limit">⚡ Số lượng có hạn</span>
+          <h4>iPhone 18 Pro Max</h4>
+          <div class="hotsale-price">41.968.000đ</div>
+          <button type="button" class="btn-order" onclick="openOrderModal('iPhone 18 Pro Max (Hot Sale)')">Đặt Hàng Ngay</button>
+        </div>
+        <div class="hotsale-card" aria-hidden="true">
+          <div class="card-image"><img src="assets/used-16-promax.png" alt="iPhone 16 Pro Max 99%"></div>
+          <span class="hotsale-limit">⚡ Số lượng có hạn</span>
+          <h4>iPhone 16 Pro Max (99%)</h4>
+          <div class="hotsale-price">22.968.000đ</div>
+          <button type="button" class="btn-order" onclick="openOrderModal('iPhone 16 Pro Max Hot Sale (Máy 99%)')">Đặt Hàng Ngay</button>
+        </div>
+        <div class="hotsale-card" aria-hidden="true">
+          <div class="card-image"><img src="assets/used-14-promax.jpg" alt="iPhone 14 Pro Max 99%"></div>
+          <span class="hotsale-limit">⚡ Số lượng có hạn</span>
+          <h4>iPhone 14 Pro Max (99%)</h4>
+          <div class="hotsale-price">14.568.000đ</div>
+          <button type="button" class="btn-order" onclick="openOrderModal('iPhone 14 Pro Max Hot Sale (Máy 99%)')">Đặt Hàng Ngay</button>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- MÁY MỚI -->
   <section id="may-moi" class="product-section">
     <div class="wrap">
-      <div class="section-heading">
-        <span class="tag tag-new">MÁY MỚI 100%</span>
-        <h2>iPhone Mới Nguyên Seal</h2>
-        <p>Nguyên hộp, đầy đủ phụ kiện, bảo hành chính hãng</p>
-      </div>
+      <div class="section-bar"><h2>iPhone Mới Nguyên Seal</h2></div>
+      <p class="section-sub">Nguyên hộp, đầy đủ phụ kiện, bảo hành chính hãng</p>
       <div class="product-grid">
 
         <div class="product-card">
-          <div class="card-image"><img src="assets/new-17-promax.png" alt="iPhone 17 Pro Max"></div>
+          <div class="card-image">
+            <span class="badge-installment">Trả góp 0%</span>
+            <span class="badge-hot">🔥 Hot</span>
+            <img src="assets/new-17-promax.png" alt="iPhone 17 Pro Max">
+            <div class="card-float-icons">
+              <a class="ic-call" href="tel:0941319292" aria-label="Gọi ngay">📞</a>
+              <a class="ic-zalo" href="https://zalo.me/0941319292" aria-label="Chat Zalo">💬</a>
+            </div>
+          </div>
           <h3>iPhone 17 Pro Max</h3>
           <span class="badge-condition">Máy mới 100%</span>
           <div class="price">33.968.000đ</div>
-          <a class="btn-order" href="https://zalo.me/0941319292">Đặt Hàng Ngay</a>
+          <button type="button" class="btn-order" onclick="openOrderModal('iPhone 17 Pro Max (Máy Mới)')">Đặt Hàng Ngay</button>
           <form class="lead-form" data-product="iPhone 17 Pro Max (Máy Mới)" onsubmit="return submitLead(event,this)">
             <label>Để lại SĐT, shop tư vấn ngay:</label>
             <div class="lead-form-row">
@@ -414,11 +603,19 @@
         </div>
 
         <div class="product-card">
-          <div class="card-image"><img src="assets/new-18-promax.jpg" alt="iPhone 18 Pro Max"></div>
+          <div class="card-image">
+            <span class="badge-installment">Trả góp 0%</span>
+            <span class="badge-hot">🔥 Hot</span>
+            <img src="assets/new-18-promax.jpg" alt="iPhone 18 Pro Max">
+            <div class="card-float-icons">
+              <a class="ic-call" href="tel:0941319292" aria-label="Gọi ngay">📞</a>
+              <a class="ic-zalo" href="https://zalo.me/0941319292" aria-label="Chat Zalo">💬</a>
+            </div>
+          </div>
           <h3>iPhone 18 Pro Max</h3>
           <span class="badge-condition">Máy mới 100%</span>
           <div class="price">41.968.000đ</div>
-          <a class="btn-order" href="https://zalo.me/0941319292">Đặt Hàng Ngay</a>
+          <button type="button" class="btn-order" onclick="openOrderModal('iPhone 18 Pro Max (Máy Mới)')">Đặt Hàng Ngay</button>
           <form class="lead-form" data-product="iPhone 18 Pro Max (Máy Mới)" onsubmit="return submitLead(event,this)">
             <label>Để lại SĐT, shop tư vấn ngay:</label>
             <div class="lead-form-row">
@@ -436,19 +633,24 @@
   <!-- MÁY 99% -->
   <section id="may-99" class="product-section may99-section">
     <div class="wrap">
-      <div class="section-heading">
-        <span class="tag tag-used">MÁY 99% - LIKE NEW</span>
-        <h2>iPhone Cũ Đẹp 99%</h2>
-        <p>Ngoại hình như mới, pin khỏe, đã kiểm tra kỹ thuật kỹ càng</p>
-      </div>
+      <div class="section-bar"><h2>iPhone Cũ Đẹp 99%</h2></div>
+      <p class="section-sub">Ngoại hình như mới, pin khỏe, đã kiểm tra kỹ thuật kỹ càng</p>
       <div class="product-grid">
 
         <div class="product-card">
-          <div class="card-image"><img src="assets/used-14-promax.jpg" alt="iPhone 14 Pro Max 99%"></div>
+          <div class="card-image">
+            <span class="badge-installment">Trả góp 0%</span>
+            <span class="badge-hot">🔥 Hot</span>
+            <img src="assets/used-14-promax.jpg" alt="iPhone 14 Pro Max 99%">
+            <div class="card-float-icons">
+              <a class="ic-call" href="tel:0941319292" aria-label="Gọi ngay">📞</a>
+              <a class="ic-zalo" href="https://zalo.me/0941319292" aria-label="Chat Zalo">💬</a>
+            </div>
+          </div>
           <h3>iPhone 14 Pro Max</h3>
           <span class="badge-condition">Like-new 99%</span>
           <div class="price">14.568.000đ</div>
-          <a class="btn-order" href="https://zalo.me/0941319292">Đặt Hàng Ngay</a>
+          <button type="button" class="btn-order" onclick="openOrderModal('iPhone 14 Pro Max (Máy 99%)')">Đặt Hàng Ngay</button>
           <form class="lead-form" data-product="iPhone 14 Pro Max (Máy 99%)" onsubmit="return submitLead(event,this)">
             <label>Để lại SĐT, shop tư vấn ngay:</label>
             <div class="lead-form-row">
@@ -460,11 +662,19 @@
         </div>
 
         <div class="product-card">
-          <div class="card-image"><img src="assets/used-15-promax.jpg" alt="iPhone 15 Pro Max 99%"></div>
+          <div class="card-image">
+            <span class="badge-installment">Trả góp 0%</span>
+            <span class="badge-hot">🔥 Hot</span>
+            <img src="assets/used-15-promax.jpg" alt="iPhone 15 Pro Max 99%">
+            <div class="card-float-icons">
+              <a class="ic-call" href="tel:0941319292" aria-label="Gọi ngay">📞</a>
+              <a class="ic-zalo" href="https://zalo.me/0941319292" aria-label="Chat Zalo">💬</a>
+            </div>
+          </div>
           <h3>iPhone 15 Pro Max</h3>
           <span class="badge-condition">Like-new 99%</span>
           <div class="price">18.568.000đ</div>
-          <a class="btn-order" href="https://zalo.me/0941319292">Đặt Hàng Ngay</a>
+          <button type="button" class="btn-order" onclick="openOrderModal('iPhone 15 Pro Max (Máy 99%)')">Đặt Hàng Ngay</button>
           <form class="lead-form" data-product="iPhone 15 Pro Max (Máy 99%)" onsubmit="return submitLead(event,this)">
             <label>Để lại SĐT, shop tư vấn ngay:</label>
             <div class="lead-form-row">
@@ -476,11 +686,19 @@
         </div>
 
         <div class="product-card">
-          <div class="card-image"><img src="assets/used-16-promax.png" alt="iPhone 16 Pro Max 99%"></div>
+          <div class="card-image">
+            <span class="badge-installment">Trả góp 0%</span>
+            <span class="badge-hot">🔥 Hot</span>
+            <img src="assets/used-16-promax.png" alt="iPhone 16 Pro Max 99%">
+            <div class="card-float-icons">
+              <a class="ic-call" href="tel:0941319292" aria-label="Gọi ngay">📞</a>
+              <a class="ic-zalo" href="https://zalo.me/0941319292" aria-label="Chat Zalo">💬</a>
+            </div>
+          </div>
           <h3>iPhone 16 Pro Max</h3>
           <span class="badge-condition">Like-new 99%</span>
           <div class="price">22.968.000đ</div>
-          <a class="btn-order" href="https://zalo.me/0941319292">Đặt Hàng Ngay</a>
+          <button type="button" class="btn-order" onclick="openOrderModal('iPhone 16 Pro Max (Máy 99%)')">Đặt Hàng Ngay</button>
           <form class="lead-form" data-product="iPhone 16 Pro Max (Máy 99%)" onsubmit="return submitLead(event,this)">
             <label>Để lại SĐT, shop tư vấn ngay:</label>
             <div class="lead-form-row">
@@ -491,6 +709,51 @@
           </form>
         </div>
 
+      </div>
+    </div>
+  </section>
+
+  <section id="khach-hang" class="customers-section">
+    <div class="wrap">
+      <div class="section-bar"><h2>💖 Khách Hàng Minh Phong Mobile</h2></div>
+      <p class="section-sub">Hình ảnh khách hàng nhận máy — cập nhật mỗi ngày</p>
+    </div>
+    <div class="customer-track-wrap">
+      <div class="customer-track" id="customerTrack">
+        <div class="customer-photo"><span class="ic">📷</span><span class="lbl">Ảnh khách hàng</span></div>
+        <div class="customer-photo"><span class="ic">📷</span><span class="lbl">Ảnh khách hàng</span></div>
+        <div class="customer-photo"><span class="ic">📷</span><span class="lbl">Ảnh khách hàng</span></div>
+        <div class="customer-photo"><span class="ic">📷</span><span class="lbl">Ảnh khách hàng</span></div>
+        <div class="customer-photo"><span class="ic">📷</span><span class="lbl">Ảnh khách hàng</span></div>
+        <div class="customer-photo"><span class="ic">📷</span><span class="lbl">Ảnh khách hàng</span></div>
+        <div class="customer-photo" aria-hidden="true"><span class="ic">📷</span><span class="lbl">Ảnh khách hàng</span></div>
+        <div class="customer-photo" aria-hidden="true"><span class="ic">📷</span><span class="lbl">Ảnh khách hàng</span></div>
+        <div class="customer-photo" aria-hidden="true"><span class="ic">📷</span><span class="lbl">Ảnh khách hàng</span></div>
+        <div class="customer-photo" aria-hidden="true"><span class="ic">📷</span><span class="lbl">Ảnh khách hàng</span></div>
+        <div class="customer-photo" aria-hidden="true"><span class="ic">📷</span><span class="lbl">Ảnh khách hàng</span></div>
+        <div class="customer-photo" aria-hidden="true"><span class="ic">📷</span><span class="lbl">Ảnh khách hàng</span></div>
+      </div>
+    </div>
+    <p class="customer-thanks">“Cảm ơn Quý khách vì đã cho phép Minh Phong Mobile được đồng hành.”</p>
+  </section>
+
+  <section id="video-review" class="video-section">
+    <div class="wrap">
+      <div class="section-bar"><h2>🎬 Khách Hàng Nói Gì Về Minh Phong Mobile</h2></div>
+      <p class="section-sub">Video review thật từ khách hàng — cập nhật thường xuyên</p>
+      <div class="video-grid">
+        <div class="video-card">
+          <div class="video-thumb"><span class="play">▶️</span></div>
+          <div class="video-caption">Video đang cập nhật</div>
+        </div>
+        <div class="video-card">
+          <div class="video-thumb"><span class="play">▶️</span></div>
+          <div class="video-caption">Video đang cập nhật</div>
+        </div>
+        <div class="video-card">
+          <div class="video-thumb"><span class="play">▶️</span></div>
+          <div class="video-caption">Video đang cập nhật</div>
+        </div>
       </div>
     </div>
   </section>
@@ -567,8 +830,52 @@
   </footer>
 
   <div class="mobile-bar">
-    <a class="call" href="tel:0941319292">📞 Gọi Ngay</a>
-    <a class="zalo" href="https://zalo.me/0941319292">💬 Chat Zalo</a>
+    <a href="javascript:void(0)" onclick="window.scrollTo({top:0,behavior:'smooth'})" class="mb-item"><span class="mb-ic">🏠</span><span>Trang chủ</span></a>
+    <a href="#may-moi" class="mb-item"><span class="mb-ic">📱</span><span>Máy Mới</span></a>
+    <a href="#may-99" class="mb-item"><span class="mb-ic">♻️</span><span>Máy 99%</span></a>
+    <a href="tel:0941319292" class="mb-item mb-call"><span class="mb-ic">📞</span><span>Gọi Ngay</span></a>
+    <a href="https://zalo.me/0941319292" class="mb-item mb-zalo"><span class="mb-ic">💬</span><span>Zalo</span></a>
+  </div>
+
+  <div class="floating-contacts">
+    <a class="fc-top" href="javascript:void(0)" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Lên đầu trang">↑</a>
+    <a class="fc-call" href="tel:0941319292" aria-label="Gọi ngay">📞</a>
+    <a class="fc-zalo" href="https://zalo.me/0941319292" aria-label="Chat Zalo">
+      <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6 24C6 12 15 5 24 5c6 0 12 4 15 9-3 8-11 13-19 13a20 20 0 0 1-6-1L6 30V24z" fill="none"/>
+        <text x="24" y="29" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="15" fill="#0068FF" text-anchor="middle">Zalo</text>
+        <path d="M9 30c1 5 6 9 12 9-5 1-10-1-12-4z" fill="#0068FF"/>
+      </svg>
+    </a>
+    <a class="fc-messenger" href="https://m.me/MinhPhongMobile" target="_blank" rel="noopener" aria-label="Nhắn tin Messenger">
+      <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="fcMsgGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#00B2FF"/>
+            <stop offset="50%" stop-color="#B03CFA"/>
+            <stop offset="100%" stop-color="#FF6A9C"/>
+          </linearGradient>
+        </defs>
+        <path fill="url(#fcMsgGrad)" d="M24 2C11.85 2 2 11.11 2 22.36c0 6.4 3.2 12.1 8.2 15.83V44l7.49-4.11c1.98.55 4.08.85 6.31.85 12.15 0 22-9.11 22-20.38C46 11.11 36.15 2 24 2z"/>
+        <path fill="#fff" d="M12.6 27.86l7.86-8.32 5.9 6.3 8.98-8.3-8.6 12.86-5.98-6.3-8.16 3.76z"/>
+      </svg>
+    </a>
+  </div>
+
+  <div class="order-overlay" id="orderOverlay" onclick="if(event.target===this) closeOrderModal()">
+    <div class="order-box">
+      <button class="order-close-x" onclick="closeOrderModal()" aria-label="Đóng">✕</button>
+      <h3>Đặt Hàng Ngay</h3>
+      <p class="order-product" id="orderModalProductName"></p>
+      <form id="orderForm" onsubmit="return submitOrder(event, this)">
+        <label>Họ tên</label>
+        <input type="text" name="name" placeholder="Nguyễn Văn A" required>
+        <label>Số điện thoại</label>
+        <input type="tel" name="phone" placeholder="09xxxxxxxx" required pattern="0[0-9]{8,10}">
+        <button type="submit" class="order-submit-btn">Gửi Thông Tin</button>
+        <p class="lead-msg" id="orderMsg"></p>
+      </form>
+    </div>
   </div>
 
   <div class="thankyou-overlay" id="thankyouOverlay" onclick="if(event.target===this) closeThankYou()">
@@ -634,45 +941,21 @@
       return false;
     }
 
-    var heroSlideIndex = 0;
-    var heroSlideCount = document.querySelectorAll('#heroSliderTrack .hero-slide').length;
-    var heroAutoTimer = null;
+    function toggleMenu(event) {
+      event.stopPropagation();
+      document.getElementById('menuDropdown').classList.toggle('show');
+    }
 
-    function heroRenderDots() {
-      var dotsWrap = document.getElementById('heroSliderDots');
-      dotsWrap.innerHTML = '';
-      for (var i = 0; i < heroSlideCount; i++) {
-        var dot = document.createElement('button');
-        dot.className = 'dot' + (i === heroSlideIndex ? ' active' : '');
-        dot.setAttribute('aria-label', 'Xem ảnh ' + (i + 1));
-        dot.onclick = (function (idx) { return function () { heroSlideGoTo(idx); }; })(i);
-        dotsWrap.appendChild(dot);
+    function closeMenu() {
+      document.getElementById('menuDropdown').classList.remove('show');
+    }
+
+    document.addEventListener('click', function (e) {
+      var dropdown = document.getElementById('menuDropdown');
+      if (dropdown.classList.contains('show') && !dropdown.contains(e.target)) {
+        closeMenu();
       }
-    }
-
-    function heroSlideUpdate() {
-      var track = document.getElementById('heroSliderTrack');
-      track.style.transform = 'translateX(-' + (heroSlideIndex * 100) + '%)';
-      heroRenderDots();
-    }
-
-    function heroSlideGoTo(index) {
-      heroSlideIndex = (index + heroSlideCount) % heroSlideCount;
-      heroSlideUpdate();
-      heroResetAutoplay();
-    }
-
-    function heroSlideMove(delta) {
-      heroSlideGoTo(heroSlideIndex + delta);
-    }
-
-    function heroResetAutoplay() {
-      if (heroAutoTimer) clearInterval(heroAutoTimer);
-      heroAutoTimer = setInterval(function () { heroSlideGoTo(heroSlideIndex + 1); }, 4000);
-    }
-
-    heroSlideUpdate();
-    heroResetAutoplay();
+    });
 
     function openThankYou() {
       document.getElementById('thankyouOverlay').classList.add('show');
@@ -680,6 +963,82 @@
 
     function closeThankYou() {
       document.getElementById('thankyouOverlay').classList.remove('show');
+    }
+
+    var orderModalProduct = '';
+
+    function openOrderModal(productName) {
+      orderModalProduct = productName;
+      document.getElementById('orderModalProductName').textContent = productName;
+      var form = document.getElementById('orderForm');
+      form.reset();
+      var msg = document.getElementById('orderMsg');
+      msg.textContent = '';
+      msg.className = 'lead-msg';
+      document.getElementById('orderOverlay').classList.add('show');
+    }
+
+    function closeOrderModal() {
+      document.getElementById('orderOverlay').classList.remove('show');
+    }
+
+    function submitOrder(event, form) {
+      event.preventDefault();
+      var nameInput = form.querySelector('input[name="name"]');
+      var phoneInput = form.querySelector('input[name="phone"]');
+      var msg = document.getElementById('orderMsg');
+      var name = nameInput.value.trim();
+      var phone = phoneInput.value.trim();
+
+      msg.className = 'lead-msg';
+
+      if (!name) {
+        msg.textContent = 'Vui lòng nhập họ tên.';
+        msg.className = 'lead-msg error';
+        return false;
+      }
+
+      if (!/^0[0-9]{8,10}$/.test(phone)) {
+        msg.textContent = 'Số điện thoại không hợp lệ.';
+        msg.className = 'lead-msg error';
+        return false;
+      }
+
+      if (!LEAD_SHEET_ENDPOINT || LEAD_SHEET_ENDPOINT.indexOf('PASTE_') === 0) {
+        msg.textContent = 'Chưa kết nối Google Sheet. Vui lòng gọi hotline giúp shop.';
+        msg.className = 'lead-msg error';
+        return false;
+      }
+
+      var submitBtn = form.querySelector('button[type="submit"]');
+      submitBtn.disabled = true;
+
+      var formData = new FormData();
+      formData.append('phone', phone);
+      formData.append('name', name);
+      formData.append('product', orderModalProduct);
+
+      fetch(LEAD_SHEET_ENDPOINT, { method: 'POST', body: formData })
+        .then(function (res) { return res.json(); })
+        .then(function (data) {
+          if (data && data.result === 'success') {
+            form.reset();
+            closeOrderModal();
+            openThankYou();
+          } else {
+            msg.textContent = 'Có lỗi xảy ra, vui lòng gọi hotline giúp shop.';
+            msg.className = 'lead-msg error';
+          }
+        })
+        .catch(function () {
+          msg.textContent = 'Có lỗi xảy ra, vui lòng gọi hotline giúp shop.';
+          msg.className = 'lead-msg error';
+        })
+        .finally(function () {
+          submitBtn.disabled = false;
+        });
+
+      return false;
     }
   </script>
 
