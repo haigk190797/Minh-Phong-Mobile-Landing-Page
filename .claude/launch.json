@@ -1,0 +1,15 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "landing-page",
+      "runtimeExecutable": "sh",
+      "runtimeArgs": [
+        "-c",
+        "LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8 exec ruby -run -e httpd 'Landing Page' -p 8765"
+      ],
+      "port": 8765,
+      "autoPort": false
+    }
+  ]
+}
