@@ -264,6 +264,30 @@
   }
   .mobile-bar .call{background:var(--dark);color:#fff;}
   .mobile-bar .zalo{background:var(--accent);color:#fff;}
+
+  /* Thank-you modal */
+  .thankyou-overlay{
+    position:fixed;inset:0;background:rgba(20,18,15,.6);
+    display:none;align-items:center;justify-content:center;
+    z-index:100;padding:20px;
+  }
+  .thankyou-overlay.show{display:flex;}
+  .thankyou-box{
+    background:#fff;border-radius:16px;padding:34px 28px;
+    max-width:360px;width:100%;text-align:center;
+    box-shadow:0 24px 60px rgba(0,0,0,.35);
+    animation:thankyouPop .25s ease;
+  }
+  @keyframes thankyouPop{from{transform:scale(.85);opacity:0;}to{transform:scale(1);opacity:1;}}
+  .thankyou-icon{font-size:44px;margin-bottom:14px;}
+  .thankyou-box h3{font-size:19px;margin-bottom:10px;color:var(--dark);}
+  .thankyou-box p{font-size:14.5px;color:var(--gray);line-height:1.6;margin-bottom:22px;}
+  .thankyou-box strong{color:var(--accent);}
+  .thankyou-close{
+    background:var(--accent);color:#fff;border:none;border-radius:8px;
+    padding:11px 30px;font-weight:700;font-size:14.5px;cursor:pointer;
+  }
+  .thankyou-close:hover{background:var(--accent-dark);}
 </style>
 </head>
 <body>
@@ -487,6 +511,15 @@
     <a class="zalo" href="https://zalo.me/0941319292">💬 Chat Zalo</a>
   </div>
 
+  <div class="thankyou-overlay" id="thankyouOverlay" onclick="if(event.target===this) closeThankYou()">
+    <div class="thankyou-box">
+      <div class="thankyou-icon">✅</div>
+      <h3>Cảm ơn bạn đã chọn Minh Phong Mobile!</h3>
+      <p>Chúng tôi sẽ liên hệ ngay trong vòng <strong>3 phút</strong>.</p>
+      <button class="thankyou-close" onclick="closeThankYou()">Đóng</button>
+    </div>
+  </div>
+
   <script>
     // Dán URL Web App của Google Apps Script vào đây (xem hướng dẫn trong Code.gs cùng thư mục).
     const LEAD_SHEET_ENDPOINT = "https://script.google.com/macros/s/AKfycbzK0vVHrmLwq9Xoe1SjCcyfdcDwB_gZtE3lDO-_SJ75hlJ3TSUNVpXQz2vchTTSEi4rRg/exec";
@@ -523,9 +556,8 @@
         .then(function (res) { return res.json(); })
         .then(function (data) {
           if (data && data.result === 'success') {
-            msg.textContent = 'Cảm ơn bạn! Shop sẽ liên hệ lại sớm.';
-            msg.className = 'lead-msg success';
             form.reset();
+            openThankYou();
           } else {
             msg.textContent = 'Có lỗi xảy ra, vui lòng gọi hotline giúp shop.';
             msg.className = 'lead-msg error';
@@ -540,6 +572,14 @@
         });
 
       return false;
+    }
+
+    function openThankYou() {
+      document.getElementById('thankyouOverlay').classList.add('show');
+    }
+
+    function closeThankYou() {
+      document.getElementById('thankyouOverlay').classList.remove('show');
     }
   </script>
 
