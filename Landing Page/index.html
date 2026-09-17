@@ -20,6 +20,9 @@
     --danger:#B3261E;
     --used-bg:#E8F0EA;
     --used-text:#33654B;
+    --graybg:#2C2F33;
+    --graybg-2:#40444A;
+    --header-gradient:#888D94;
   }
   *{box-sizing:border-box;margin:0;padding:0;}
   html{scroll-behavior:smooth;}
@@ -35,7 +38,7 @@
 
   /* Header */
   .site-header{
-    background:var(--accent-gradient);
+    background:var(--header-gradient);
     color:#fff;
     position:sticky;
     top:0;
@@ -78,9 +81,21 @@
     white-space:nowrap;
   }
   .btn-call:hover{background:var(--accent-soft);}
+  .lang-switch{display:flex;gap:6px;flex-shrink:0;}
+  .lang-btn{
+    background:#fff;color:var(--accent);
+    font-weight:700;font-size:13px;white-space:nowrap;
+    padding:8px 14px;border-radius:999px;border:none;cursor:pointer;
+  }
+  .lang-btn:hover{background:var(--accent-soft);}
+  .lang-btn.active{background:var(--graybg);color:#fff;}
   @media (max-width:720px){
     .nav-links{display:none;}
     .logo{font-size:17px;}
+    .lang-btn{font-size:11.5px;padding:7px 11px;}
+  }
+  @media (max-width:420px){
+    .logo span{display:none;}
   }
 
   /* Hero */
@@ -114,7 +129,7 @@
 
   /* Slogan bar */
   .slogan-bar{
-    background:linear-gradient(135deg,#1E1B17,#2E2820);
+    background:linear-gradient(135deg,var(--graybg),var(--graybg-2));
     padding:22px 20px;
   }
   .slogan-text{
@@ -129,7 +144,7 @@
 
   /* Hot Sale section */
   .hotsale-section{
-    background:linear-gradient(135deg,#1E1B17,#2E2820);
+    background:linear-gradient(135deg,var(--graybg),var(--graybg-2));
     padding:44px 0 48px;overflow:hidden;
   }
   .hotsale-badge-row{
@@ -237,6 +252,14 @@
   .card-float-icons a.ic-call{background:#25D366;}
   .card-float-icons a.ic-zalo{background:#0068FF;}
   .product-card h3{font-size:16.5px;margin-bottom:8px;}
+  .color-swatches{display:flex;gap:9px;justify-content:center;margin-bottom:10px;}
+  .swatch{
+    width:26px;height:26px;border-radius:50%;border:2px solid var(--line);
+    cursor:pointer;padding:0;background:#fff;
+  }
+  .swatch:hover{transform:scale(1.1);}
+  .swatch.active{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent-soft);}
+  .color-label{font-size:11.5px;color:var(--gray);margin-bottom:10px;font-weight:600;}
   .badge-condition{
     font-size:11.5px;font-weight:700;color:var(--gray);
     background:var(--gray-soft);border-radius:6px;padding:3px 8px;
@@ -266,10 +289,10 @@
   }
   .lead-form input[type="tel"]:focus{outline:2px solid var(--accent);outline-offset:1px;}
   .lead-form button{
-    background:var(--dark);color:#fff;border:none;border-radius:6px;
+    background:var(--graybg);color:#fff;border:none;border-radius:6px;
     padding:9px 14px;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap;
   }
-  .lead-form button:hover{background:var(--dark-2);}
+  .lead-form button:hover{background:var(--graybg-2);}
   .lead-msg{font-size:12px;margin-top:8px;display:none;text-align:center;}
   .lead-msg.success{color:var(--used-text);display:block;}
   .lead-msg.error{color:var(--danger);display:block;}
@@ -299,7 +322,7 @@
 
   /* Contact / footer */
   .contact-section{
-    background:linear-gradient(135deg,var(--dark),var(--dark-2));
+    background:linear-gradient(135deg,var(--graybg),var(--graybg-2));
     color:#fff;padding:50px 0;text-align:center;
   }
   .contact-section h2{font-size:24px;margin-bottom:10px;}
@@ -345,7 +368,7 @@
     background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;
   }
   .video-thumb{
-    aspect-ratio:9/16;background:linear-gradient(135deg,var(--dark),var(--dark-2));
+    aspect-ratio:9/16;background:linear-gradient(135deg,var(--graybg),var(--graybg-2));
     display:flex;align-items:center;justify-content:center;
   }
   .video-thumb .play{
@@ -355,7 +378,7 @@
   .video-caption{padding:12px;font-size:13.5px;color:var(--gray);text-align:center;font-weight:600;}
 
   footer{
-    background:var(--dark);color:#B8B2A8;font-size:13.5px;
+    background:var(--graybg);color:#B8B2A8;font-size:13.5px;
     padding:40px 20px 22px;
   }
   footer strong{color:#fff;}
@@ -368,14 +391,14 @@
     margin-bottom:26px;
   }
   .branch-card{
-    background:var(--dark-2);border-radius:10px;padding:18px;
+    background:var(--graybg-2);border-radius:10px;padding:18px;
   }
   .branch-card h4{color:#fff;font-size:14.5px;margin-bottom:8px;}
   .branch-card p{font-size:13.5px;line-height:1.6;color:#C9C4BC;}
   .branch-card a{color:#fff;font-weight:700;}
   .branch-card a:hover{color:var(--accent);}
   .footer-bottom{
-    text-align:center;border-top:1px solid var(--dark-2);padding-top:16px;font-size:12.5px;
+    text-align:center;border-top:1px solid var(--graybg-2);padding-top:16px;font-size:12.5px;
   }
   @media (max-width:820px){
     .footer-branches{grid-template-columns:1fr;}
@@ -483,90 +506,93 @@
       <div class="menu-wrap">
         <button type="button" class="menu-btn" onclick="toggleMenu(event)" aria-label="Danh mục">☰</button>
         <div class="menu-dropdown" id="menuDropdown">
-          <a href="#may-moi" onclick="closeMenu()">🆕 Máy NEW</a>
-          <a href="#may-99" onclick="closeMenu()">♻️ Máy 99%</a>
-          <a href="sua-chua.html">🔧 Sửa chữa</a>
+          <a href="#may-moi" onclick="closeMenu()">🆕 <span data-i18n="menu_new">Máy NEW</span></a>
+          <a href="#may-99" onclick="closeMenu()">♻️ <span data-i18n="menu_used">Máy 99%</span></a>
+          <a href="sua-chua.html">🔧 <span data-i18n="menu_repair">Sửa chữa</span></a>
         </div>
       </div>
       <div class="logo"><img src="assets/logo-mp.png" alt="MP Logo" class="logo-img">Minh Phong <span>Mobile</span></div>
       <nav class="nav-links">
-        <a href="#may-moi">Máy Mới</a>
-        <a href="#may-99">Máy 99%</a>
-        <a href="#lien-he">Liên Hệ</a>
+        <a href="#may-moi" data-i18n="nav_new">Máy Mới</a>
+        <a href="#may-99" data-i18n="nav_used">Máy 99%</a>
+        <a href="#lien-he" data-i18n="nav_contact">Liên Hệ</a>
       </nav>
-      <a class="btn-call" href="tel:0941319292">📞 0941.319.292</a>
+      <div class="lang-switch">
+        <button type="button" id="langBtnRu" class="lang-btn" onclick="setLanguage('ru')">Русский</button>
+        <button type="button" id="langBtnEn" class="lang-btn" onclick="setLanguage('en')">English</button>
+      </div>
     </div>
   </header>
 
   <section class="hero">
     <div class="hero-content">
-      <h1>iPhone Chính Hãng &amp; Máy 99% Like-New Giá Tốt</h1>
-      <p>Đầy đủ dòng máy mới nguyên seal và máy cũ like-new 99%, kiểm tra kỹ 100%, bảo hành rõ ràng, giao hàng nhanh toàn quốc.</p>
+      <h1 data-i18n="hero_title">iPhone Chính Hãng &amp; Máy 99% Like-New Giá Tốt</h1>
+      <p data-i18n="hero_desc">Đầy đủ dòng máy mới nguyên seal và máy cũ like-new 99%, kiểm tra kỹ 100%, bảo hành rõ ràng, giao hàng nhanh toàn quốc.</p>
       <div class="hero-cta">
-        <a href="#may-moi" class="btn btn-primary">Máy Mới</a>
-        <a href="#may-99" class="btn btn-outline">Máy 99%</a>
-        <a href="#hot-sale" class="btn btn-outline">Máy Hot Sale</a>
-        <a href="sua-chua.html" class="btn btn-outline">Sửa Chữa</a>
+        <a href="#may-moi" class="btn btn-primary" data-i18n="nav_new">Máy Mới</a>
+        <a href="#may-99" class="btn btn-outline" data-i18n="nav_used">Máy 99%</a>
+        <a href="#hot-sale" class="btn btn-outline" data-i18n="cta_hotsale">Máy Hot Sale</a>
+        <a href="sua-chua.html" class="btn btn-outline" data-i18n="cta_repair">Sửa Chữa</a>
       </div>
     </div>
   </section>
 
   <section class="slogan-bar">
     <div class="wrap">
-      <p class="slogan-text">iPhone Chính Hãng <span class="dot">•</span> Giá Cả Cạnh Tranh <span class="dot">•</span> Hậu Mãi Trọn Đời</p>
+      <p class="slogan-text"><span data-i18n="slogan_1">iPhone Chính Hãng</span> <span class="dot">•</span> <span data-i18n="slogan_2">Giá Cả Cạnh Tranh</span> <span class="dot">•</span> <span data-i18n="slogan_3">Hậu Mãi Trọn Đời</span></p>
     </div>
   </section>
 
   <!-- HOT SALE -->
   <section id="hot-sale" class="hotsale-section">
     <div class="hotsale-badge-row">
-      <h2>🔥 Máy Hot Sale Hôm Nay</h2>
-      <span class="hotsale-flash">⚡ Số lượng có hạn</span>
+      <h2>🔥 <span data-i18n="hotsale_title">Máy Hot Sale Hôm Nay</span></h2>
+      <span class="hotsale-flash">⚡ <span data-i18n="limited">Số lượng có hạn</span></span>
     </div>
-    <p class="hotsale-sub">Cập nhật mỗi ngày — giá tốt nhất, nhanh tay kẻo hết!</p>
+    <p class="hotsale-sub" data-i18n="hotsale_sub">Cập nhật mỗi ngày — giá tốt nhất, nhanh tay kẻo hết!</p>
     <div class="hotsale-track-wrap">
       <div class="hotsale-track" id="hotsaleTrack">
         <div class="hotsale-card">
           <div class="card-image"><img src="assets/new-18-promax.jpg" alt="iPhone 18 Pro Max"></div>
-          <span class="hotsale-limit">⚡ Số lượng có hạn</span>
+          <span class="hotsale-limit">⚡ <span data-i18n="limited">Số lượng có hạn</span></span>
           <h4>iPhone 18 Pro Max</h4>
           <div class="hotsale-price">41.968.000đ</div>
-          <button type="button" class="btn-order" onclick="openOrderModal('iPhone 18 Pro Max (Hot Sale)')">Đặt Hàng Ngay</button>
+          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone 18 Pro Max (Hot Sale)')">Đặt Hàng Ngay</button>
         </div>
         <div class="hotsale-card">
           <div class="card-image"><img src="assets/used-16-promax.png" alt="iPhone 16 Pro Max 99%"></div>
-          <span class="hotsale-limit">⚡ Số lượng có hạn</span>
+          <span class="hotsale-limit">⚡ <span data-i18n="limited">Số lượng có hạn</span></span>
           <h4>iPhone 16 Pro Max (99%)</h4>
           <div class="hotsale-price">22.968.000đ</div>
-          <button type="button" class="btn-order" onclick="openOrderModal('iPhone 16 Pro Max Hot Sale (Máy 99%)')">Đặt Hàng Ngay</button>
+          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone 16 Pro Max Hot Sale (Máy 99%)')">Đặt Hàng Ngay</button>
         </div>
         <div class="hotsale-card">
           <div class="card-image"><img src="assets/used-14-promax.jpg" alt="iPhone 14 Pro Max 99%"></div>
-          <span class="hotsale-limit">⚡ Số lượng có hạn</span>
+          <span class="hotsale-limit">⚡ <span data-i18n="limited">Số lượng có hạn</span></span>
           <h4>iPhone 14 Pro Max (99%)</h4>
           <div class="hotsale-price">14.568.000đ</div>
-          <button type="button" class="btn-order" onclick="openOrderModal('iPhone 14 Pro Max Hot Sale (Máy 99%)')">Đặt Hàng Ngay</button>
+          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone 14 Pro Max Hot Sale (Máy 99%)')">Đặt Hàng Ngay</button>
         </div>
         <div class="hotsale-card" aria-hidden="true">
           <div class="card-image"><img src="assets/new-18-promax.jpg" alt="iPhone 18 Pro Max"></div>
-          <span class="hotsale-limit">⚡ Số lượng có hạn</span>
+          <span class="hotsale-limit">⚡ <span data-i18n="limited">Số lượng có hạn</span></span>
           <h4>iPhone 18 Pro Max</h4>
           <div class="hotsale-price">41.968.000đ</div>
-          <button type="button" class="btn-order" onclick="openOrderModal('iPhone 18 Pro Max (Hot Sale)')">Đặt Hàng Ngay</button>
+          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone 18 Pro Max (Hot Sale)')">Đặt Hàng Ngay</button>
         </div>
         <div class="hotsale-card" aria-hidden="true">
           <div class="card-image"><img src="assets/used-16-promax.png" alt="iPhone 16 Pro Max 99%"></div>
-          <span class="hotsale-limit">⚡ Số lượng có hạn</span>
+          <span class="hotsale-limit">⚡ <span data-i18n="limited">Số lượng có hạn</span></span>
           <h4>iPhone 16 Pro Max (99%)</h4>
           <div class="hotsale-price">22.968.000đ</div>
-          <button type="button" class="btn-order" onclick="openOrderModal('iPhone 16 Pro Max Hot Sale (Máy 99%)')">Đặt Hàng Ngay</button>
+          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone 16 Pro Max Hot Sale (Máy 99%)')">Đặt Hàng Ngay</button>
         </div>
         <div class="hotsale-card" aria-hidden="true">
           <div class="card-image"><img src="assets/used-14-promax.jpg" alt="iPhone 14 Pro Max 99%"></div>
-          <span class="hotsale-limit">⚡ Số lượng có hạn</span>
+          <span class="hotsale-limit">⚡ <span data-i18n="limited">Số lượng có hạn</span></span>
           <h4>iPhone 14 Pro Max (99%)</h4>
           <div class="hotsale-price">14.568.000đ</div>
-          <button type="button" class="btn-order" onclick="openOrderModal('iPhone 14 Pro Max Hot Sale (Máy 99%)')">Đặt Hàng Ngay</button>
+          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone 14 Pro Max Hot Sale (Máy 99%)')">Đặt Hàng Ngay</button>
         </div>
       </div>
     </div>
@@ -575,38 +601,14 @@
   <!-- MÁY MỚI -->
   <section id="may-moi" class="product-section">
     <div class="wrap">
-      <div class="section-bar"><h2>iPhone Mới Nguyên Seal</h2></div>
-      <p class="section-sub">Nguyên hộp, đầy đủ phụ kiện, bảo hành chính hãng</p>
+      <div class="section-bar"><h2 data-i18n="new_title">iPhone Mới Nguyên Seal</h2></div>
+      <p class="section-sub" data-i18n="new_sub">Nguyên hộp, đầy đủ phụ kiện, bảo hành chính hãng</p>
       <div class="product-grid">
 
-        <div class="product-card">
+        <div class="product-card" data-base-name="iPhone 18 Pro Max (Máy Mới)" data-color="Bạc">
           <div class="card-image">
-            <span class="badge-installment">Trả góp 0%</span>
-            <span class="badge-hot">🔥 Hot</span>
-            <img src="assets/new-17-promax.png" alt="iPhone 17 Pro Max">
-            <div class="card-float-icons">
-              <a class="ic-call" href="tel:0941319292" aria-label="Gọi ngay">📞</a>
-              <a class="ic-zalo" href="https://zalo.me/0941319292" aria-label="Chat Zalo">💬</a>
-            </div>
-          </div>
-          <h3>iPhone 17 Pro Max</h3>
-          <span class="badge-condition">Máy mới 100%</span>
-          <div class="price">33.968.000đ</div>
-          <button type="button" class="btn-order" onclick="openOrderModal('iPhone 17 Pro Max (Máy Mới)')">Đặt Hàng Ngay</button>
-          <form class="lead-form" data-product="iPhone 17 Pro Max (Máy Mới)" onsubmit="return submitLead(event,this)">
-            <label>Để lại SĐT, shop tư vấn ngay:</label>
-            <div class="lead-form-row">
-              <input type="tel" name="phone" placeholder="09xxxxxxxx" required pattern="0[0-9]{8,10}">
-              <button type="submit">Gửi</button>
-            </div>
-            <p class="lead-msg"></p>
-          </form>
-        </div>
-
-        <div class="product-card">
-          <div class="card-image">
-            <span class="badge-installment">Trả góp 0%</span>
-            <span class="badge-hot">🔥 Hot</span>
+            <span class="badge-installment" data-i18n="installment">Trả góp 0%</span>
+            <span class="badge-hot">🔥 <span data-i18n="hot">Hot</span></span>
             <img src="assets/new-18-promax.jpg" alt="iPhone 18 Pro Max">
             <div class="card-float-icons">
               <a class="ic-call" href="tel:0941319292" aria-label="Gọi ngay">📞</a>
@@ -614,14 +616,49 @@
             </div>
           </div>
           <h3>iPhone 18 Pro Max</h3>
-          <span class="badge-condition">Máy mới 100%</span>
+          <div class="color-swatches">
+            <button type="button" class="swatch" style="background:#5C1A2C" onclick="selectColor(this,'Đỏ Rượu Vang','41.968.000đ')" aria-label="Màu Đỏ Rượu Vang" title="Đỏ Rượu Vang"></button>
+            <button type="button" class="swatch" style="background:#AFD8E8" onclick="selectColor(this,'Xanh Băng Thanh','41.968.000đ')" aria-label="Màu Xanh Băng Thanh" title="Xanh Băng Thanh"></button>
+            <button type="button" class="swatch active" style="background:#CBCFD3" onclick="selectColor(this,'Bạc','41.968.000đ')" aria-label="Màu Bạc" title="Bạc"></button>
+            <button type="button" class="swatch" style="background:#1C1C1E" onclick="selectColor(this,'Đen','41.968.000đ')" aria-label="Màu Đen" title="Đen"></button>
+          </div>
+          <span class="badge-condition" data-i18n="cond_new100">Máy mới 100%</span>
           <div class="price">41.968.000đ</div>
-          <button type="button" class="btn-order" onclick="openOrderModal('iPhone 18 Pro Max (Máy Mới)')">Đặt Hàng Ngay</button>
+          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModalFromCard(this)">Đặt Hàng Ngay</button>
           <form class="lead-form" data-product="iPhone 18 Pro Max (Máy Mới)" onsubmit="return submitLead(event,this)">
-            <label>Để lại SĐT, shop tư vấn ngay:</label>
+            <label data-i18n="lead_label">Để lại SĐT, shop tư vấn ngay:</label>
             <div class="lead-form-row">
               <input type="tel" name="phone" placeholder="09xxxxxxxx" required pattern="0[0-9]{8,10}">
-              <button type="submit">Gửi</button>
+              <button type="submit" data-i18n="send">Gửi</button>
+            </div>
+            <p class="lead-msg"></p>
+          </form>
+        </div>
+
+        <div class="product-card" data-base-name="iPhone 17 Pro Max (Máy Mới)" data-color="Bạc">
+          <div class="card-image">
+            <span class="badge-installment" data-i18n="installment">Trả góp 0%</span>
+            <span class="badge-hot">🔥 <span data-i18n="hot">Hot</span></span>
+            <img src="assets/new-17-promax.png" alt="iPhone 17 Pro Max">
+            <div class="card-float-icons">
+              <a class="ic-call" href="tel:0941319292" aria-label="Gọi ngay">📞</a>
+              <a class="ic-zalo" href="https://zalo.me/0941319292" aria-label="Chat Zalo">💬</a>
+            </div>
+          </div>
+          <h3>iPhone 17 Pro Max</h3>
+          <div class="color-swatches">
+            <button type="button" class="swatch" style="background:#D9642B" onclick="selectColor(this,'Cam','33.968.000đ')" aria-label="Màu Cam" title="Cam"></button>
+            <button type="button" class="swatch active" style="background:#CBCFD3" onclick="selectColor(this,'Bạc','33.968.000đ')" aria-label="Màu Bạc" title="Bạc"></button>
+            <button type="button" class="swatch" style="background:#232E45" onclick="selectColor(this,'Xanh','34.568.000đ')" aria-label="Màu Xanh" title="Xanh"></button>
+          </div>
+          <span class="badge-condition" data-i18n="cond_new100">Máy mới 100%</span>
+          <div class="price">33.968.000đ</div>
+          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModalFromCard(this)">Đặt Hàng Ngay</button>
+          <form class="lead-form" data-product="iPhone 17 Pro Max (Máy Mới)" onsubmit="return submitLead(event,this)">
+            <label data-i18n="lead_label">Để lại SĐT, shop tư vấn ngay:</label>
+            <div class="lead-form-row">
+              <input type="tel" name="phone" placeholder="09xxxxxxxx" required pattern="0[0-9]{8,10}">
+              <button type="submit" data-i18n="send">Gửi</button>
             </div>
             <p class="lead-msg"></p>
           </form>
@@ -634,14 +671,14 @@
   <!-- MÁY 99% -->
   <section id="may-99" class="product-section may99-section">
     <div class="wrap">
-      <div class="section-bar"><h2>iPhone Cũ Đẹp 99%</h2></div>
-      <p class="section-sub">Ngoại hình như mới, pin khỏe, đã kiểm tra kỹ thuật kỹ càng</p>
+      <div class="section-bar"><h2 data-i18n="used_title">iPhone Cũ Đẹp 99%</h2></div>
+      <p class="section-sub" data-i18n="used_sub">Ngoại hình như mới, pin khỏe, đã kiểm tra kỹ thuật kỹ càng</p>
       <div class="product-grid">
 
         <div class="product-card">
           <div class="card-image">
-            <span class="badge-installment">Trả góp 0%</span>
-            <span class="badge-hot">🔥 Hot</span>
+            <span class="badge-installment" data-i18n="installment">Trả góp 0%</span>
+            <span class="badge-hot">🔥 <span data-i18n="hot">Hot</span></span>
             <img src="assets/used-14-promax.jpg" alt="iPhone 14 Pro Max 99%">
             <div class="card-float-icons">
               <a class="ic-call" href="tel:0941319292" aria-label="Gọi ngay">📞</a>
@@ -649,14 +686,14 @@
             </div>
           </div>
           <h3>iPhone 14 Pro Max</h3>
-          <span class="badge-condition">Like-new 99%</span>
+          <span class="badge-condition" data-i18n="cond_used99">Like-new 99%</span>
           <div class="price">14.568.000đ</div>
-          <button type="button" class="btn-order" onclick="openOrderModal('iPhone 14 Pro Max (Máy 99%)')">Đặt Hàng Ngay</button>
+          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone 14 Pro Max (Máy 99%)')">Đặt Hàng Ngay</button>
           <form class="lead-form" data-product="iPhone 14 Pro Max (Máy 99%)" onsubmit="return submitLead(event,this)">
-            <label>Để lại SĐT, shop tư vấn ngay:</label>
+            <label data-i18n="lead_label">Để lại SĐT, shop tư vấn ngay:</label>
             <div class="lead-form-row">
               <input type="tel" name="phone" placeholder="09xxxxxxxx" required pattern="0[0-9]{8,10}">
-              <button type="submit">Gửi</button>
+              <button type="submit" data-i18n="send">Gửi</button>
             </div>
             <p class="lead-msg"></p>
           </form>
@@ -664,8 +701,8 @@
 
         <div class="product-card">
           <div class="card-image">
-            <span class="badge-installment">Trả góp 0%</span>
-            <span class="badge-hot">🔥 Hot</span>
+            <span class="badge-installment" data-i18n="installment">Trả góp 0%</span>
+            <span class="badge-hot">🔥 <span data-i18n="hot">Hot</span></span>
             <img src="assets/used-15-promax.jpg" alt="iPhone 15 Pro Max 99%">
             <div class="card-float-icons">
               <a class="ic-call" href="tel:0941319292" aria-label="Gọi ngay">📞</a>
@@ -673,14 +710,14 @@
             </div>
           </div>
           <h3>iPhone 15 Pro Max</h3>
-          <span class="badge-condition">Like-new 99%</span>
+          <span class="badge-condition" data-i18n="cond_used99">Like-new 99%</span>
           <div class="price">18.568.000đ</div>
-          <button type="button" class="btn-order" onclick="openOrderModal('iPhone 15 Pro Max (Máy 99%)')">Đặt Hàng Ngay</button>
+          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone 15 Pro Max (Máy 99%)')">Đặt Hàng Ngay</button>
           <form class="lead-form" data-product="iPhone 15 Pro Max (Máy 99%)" onsubmit="return submitLead(event,this)">
-            <label>Để lại SĐT, shop tư vấn ngay:</label>
+            <label data-i18n="lead_label">Để lại SĐT, shop tư vấn ngay:</label>
             <div class="lead-form-row">
               <input type="tel" name="phone" placeholder="09xxxxxxxx" required pattern="0[0-9]{8,10}">
-              <button type="submit">Gửi</button>
+              <button type="submit" data-i18n="send">Gửi</button>
             </div>
             <p class="lead-msg"></p>
           </form>
@@ -688,8 +725,8 @@
 
         <div class="product-card">
           <div class="card-image">
-            <span class="badge-installment">Trả góp 0%</span>
-            <span class="badge-hot">🔥 Hot</span>
+            <span class="badge-installment" data-i18n="installment">Trả góp 0%</span>
+            <span class="badge-hot">🔥 <span data-i18n="hot">Hot</span></span>
             <img src="assets/used-16-promax.png" alt="iPhone 16 Pro Max 99%">
             <div class="card-float-icons">
               <a class="ic-call" href="tel:0941319292" aria-label="Gọi ngay">📞</a>
@@ -697,14 +734,14 @@
             </div>
           </div>
           <h3>iPhone 16 Pro Max</h3>
-          <span class="badge-condition">Like-new 99%</span>
+          <span class="badge-condition" data-i18n="cond_used99">Like-new 99%</span>
           <div class="price">22.968.000đ</div>
-          <button type="button" class="btn-order" onclick="openOrderModal('iPhone 16 Pro Max (Máy 99%)')">Đặt Hàng Ngay</button>
+          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone 16 Pro Max (Máy 99%)')">Đặt Hàng Ngay</button>
           <form class="lead-form" data-product="iPhone 16 Pro Max (Máy 99%)" onsubmit="return submitLead(event,this)">
-            <label>Để lại SĐT, shop tư vấn ngay:</label>
+            <label data-i18n="lead_label">Để lại SĐT, shop tư vấn ngay:</label>
             <div class="lead-form-row">
               <input type="tel" name="phone" placeholder="09xxxxxxxx" required pattern="0[0-9]{8,10}">
-              <button type="submit">Gửi</button>
+              <button type="submit" data-i18n="send">Gửi</button>
             </div>
             <p class="lead-msg"></p>
           </form>
@@ -716,44 +753,44 @@
 
   <section id="khach-hang" class="customers-section">
     <div class="wrap">
-      <div class="section-bar"><h2>💖 Khách Hàng Minh Phong Mobile</h2></div>
-      <p class="section-sub">Hình ảnh khách hàng nhận máy — cập nhật mỗi ngày</p>
+      <div class="section-bar"><h2>💖 <span data-i18n="customers_title">Khách Hàng Minh Phong Mobile</span></h2></div>
+      <p class="section-sub" data-i18n="customers_sub">Hình ảnh khách hàng nhận máy — cập nhật mỗi ngày</p>
     </div>
     <div class="customer-track-wrap">
       <div class="customer-track" id="customerTrack">
-        <div class="customer-photo"><span class="ic">📷</span><span class="lbl">Ảnh khách hàng</span></div>
-        <div class="customer-photo"><span class="ic">📷</span><span class="lbl">Ảnh khách hàng</span></div>
-        <div class="customer-photo"><span class="ic">📷</span><span class="lbl">Ảnh khách hàng</span></div>
-        <div class="customer-photo"><span class="ic">📷</span><span class="lbl">Ảnh khách hàng</span></div>
-        <div class="customer-photo"><span class="ic">📷</span><span class="lbl">Ảnh khách hàng</span></div>
-        <div class="customer-photo"><span class="ic">📷</span><span class="lbl">Ảnh khách hàng</span></div>
-        <div class="customer-photo" aria-hidden="true"><span class="ic">📷</span><span class="lbl">Ảnh khách hàng</span></div>
-        <div class="customer-photo" aria-hidden="true"><span class="ic">📷</span><span class="lbl">Ảnh khách hàng</span></div>
-        <div class="customer-photo" aria-hidden="true"><span class="ic">📷</span><span class="lbl">Ảnh khách hàng</span></div>
-        <div class="customer-photo" aria-hidden="true"><span class="ic">📷</span><span class="lbl">Ảnh khách hàng</span></div>
-        <div class="customer-photo" aria-hidden="true"><span class="ic">📷</span><span class="lbl">Ảnh khách hàng</span></div>
-        <div class="customer-photo" aria-hidden="true"><span class="ic">📷</span><span class="lbl">Ảnh khách hàng</span></div>
+        <div class="customer-photo"><span class="ic">📷</span><span class="lbl" data-i18n="customer_photo">Ảnh khách hàng</span></div>
+        <div class="customer-photo"><span class="ic">📷</span><span class="lbl" data-i18n="customer_photo">Ảnh khách hàng</span></div>
+        <div class="customer-photo"><span class="ic">📷</span><span class="lbl" data-i18n="customer_photo">Ảnh khách hàng</span></div>
+        <div class="customer-photo"><span class="ic">📷</span><span class="lbl" data-i18n="customer_photo">Ảnh khách hàng</span></div>
+        <div class="customer-photo"><span class="ic">📷</span><span class="lbl" data-i18n="customer_photo">Ảnh khách hàng</span></div>
+        <div class="customer-photo"><span class="ic">📷</span><span class="lbl" data-i18n="customer_photo">Ảnh khách hàng</span></div>
+        <div class="customer-photo" aria-hidden="true"><span class="ic">📷</span><span class="lbl" data-i18n="customer_photo">Ảnh khách hàng</span></div>
+        <div class="customer-photo" aria-hidden="true"><span class="ic">📷</span><span class="lbl" data-i18n="customer_photo">Ảnh khách hàng</span></div>
+        <div class="customer-photo" aria-hidden="true"><span class="ic">📷</span><span class="lbl" data-i18n="customer_photo">Ảnh khách hàng</span></div>
+        <div class="customer-photo" aria-hidden="true"><span class="ic">📷</span><span class="lbl" data-i18n="customer_photo">Ảnh khách hàng</span></div>
+        <div class="customer-photo" aria-hidden="true"><span class="ic">📷</span><span class="lbl" data-i18n="customer_photo">Ảnh khách hàng</span></div>
+        <div class="customer-photo" aria-hidden="true"><span class="ic">📷</span><span class="lbl" data-i18n="customer_photo">Ảnh khách hàng</span></div>
       </div>
     </div>
-    <p class="customer-thanks">“Cảm ơn Quý khách vì đã cho phép Minh Phong Mobile được đồng hành.”</p>
+    <p class="customer-thanks" data-i18n="customer_thanks">“Cảm ơn Quý khách vì đã cho phép Minh Phong Mobile được đồng hành.”</p>
   </section>
 
   <section id="video-review" class="video-section">
     <div class="wrap">
-      <div class="section-bar"><h2>🎬 Khách Hàng Nói Gì Về Minh Phong Mobile</h2></div>
-      <p class="section-sub">Video review thật từ khách hàng — cập nhật thường xuyên</p>
+      <div class="section-bar"><h2>🎬 <span data-i18n="video_title">Khách Hàng Nói Gì Về Minh Phong Mobile</span></h2></div>
+      <p class="section-sub" data-i18n="video_sub">Video review thật từ khách hàng — cập nhật thường xuyên</p>
       <div class="video-grid">
         <div class="video-card">
           <div class="video-thumb"><span class="play">▶️</span></div>
-          <div class="video-caption">Video đang cập nhật</div>
+          <div class="video-caption" data-i18n="video_caption">Video đang cập nhật</div>
         </div>
         <div class="video-card">
           <div class="video-thumb"><span class="play">▶️</span></div>
-          <div class="video-caption">Video đang cập nhật</div>
+          <div class="video-caption" data-i18n="video_caption">Video đang cập nhật</div>
         </div>
         <div class="video-card">
           <div class="video-thumb"><span class="play">▶️</span></div>
-          <div class="video-caption">Video đang cập nhật</div>
+          <div class="video-caption" data-i18n="video_caption">Video đang cập nhật</div>
         </div>
       </div>
     </div>
@@ -762,29 +799,29 @@
   <section class="why-section">
     <div class="wrap">
       <div class="section-heading">
-        <h2>Vì Sao Chọn Minh Phong Mobile</h2>
-        <p>Cam kết uy tín với từng khách hàng</p>
+        <h2 data-i18n="why_title">Vì Sao Chọn Minh Phong Mobile</h2>
+        <p data-i18n="why_sub">Cam kết uy tín với từng khách hàng</p>
       </div>
       <div class="why-grid">
         <div class="why-card">
           <div class="ic">📱</div>
-          <h4>Máy chuẩn, đúng mô tả</h4>
-          <p>Kiểm tra kỹ trước khi giao, đúng tình trạng như đăng bán.</p>
+          <h4 data-i18n="why1_h">Máy chuẩn, đúng mô tả</h4>
+          <p data-i18n="why1_p">Kiểm tra kỹ trước khi giao, đúng tình trạng như đăng bán.</p>
         </div>
         <div class="why-card">
           <div class="ic">💳</div>
-          <h4>Giá tốt, hỗ trợ trả góp</h4>
-          <p>Giá cạnh tranh, hỗ trợ trả góp 0% cho khách đủ điều kiện.</p>
+          <h4 data-i18n="why2_h">Giá tốt, hỗ trợ trả góp</h4>
+          <p data-i18n="why2_p">Giá cạnh tranh, hỗ trợ trả góp 0% cho khách đủ điều kiện.</p>
         </div>
         <div class="why-card">
           <div class="ic">🛠️</div>
-          <h4>Bảo hành rõ ràng</h4>
-          <p>Máy mới bảo hành theo hãng, máy 99% bảo hành tại cửa hàng.</p>
+          <h4 data-i18n="why3_h">Bảo hành rõ ràng</h4>
+          <p data-i18n="why3_p">Máy mới bảo hành theo hãng, máy 99% bảo hành tại cửa hàng.</p>
         </div>
         <div class="why-card">
           <div class="ic">⚡</div>
-          <h4>Giao hàng nhanh</h4>
-          <p>Giao tận nơi toàn quốc, kiểm tra máy trước khi thanh toán.</p>
+          <h4 data-i18n="why4_h">Giao hàng nhanh</h4>
+          <p data-i18n="why4_p">Giao tận nơi toàn quốc, kiểm tra máy trước khi thanh toán.</p>
         </div>
       </div>
     </div>
@@ -792,10 +829,10 @@
 
   <section id="lien-he" class="contact-section">
     <div class="wrap">
-      <h2>Cần Tư Vấn? Liên Hệ Ngay</h2>
-      <p>Đội ngũ Minh Phong Mobile sẵn sàng hỗ trợ bạn chọn máy phù hợp nhất</p>
+      <h2 data-i18n="contact_title">Cần Tư Vấn? Liên Hệ Ngay</h2>
+      <p data-i18n="contact_sub">Đội ngũ Minh Phong Mobile sẵn sàng hỗ trợ bạn chọn máy phù hợp nhất</p>
       <div class="contact-buttons">
-        <a class="btn-white" href="tel:0941319292">📞 Gọi 0941.319.292</a>
+        <a class="btn-white" href="tel:0941319292">📞 <span data-i18n="call_word">Gọi</span> 0941.319.292</a>
         <a class="btn-ghost" href="https://zalo.me/0941319292">💬 Chat Zalo</a>
       </div>
     </div>
@@ -804,37 +841,37 @@
   <footer>
     <div class="footer-inner">
       <div class="footer-brand">
-        <h3>🍎 Hệ Thống Apple Chính Hãng Minh Phong Mobile Khánh Hòa</h3>
-        <p>Chuyên iPhone chính hãng &amp; máy cũ like-new</p>
+        <h3>🍎 <span data-i18n="footer_brand_h">Hệ Thống Apple Chính Hãng Minh Phong Mobile Khánh Hòa</span></h3>
+        <p data-i18n="footer_brand_p">Chuyên iPhone chính hãng &amp; máy cũ like-new</p>
       </div>
       <div class="footer-branches">
         <div class="branch-card">
-          <h4>🏬 CN1: 104 Quang Trung</h4>
-          <p>Gần vòng xoay Lê Thánh Tôn</p>
+          <h4>🏬 <span data-i18n="branch1_h">CN1: 104 Quang Trung</span></h4>
+          <p data-i18n="branch1_p">Gần vòng xoay Lê Thánh Tôn</p>
           <p>📞 <a href="tel:0941319292">094 131 9292</a></p>
         </div>
         <div class="branch-card">
-          <h4>🏬 CN2: 503 Đường 2/4</h4>
-          <p>Cạnh TGDĐ Hòn Chồng</p>
+          <h4>🏬 <span data-i18n="branch2_h">CN2: 503 Đường 2/4</span></h4>
+          <p data-i18n="branch2_p">Cạnh TGDĐ Hòn Chồng</p>
           <p>📞 <a href="tel:0785503503">078 5503 503</a></p>
         </div>
         <div class="branch-card">
-          <h4>🏬 CN3: 197 Trần Quý Cáp</h4>
-          <p>Ninh Hòa</p>
+          <h4>🏬 <span data-i18n="branch3_h">CN3: 197 Trần Quý Cáp</span></h4>
+          <p data-i18n="branch3_p">Ninh Hòa</p>
           <p>📞 <a href="tel:0947866197">0947 866 197</a></p>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; Minh Phong Mobile — Hệ thống Apple chính hãng tại Khánh Hòa</p>
+        <p>&copy; <span data-i18n="footer_bottom">Minh Phong Mobile — Hệ thống Apple chính hãng tại Khánh Hòa</span></p>
       </div>
     </div>
   </footer>
 
   <div class="mobile-bar">
-    <a href="javascript:void(0)" onclick="window.scrollTo({top:0,behavior:'smooth'})" class="mb-item"><span class="mb-ic">🏠</span><span>Trang chủ</span></a>
-    <a href="#may-moi" class="mb-item"><span class="mb-ic">📱</span><span>Máy Mới</span></a>
-    <a href="#may-99" class="mb-item"><span class="mb-ic">♻️</span><span>Máy 99%</span></a>
-    <a href="tel:0941319292" class="mb-item mb-call"><span class="mb-ic">📞</span><span>Gọi Ngay</span></a>
+    <a href="#hot-sale" class="mb-item"><span class="mb-ic">🔥</span><span data-i18n="cta_hotsale">Máy Hot Sale</span></a>
+    <a href="#may-moi" class="mb-item"><span class="mb-ic">📱</span><span data-i18n="nav_new">Máy Mới</span></a>
+    <a href="#may-99" class="mb-item"><span class="mb-ic">♻️</span><span data-i18n="nav_used">Máy 99%</span></a>
+    <a href="tel:0941319292" class="mb-item mb-call"><span class="mb-ic">📞</span><span data-i18n="mb_call">Gọi Ngay</span></a>
     <a href="https://zalo.me/0941319292" class="mb-item mb-zalo"><span class="mb-ic">💬</span><span>Zalo</span></a>
   </div>
 
@@ -866,14 +903,14 @@
   <div class="order-overlay" id="orderOverlay" onclick="if(event.target===this) closeOrderModal()">
     <div class="order-box">
       <button class="order-close-x" onclick="closeOrderModal()" aria-label="Đóng">✕</button>
-      <h3>Đặt Hàng Ngay</h3>
+      <h3 data-i18n="order_now">Đặt Hàng Ngay</h3>
       <p class="order-product" id="orderModalProductName"></p>
       <form id="orderForm" onsubmit="return submitOrder(event, this)">
-        <label>Họ tên</label>
-        <input type="text" name="name" placeholder="Nguyễn Văn A" required>
-        <label>Số điện thoại</label>
+        <label data-i18n="label_name">Họ tên</label>
+        <input type="text" name="customer_name" id="orderNameInput" placeholder="Nguyễn Văn A" required>
+        <label data-i18n="label_phone">Số điện thoại</label>
         <input type="tel" name="phone" placeholder="09xxxxxxxx" required pattern="0[0-9]{8,10}">
-        <button type="submit" class="order-submit-btn">Gửi Thông Tin</button>
+        <button type="submit" class="order-submit-btn" data-i18n="submit_info">Gửi Thông Tin</button>
         <p class="lead-msg" id="orderMsg"></p>
       </form>
     </div>
@@ -882,15 +919,166 @@
   <div class="thankyou-overlay" id="thankyouOverlay" onclick="if(event.target===this) closeThankYou()">
     <div class="thankyou-box">
       <div class="thankyou-icon">✅</div>
-      <h3>Cảm ơn bạn đã chọn Minh Phong Mobile!</h3>
-      <p>Chúng tôi sẽ liên hệ ngay trong vòng <strong>3 phút</strong>.</p>
-      <button class="thankyou-close" onclick="closeThankYou()">Đóng</button>
+      <h3 data-i18n="thankyou_title">Cảm ơn bạn đã chọn Minh Phong Mobile!</h3>
+      <p data-i18n-html="thankyou_msg">Chúng tôi sẽ liên hệ ngay trong vòng <strong>3 phút</strong>.</p>
+      <button class="thankyou-close" onclick="closeThankYou()" data-i18n="close_word">Đóng</button>
     </div>
   </div>
 
   <script>
     // Dán URL Web App của Google Apps Script vào đây (xem hướng dẫn trong Code.gs cùng thư mục).
-    const LEAD_SHEET_ENDPOINT = "https://script.google.com/macros/s/AKfycbzK0vVHrmLwq9Xoe1SjCcyfdcDwB_gZtE3lDO-_SJ75hlJ3TSUNVpXQz2vchTTSEi4rRg/exec";
+    const LEAD_SHEET_ENDPOINT = "https://script.google.com/macros/s/AKfycbzct3HqQ3VXCzZ6_7u93ZFEhEuhJNPwxQ53p0qVUiUod1iGTSWBFsql1squpQWlSGv_0w/exec";
+
+    var I18N = {
+      en: {
+        menu_new:"New Phones", menu_used:"99% Used", menu_repair:"Repair",
+        nav_new:"New Phones", nav_used:"99% Used", nav_contact:"Contact",
+        cta_hotsale:"Hot Sale", cta_repair:"Repair",
+        hero_title:"Genuine iPhones & 99% Like-New at Great Prices",
+        hero_desc:"Full range of brand-new sealed phones and 99% like-new used phones, thoroughly inspected, clearly warrantied, fast nationwide delivery.",
+        slogan_1:"Genuine iPhones", slogan_2:"Competitive Prices", slogan_3:"Lifetime After-Sales Support",
+        hotsale_title:"Today's Hot Sale", limited:"Limited Stock",
+        hotsale_sub:"Updated daily — best prices, grab them before they're gone!",
+        order_now:"Order Now",
+        new_title:"Brand-New Sealed iPhones", new_sub:"Original box, full accessories, official warranty",
+        installment:"0% Installment", hot:"Hot", cond_new100:"100% Brand New",
+        lead_label:"Leave your phone number, we'll advise you right away:", send:"Send",
+        used_title:"Beautiful 99% Used iPhones",
+        used_sub:"Like-new appearance, strong battery, thoroughly technically inspected",
+        cond_used99:"Like-New 99%",
+        customers_title:"Minh Phong Mobile Customers",
+        customers_sub:"Customer photos receiving their phones — updated daily",
+        customer_photo:"Customer photo",
+        customer_thanks:"“Thank you for allowing Minh Phong Mobile to accompany you.”",
+        video_title:"What Customers Say About Minh Phong Mobile",
+        video_sub:"Real customer review videos — updated regularly",
+        video_caption:"Video coming soon",
+        why_title:"Why Choose Minh Phong Mobile", why_sub:"Committed to trust with every customer",
+        why1_h:"Genuine phones, accurate description",
+        why1_p:"Carefully inspected before delivery, exactly as described in the listing.",
+        why2_h:"Great price, installment support",
+        why2_p:"Competitive pricing, 0% installment support for qualifying customers.",
+        why3_h:"Clear warranty",
+        why3_p:"New phones warrantied by the manufacturer, 99% phones warrantied in-store.",
+        why4_h:"Fast delivery",
+        why4_p:"Nationwide delivery, inspect the phone before you pay.",
+        contact_title:"Need Advice? Contact Us Now",
+        contact_sub:"The Minh Phong Mobile team is ready to help you choose the right phone",
+        call_word:"Call",
+        footer_brand_h:"Minh Phong Mobile Official Apple System, Khanh Hoa",
+        footer_brand_p:"Specializing in genuine iPhones & like-new used phones",
+        branch1_h:"Branch 1: 104 Quang Trung", branch1_p:"Near Lê Thánh Tôn roundabout",
+        branch2_h:"Branch 2: 503 Đường 2/4", branch2_p:"Next to TGDĐ Hòn Chồng",
+        branch3_h:"Branch 3: 197 Trần Quý Cáp", branch3_p:"Ninh Hòa",
+        footer_bottom:"Minh Phong Mobile — Official Apple System in Khanh Hoa",
+        label_name:"Full name", label_phone:"Phone number", submit_info:"Send Information",
+        thankyou_title:"Thank you for choosing Minh Phong Mobile!",
+        thankyou_msg:"We will contact you within <strong>3 minutes</strong>.",
+        close_word:"Close", mb_home:"Home", mb_call:"Call Now",
+        placeholder_name:"John Smith",
+        msg_invalid_phone:"Invalid phone number.",
+        msg_no_sheet:"Not connected to Google Sheet yet. Please call our hotline.",
+        msg_error:"Something went wrong, please call our hotline.",
+        msg_need_name:"Please enter your full name."
+      },
+      ru: {
+        menu_new:"Новые телефоны", menu_used:"Б/у 99%", menu_repair:"Ремонт",
+        nav_new:"Новые телефоны", nav_used:"Б/у 99%", nav_contact:"Контакты",
+        cta_hotsale:"Горячие предложения", cta_repair:"Ремонт",
+        hero_title:"Оригинальные iPhone и телефоны б/у 99% по отличным ценам",
+        hero_desc:"Полный ассортимент новых запечатанных телефонов и телефонов б/у в состоянии 99% как новые, тщательная проверка, чёткая гарантия, быстрая доставка по всей стране.",
+        slogan_1:"Оригинальные iPhone", slogan_2:"Конкурентные цены", slogan_3:"Пожизненная гарантийная поддержка",
+        hotsale_title:"Горячие предложения сегодня", limited:"Ограниченное количество",
+        hotsale_sub:"Обновляется ежедневно — лучшие цены, успейте купить!",
+        order_now:"Заказать сейчас",
+        new_title:"Новые iPhone в заводской упаковке",
+        new_sub:"Оригинальная коробка, полный комплект аксессуаров, официальная гарантия",
+        installment:"Рассрочка 0%", hot:"Хит", cond_new100:"100% новый",
+        lead_label:"Оставьте номер телефона — мы проконсультируем вас:", send:"Отправить",
+        used_title:"Красивые iPhone б/у 99%",
+        used_sub:"Внешний вид как новый, крепкий аккумулятор, тщательно проверены технически",
+        cond_used99:"Как новый 99%",
+        customers_title:"Клиенты Minh Phong Mobile",
+        customers_sub:"Фото клиентов с их новыми телефонами — обновляется ежедневно",
+        customer_photo:"Фото клиента",
+        customer_thanks:"«Благодарим Вас за то, что позволили Minh Phong Mobile быть рядом с Вами.»",
+        video_title:"Что говорят клиенты о Minh Phong Mobile",
+        video_sub:"Настоящие видеоотзывы клиентов — регулярно обновляются",
+        video_caption:"Видео скоро будет",
+        why_title:"Почему выбирают Minh Phong Mobile", why_sub:"Мы гарантируем доверие каждому клиенту",
+        why1_h:"Подлинные телефоны, точное описание",
+        why1_p:"Тщательно проверяются перед доставкой, точно соответствуют описанию.",
+        why2_h:"Отличная цена, рассрочка",
+        why2_p:"Конкурентные цены, рассрочка 0% для клиентов, соответствующих условиям.",
+        why3_h:"Чёткая гарантия",
+        why3_p:"Новые телефоны — гарантия производителя, телефоны б/у 99% — гарантия магазина.",
+        why4_h:"Быстрая доставка",
+        why4_p:"Доставка по всей стране, проверка телефона перед оплатой.",
+        contact_title:"Нужна консультация? Свяжитесь с нами",
+        contact_sub:"Команда Minh Phong Mobile готова помочь вам выбрать подходящий телефон",
+        call_word:"Позвонить",
+        footer_brand_h:"Официальная сеть Apple Minh Phong Mobile, Кханьхоа",
+        footer_brand_p:"Специализируемся на оригинальных iPhone и телефонах б/у в состоянии как новые",
+        branch1_h:"Филиал 1: 104 Quang Trung", branch1_p:"Рядом с круговым перекрёстком Lê Thánh Tôn",
+        branch2_h:"Филиал 2: 503 Đường 2/4", branch2_p:"Рядом с TGDĐ Hòn Chồng",
+        branch3_h:"Филиал 3: 197 Trần Quý Cáp", branch3_p:"Нинь Хоа",
+        footer_bottom:"Minh Phong Mobile — официальная сеть Apple в Кханьхоа",
+        label_name:"Полное имя", label_phone:"Номер телефона", submit_info:"Отправить информацию",
+        thankyou_title:"Спасибо, что выбрали Minh Phong Mobile!",
+        thankyou_msg:"Мы свяжемся с Вами в течение <strong>3 минут</strong>.",
+        close_word:"Закрыть", mb_home:"Главная", mb_call:"Позвонить",
+        placeholder_name:"Иван Иванов",
+        msg_invalid_phone:"Неверный номер телефона.",
+        msg_no_sheet:"Google Таблица ещё не подключена. Пожалуйста, позвоните нам.",
+        msg_error:"Произошла ошибка, пожалуйста, позвоните нам.",
+        msg_need_name:"Пожалуйста, введите Ваше полное имя."
+      }
+    };
+
+    var currentLang = localStorage.getItem('mpm_lang') || 'vi';
+
+    function applyTranslations(lang) {
+      document.querySelectorAll('[data-i18n]').forEach(function (el) {
+        if (!el.dataset.viText) el.dataset.viText = el.textContent;
+        var dict = I18N[lang];
+        var key = el.dataset.i18n;
+        el.textContent = (lang === 'vi' || !dict || !dict[key]) ? el.dataset.viText : dict[key];
+      });
+      document.querySelectorAll('[data-i18n-html]').forEach(function (el) {
+        if (!el.dataset.viHtml) el.dataset.viHtml = el.innerHTML;
+        var dict = I18N[lang];
+        var key = el.dataset.i18nHtml;
+        el.innerHTML = (lang === 'vi' || !dict || !dict[key]) ? el.dataset.viHtml : dict[key];
+      });
+      var nameInput = document.getElementById('orderNameInput');
+      if (nameInput) {
+        if (!nameInput.dataset.viPlaceholder) nameInput.dataset.viPlaceholder = nameInput.placeholder;
+        var dict2 = I18N[lang];
+        nameInput.placeholder = (lang === 'vi' || !dict2 || !dict2.placeholder_name) ? nameInput.dataset.viPlaceholder : dict2.placeholder_name;
+      }
+      document.documentElement.lang = lang;
+    }
+
+    function t(key) {
+      var dict = I18N[currentLang];
+      return (dict && dict[key]) || key;
+    }
+
+    function setLanguage(lang) {
+      currentLang = (currentLang === lang) ? 'vi' : lang;
+      localStorage.setItem('mpm_lang', currentLang);
+      applyTranslations(currentLang);
+      var btnRu = document.getElementById('langBtnRu');
+      var btnEn = document.getElementById('langBtnEn');
+      if (btnRu) btnRu.classList.toggle('active', currentLang === 'ru');
+      if (btnEn) btnEn.classList.toggle('active', currentLang === 'en');
+    }
+
+    applyTranslations(currentLang);
+    if (currentLang !== 'vi') {
+      var initBtn = document.getElementById(currentLang === 'ru' ? 'langBtnRu' : 'langBtnEn');
+      if (initBtn) initBtn.classList.add('active');
+    }
 
     function submitLead(event, form) {
       event.preventDefault();
@@ -902,13 +1090,13 @@
       msg.className = 'lead-msg';
 
       if (!/^0[0-9]{8,10}$/.test(phone)) {
-        msg.textContent = 'Số điện thoại không hợp lệ.';
+        msg.textContent = t('msg_invalid_phone');
         msg.className = 'lead-msg error';
         return false;
       }
 
       if (!LEAD_SHEET_ENDPOINT || LEAD_SHEET_ENDPOINT.indexOf('PASTE_') === 0) {
-        msg.textContent = 'Chưa kết nối Google Sheet. Vui lòng gọi hotline giúp shop.';
+        msg.textContent = t('msg_no_sheet');
         msg.className = 'lead-msg error';
         return false;
       }
@@ -927,12 +1115,12 @@
             form.reset();
             openThankYou();
           } else {
-            msg.textContent = 'Có lỗi xảy ra, vui lòng gọi hotline giúp shop.';
+            msg.textContent = t('msg_error');
             msg.className = 'lead-msg error';
           }
         })
         .catch(function () {
-          msg.textContent = 'Có lỗi xảy ra, vui lòng gọi hotline giúp shop.';
+          msg.textContent = t('msg_error');
           msg.className = 'lead-msg error';
         })
         .finally(function () {
@@ -968,6 +1156,22 @@
 
     var orderModalProduct = '';
 
+    function selectColor(el, colorName, price) {
+      var card = el.closest('.product-card');
+      card.querySelectorAll('.swatch').forEach(function (s) { s.classList.remove('active'); });
+      el.classList.add('active');
+      card.dataset.color = colorName;
+      card.querySelector('.price').textContent = price;
+    }
+
+    function openOrderModalFromCard(btn) {
+      var card = btn.closest('.product-card');
+      var baseName = card.dataset.baseName;
+      var color = card.dataset.color;
+      var fullName = color ? (baseName + ' - Màu ' + color) : baseName;
+      openOrderModal(fullName);
+    }
+
     function openOrderModal(productName) {
       orderModalProduct = productName;
       document.getElementById('orderModalProductName').textContent = productName;
@@ -985,7 +1189,7 @@
 
     function submitOrder(event, form) {
       event.preventDefault();
-      var nameInput = form.querySelector('input[name="name"]');
+      var nameInput = form.querySelector('input[name="customer_name"]');
       var phoneInput = form.querySelector('input[name="phone"]');
       var msg = document.getElementById('orderMsg');
       var name = nameInput.value.trim();
@@ -994,19 +1198,19 @@
       msg.className = 'lead-msg';
 
       if (!name) {
-        msg.textContent = 'Vui lòng nhập họ tên.';
+        msg.textContent = t('msg_need_name');
         msg.className = 'lead-msg error';
         return false;
       }
 
       if (!/^0[0-9]{8,10}$/.test(phone)) {
-        msg.textContent = 'Số điện thoại không hợp lệ.';
+        msg.textContent = t('msg_invalid_phone');
         msg.className = 'lead-msg error';
         return false;
       }
 
       if (!LEAD_SHEET_ENDPOINT || LEAD_SHEET_ENDPOINT.indexOf('PASTE_') === 0) {
-        msg.textContent = 'Chưa kết nối Google Sheet. Vui lòng gọi hotline giúp shop.';
+        msg.textContent = t('msg_no_sheet');
         msg.className = 'lead-msg error';
         return false;
       }
@@ -1016,7 +1220,7 @@
 
       var formData = new FormData();
       formData.append('phone', phone);
-      formData.append('name', name);
+      formData.append('customer_name', name);
       formData.append('product', orderModalProduct);
 
       fetch(LEAD_SHEET_ENDPOINT, { method: 'POST', body: formData })
@@ -1027,12 +1231,12 @@
             closeOrderModal();
             openThankYou();
           } else {
-            msg.textContent = 'Có lỗi xảy ra, vui lòng gọi hotline giúp shop.';
+            msg.textContent = t('msg_error');
             msg.className = 'lead-msg error';
           }
         })
         .catch(function () {
-          msg.textContent = 'Có lỗi xảy ra, vui lòng gọi hotline giúp shop.';
+          msg.textContent = t('msg_error');
           msg.className = 'lead-msg error';
         })
         .finally(function () {

@@ -16,6 +16,9 @@
     --gray-soft:#F1EFEC;
     --bg:#F6F4F1;
     --line:#E7E3DD;
+    --graybg:#2C2F33;
+    --graybg-2:#40444A;
+    --header-gradient:#888D94;
   }
   *{box-sizing:border-box;margin:0;padding:0;}
   html{scroll-behavior:smooth;}
@@ -31,7 +34,7 @@
 
   /* Header */
   .site-header{
-    background:var(--accent-gradient);
+    background:var(--header-gradient);
     color:#fff;
     position:sticky;
     top:0;
@@ -75,9 +78,21 @@
     white-space:nowrap;
   }
   .btn-call:hover{background:var(--accent-soft);}
+  .lang-switch{display:flex;gap:6px;flex-shrink:0;}
+  .lang-btn{
+    background:#fff;color:var(--accent);
+    font-weight:700;font-size:13px;white-space:nowrap;
+    padding:8px 14px;border-radius:999px;border:none;cursor:pointer;
+  }
+  .lang-btn:hover{background:var(--accent-soft);}
+  .lang-btn.active{background:var(--graybg);color:#fff;}
   @media (max-width:720px){
     .nav-links{display:none;}
     .logo{font-size:17px;}
+    .lang-btn{font-size:11.5px;padding:7px 11px;}
+  }
+  @media (max-width:420px){
+    .logo span{display:none;}
   }
 
   /* Hero */
@@ -116,7 +131,7 @@
 
   /* Contact / footer */
   .contact-section{
-    background:linear-gradient(135deg,var(--dark),var(--dark-2));
+    background:linear-gradient(135deg,var(--graybg),var(--graybg-2));
     color:#fff;padding:50px 0;text-align:center;
   }
   .contact-section h2{font-size:24px;margin-bottom:10px;}
@@ -129,14 +144,14 @@
   .btn-ghost:hover{background:#fff;color:var(--dark);}
 
   footer{
-    background:var(--dark);color:#B8B2A8;font-size:13.5px;
+    background:var(--graybg);color:#B8B2A8;font-size:13.5px;
     padding:40px 20px 22px;
   }
   .footer-inner{max-width:1160px;margin:0 auto;}
   .footer-brand{text-align:center;margin-bottom:10px;}
   .footer-brand h3{color:#fff;font-size:18px;margin-bottom:6px;}
   .footer-bottom{
-    text-align:center;border-top:1px solid var(--dark-2);padding-top:16px;font-size:12.5px;margin-top:20px;
+    text-align:center;border-top:1px solid var(--graybg-2);padding-top:16px;font-size:12.5px;margin-top:20px;
   }
 
   /* Sticky mobile bottom bar */
@@ -186,25 +201,28 @@
       <div class="menu-wrap">
         <button type="button" class="menu-btn" onclick="toggleMenu(event)" aria-label="Danh mục">☰</button>
         <div class="menu-dropdown" id="menuDropdown">
-          <a href="index.html#may-moi">🆕 Máy NEW</a>
-          <a href="index.html#may-99">♻️ Máy 99%</a>
-          <a href="sua-chua.html">🔧 Sửa chữa</a>
+          <a href="index.html#may-moi">🆕 <span data-i18n="menu_new">Máy NEW</span></a>
+          <a href="index.html#may-99">♻️ <span data-i18n="menu_used">Máy 99%</span></a>
+          <a href="sua-chua.html">🔧 <span data-i18n="menu_repair">Sửa chữa</span></a>
         </div>
       </div>
       <div class="logo"><a href="index.html"><img src="assets/logo-mp.png" alt="MP Logo" class="logo-img">Minh Phong <span>Mobile</span></a></div>
       <nav class="nav-links">
-        <a href="index.html#may-moi">Máy Mới</a>
-        <a href="index.html#may-99">Máy 99%</a>
-        <a href="index.html#lien-he">Liên Hệ</a>
+        <a href="index.html#may-moi" data-i18n="nav_new">Máy Mới</a>
+        <a href="index.html#may-99" data-i18n="nav_used">Máy 99%</a>
+        <a href="index.html#lien-he" data-i18n="nav_contact">Liên Hệ</a>
       </nav>
-      <a class="btn-call" href="tel:0941319292">📞 0941.319.292</a>
+      <div class="lang-switch">
+        <button type="button" id="langBtnRu" class="lang-btn" onclick="setLanguage('ru')">Русский</button>
+        <button type="button" id="langBtnEn" class="lang-btn" onclick="setLanguage('en')">English</button>
+      </div>
     </div>
   </header>
 
   <section class="hero">
     <div class="hero-content">
-      <h1>🔧 Dịch Vụ Sửa Chữa</h1>
-      <p>Thay màn hình, thay pin, sửa lỗi phần cứng &amp; phần mềm — chuyên nghiệp, nhanh chóng, bảo hành rõ ràng.</p>
+      <h1>🔧 <span data-i18n="repair_hero_title">Dịch Vụ Sửa Chữa</span></h1>
+      <p data-i18n="repair_hero_desc">Thay màn hình, thay pin, sửa lỗi phần cứng &amp; phần mềm — chuyên nghiệp, nhanh chóng, bảo hành rõ ràng.</p>
     </div>
   </section>
 
@@ -212,19 +230,19 @@
     <div class="wrap">
       <div class="repair-placeholder">
         <div class="ic">🛠️</div>
-        <h2>Trang dịch vụ sửa chữa đang được cập nhật</h2>
-        <p>Chúng tôi đang hoàn thiện bảng giá và danh sách dịch vụ sửa chữa. Trong lúc chờ, bạn có thể gọi trực tiếp hotline để được tư vấn nhanh nhất.</p>
-        <a class="repair-back" href="index.html">← Quay về trang chủ</a>
+        <h2 data-i18n="repair_updating_title">Trang dịch vụ sửa chữa đang được cập nhật</h2>
+        <p data-i18n="repair_updating_desc">Chúng tôi đang hoàn thiện bảng giá và danh sách dịch vụ sửa chữa. Trong lúc chờ, bạn có thể gọi trực tiếp hotline để được tư vấn nhanh nhất.</p>
+        <a class="repair-back" href="index.html" data-i18n="repair_back">← Quay về trang chủ</a>
       </div>
     </div>
   </section>
 
   <section id="lien-he" class="contact-section">
     <div class="wrap">
-      <h2>Cần Sửa Gấp? Liên Hệ Ngay</h2>
-      <p>Đội ngũ kỹ thuật Minh Phong Mobile sẵn sàng hỗ trợ bạn</p>
+      <h2 data-i18n="repair_contact_title">Cần Sửa Gấp? Liên Hệ Ngay</h2>
+      <p data-i18n="repair_contact_sub">Đội ngũ kỹ thuật Minh Phong Mobile sẵn sàng hỗ trợ bạn</p>
       <div class="contact-buttons">
-        <a class="btn-white" href="tel:0941319292">📞 Gọi 0941.319.292</a>
+        <a class="btn-white" href="tel:0941319292">📞 <span data-i18n="call_word">Gọi</span> 0941.319.292</a>
         <a class="btn-ghost" href="https://zalo.me/0941319292">💬 Chat Zalo</a>
       </div>
     </div>
@@ -233,19 +251,19 @@
   <footer>
     <div class="footer-inner">
       <div class="footer-brand">
-        <h3>🍎 Hệ Thống Apple Chính Hãng Minh Phong Mobile Khánh Hòa</h3>
+        <h3>🍎 <span data-i18n="footer_brand_h">Hệ Thống Apple Chính Hãng Minh Phong Mobile Khánh Hòa</span></h3>
       </div>
       <div class="footer-bottom">
-        <p>&copy; Minh Phong Mobile — Hệ thống Apple chính hãng tại Khánh Hòa</p>
+        <p>&copy; <span data-i18n="footer_bottom">Minh Phong Mobile — Hệ thống Apple chính hãng tại Khánh Hòa</span></p>
       </div>
     </div>
   </footer>
 
   <div class="mobile-bar">
-    <a href="index.html#top" class="mb-item"><span class="mb-ic">🏠</span><span>Trang chủ</span></a>
-    <a href="index.html#may-moi" class="mb-item"><span class="mb-ic">📱</span><span>Máy Mới</span></a>
-    <a href="index.html#may-99" class="mb-item"><span class="mb-ic">♻️</span><span>Máy 99%</span></a>
-    <a href="tel:0941319292" class="mb-item mb-call"><span class="mb-ic">📞</span><span>Gọi Ngay</span></a>
+    <a href="index.html#top" class="mb-item"><span class="mb-ic">🏠</span><span data-i18n="mb_home">Trang chủ</span></a>
+    <a href="index.html#may-moi" class="mb-item"><span class="mb-ic">📱</span><span data-i18n="nav_new">Máy Mới</span></a>
+    <a href="index.html#may-99" class="mb-item"><span class="mb-ic">♻️</span><span data-i18n="nav_used">Máy 99%</span></a>
+    <a href="tel:0941319292" class="mb-item mb-call"><span class="mb-ic">📞</span><span data-i18n="mb_call">Gọi Ngay</span></a>
     <a href="https://zalo.me/0941319292" class="mb-item mb-zalo"><span class="mb-ic">💬</span><span>Zalo</span></a>
   </div>
 
@@ -274,6 +292,67 @@
   </div>
 
   <script>
+    var I18N = {
+      en: {
+        menu_new:"New Phones", menu_used:"99% Used", menu_repair:"Repair",
+        nav_new:"New Phones", nav_used:"99% Used", nav_contact:"Contact",
+        call_word:"Call",
+        repair_hero_title:"Repair Service",
+        repair_hero_desc:"Screen replacement, battery replacement, hardware & software repair — professional, fast, clear warranty.",
+        repair_updating_title:"The repair service page is being updated",
+        repair_updating_desc:"We are finalizing the price list and list of repair services. In the meantime, feel free to call our hotline for quick advice.",
+        repair_back:"← Back to homepage",
+        repair_contact_title:"Need Urgent Repair? Contact Us Now",
+        repair_contact_sub:"The Minh Phong Mobile technical team is ready to help you",
+        footer_brand_h:"Minh Phong Mobile Official Apple System, Khanh Hoa",
+        footer_bottom:"Minh Phong Mobile — Official Apple System in Khanh Hoa",
+        mb_home:"Home", mb_call:"Call Now"
+      },
+      ru: {
+        menu_new:"Новые телефоны", menu_used:"Б/у 99%", menu_repair:"Ремонт",
+        nav_new:"Новые телефоны", nav_used:"Б/у 99%", nav_contact:"Контакты",
+        call_word:"Позвонить",
+        repair_hero_title:"Услуга ремонта",
+        repair_hero_desc:"Замена экрана, замена аккумулятора, ремонт оборудования и ПО — профессионально, быстро, с гарантией.",
+        repair_updating_title:"Страница услуг ремонта обновляется",
+        repair_updating_desc:"Мы завершаем составление прайс-листа и списка услуг ремонта. А пока вы можете позвонить нам напрямую для быстрой консультации.",
+        repair_back:"← Вернуться на главную",
+        repair_contact_title:"Срочный ремонт? Свяжитесь с нами",
+        repair_contact_sub:"Техническая команда Minh Phong Mobile готова вам помочь",
+        footer_brand_h:"Официальная сеть Apple Minh Phong Mobile, Кханьхоа",
+        footer_bottom:"Minh Phong Mobile — официальная сеть Apple в Кханьхоа",
+        mb_home:"Главная", mb_call:"Позвонить"
+      }
+    };
+
+    var currentLang = localStorage.getItem('mpm_lang') || 'vi';
+
+    function applyTranslations(lang) {
+      document.querySelectorAll('[data-i18n]').forEach(function (el) {
+        if (!el.dataset.viText) el.dataset.viText = el.textContent;
+        var dict = I18N[lang];
+        var key = el.dataset.i18n;
+        el.textContent = (lang === 'vi' || !dict || !dict[key]) ? el.dataset.viText : dict[key];
+      });
+      document.documentElement.lang = lang;
+    }
+
+    function setLanguage(lang) {
+      currentLang = (currentLang === lang) ? 'vi' : lang;
+      localStorage.setItem('mpm_lang', currentLang);
+      applyTranslations(currentLang);
+      var btnRu = document.getElementById('langBtnRu');
+      var btnEn = document.getElementById('langBtnEn');
+      if (btnRu) btnRu.classList.toggle('active', currentLang === 'ru');
+      if (btnEn) btnEn.classList.toggle('active', currentLang === 'en');
+    }
+
+    applyTranslations(currentLang);
+    if (currentLang !== 'vi') {
+      var initBtn = document.getElementById(currentLang === 'ru' ? 'langBtnRu' : 'langBtnEn');
+      if (initBtn) initBtn.classList.add('active');
+    }
+
     function toggleMenu(event) {
       event.stopPropagation();
       document.getElementById('menuDropdown').classList.toggle('show');

@@ -12,7 +12,7 @@ function doPost(e) {
   }
 
   var phone = e.parameter.phone || '';
-  var name = e.parameter.name || '';
+  var name = e.parameter.customer_name || '';
   var product = e.parameter.product || '';
 
   sheet.appendRow([new Date(), phone, name, product]);
