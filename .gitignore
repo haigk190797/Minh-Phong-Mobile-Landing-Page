@@ -1,1 +1,8 @@
 .DS_Store
+
+# File giá nội bộ - không đưa lên repo công khai
+*.xlsx
+~$*.xlsx
+
+# Ảnh gốc chưa nén (chỉ giữ backup trên máy)
+Ảnh gốc (chưa nén)/
