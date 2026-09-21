@@ -90,6 +90,70 @@
     .logo span{display:none;}
   }
 
+  /* Search (in header, replacing logo for now) */
+  .header-search-wrap{flex:1;min-width:0;max-width:420px;position:relative;}
+  .header-search{
+    display:flex;align-items:center;gap:7px;
+    background:rgba(255,255,255,.95);border-radius:999px;
+    padding:8px 13px;
+  }
+  .header-search:focus-within{background:#fff;box-shadow:0 0 0 2px rgba(255,255,255,.5);}
+  .header-search .search-ic{font-size:14px;flex-shrink:0;color:var(--gray);}
+  .header-search input{
+    flex:1;min-width:0;border:none;outline:none;
+    font-size:13.5px;font-family:inherit;background:transparent;color:var(--dark);
+  }
+  .header-search input::placeholder{color:var(--gray);}
+  .search-clear{
+    flex-shrink:0;border:none;background:var(--gray-soft);color:var(--gray);
+    width:20px;height:20px;border-radius:50%;font-size:11px;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .search-clear[hidden]{display:none;}
+  .search-clear:hover{background:var(--line);}
+  .search-result-info{
+    background:var(--accent-soft);color:var(--accent-dark);
+    text-align:center;font-size:13px;font-weight:600;
+    padding:8px 20px;
+  }
+  @media (max-width:720px){
+    .header-search-wrap{max-width:none;}
+  }
+
+  /* Search suggestions dropdown */
+  .search-suggestions{
+    position:absolute;top:calc(100% + 8px);left:0;right:0;
+    background:#fff;border-radius:12px;box-shadow:0 14px 34px rgba(0,0,0,.22);
+    max-height:340px;overflow-y:auto;z-index:90;
+    text-align:left;
+  }
+  .sugg-item{
+    display:flex;align-items:center;justify-content:space-between;gap:10px;
+    padding:10px 14px;cursor:pointer;border-bottom:1px solid var(--line);
+  }
+  .sugg-item:last-child{border-bottom:none;}
+  .sugg-item:hover, .sugg-item:active{background:var(--accent-soft);}
+  .sugg-main{display:flex;flex-direction:column;gap:2px;min-width:0;}
+  .sugg-name{font-weight:700;font-size:13.5px;color:var(--dark);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .sugg-badge{font-size:10.5px;font-weight:700;color:var(--gray);}
+  .sugg-price{font-size:12.5px;color:var(--accent);font-weight:800;white-space:nowrap;flex-shrink:0;}
+  .sugg-empty{padding:16px 14px;text-align:center;color:var(--gray);font-size:13px;}
+
+  /* Repair search filtering */
+  .repair-category.search-hidden{display:none;}
+  table.price-table tbody tr.search-hidden{display:none;}
+  table.price-table tbody tr.search-flash{animation:rowFlash 1.6s ease;}
+  @keyframes rowFlash{
+    0%{background:var(--accent-soft);}
+    100%{background:transparent;}
+  }
+  .no-results{
+    display:none;text-align:center;color:var(--gray);font-size:14px;
+    padding:30px 20px;border:1px dashed var(--line);border-radius:12px;
+    background:var(--gray-soft);margin-bottom:36px;
+  }
+  .no-results.show{display:block;}
+
   /* Hero */
   .hero{
     background:var(--accent-gradient);
@@ -226,7 +290,14 @@
           <a href="sua-chua.html">🔧 <span data-i18n="menu_repair">Sửa chữa</span></a>
         </div>
       </div>
-      <div class="logo"><a href="index.html"><img src="assets/logo-mp.png" alt="MP Logo" class="logo-img">Minh Phong <span>Mobile</span></a></div>
+      <div class="header-search-wrap">
+        <div class="header-search">
+          <span class="search-ic">🔍</span>
+          <input type="text" id="searchInput" placeholder="Tìm dòng máy hoặc dịch vụ sửa..." oninput="onSearchInput(this.value)" onfocus="onSearchInput(this.value)" onkeydown="if(event.key==='Escape')hideSuggestions()" autocomplete="off">
+          <button type="button" class="search-clear" id="searchClearBtn" onclick="clearSearch()" hidden aria-label="Xoá tìm kiếm">✕</button>
+        </div>
+        <div class="search-suggestions" id="searchSuggestions" hidden></div>
+      </div>
       <nav class="nav-links">
         <a href="index.html#may-moi" data-i18n="nav_new">Máy Mới</a>
         <a href="index.html#may-99" data-i18n="nav_used">Máy 99%</a>
@@ -237,6 +308,7 @@
         <button type="button" id="langBtnEn" class="lang-btn" onclick="setLanguage('en')">English</button>
       </div>
     </div>
+    <p class="search-result-info" id="searchResultInfo" hidden></p>
   </header>
 
   <section class="hero">
@@ -249,6 +321,7 @@
   <section class="price-section">
     <div class="wrap">
 
+      <div class="repair-category" data-category="Thay Pin">
       <div class="section-bar"><h2>Thay Pin</h2></div>
       <p class="section-sub">Đã bao gồm công thay, bảo hành 12 tháng 1 đổi 1, Pin chính hãng Vtech - thông số, chất lượng như zin</p>
       <div class="price-table-wrap">
@@ -293,7 +366,9 @@
           </tbody>
         </table>
       </div>
+      </div>
 
+      <div class="repair-category" data-category="Màn Hình Zin">
       <div class="section-bar"><h2>Màn Hình Zin</h2></div>
       <p class="section-sub">Màn hình zin theo máy (bóc máy) — chính hãng Apple</p>
       <div class="price-table-wrap">
@@ -338,7 +413,9 @@
           </tbody>
         </table>
       </div>
+      </div>
 
+      <div class="repair-category" data-category="Màn Hình Tiêu Chuẩn">
       <div class="section-bar"><h2>Màn Hình Tiêu Chuẩn</h2></div>
       <p class="section-sub">Chất lượng 8/10 so với zin, bảo hành cảm ứng 90 ngày.</p>
       <div class="price-table-wrap">
@@ -383,7 +460,9 @@
           </tbody>
         </table>
       </div>
+      </div>
 
+      <div class="repair-category" data-category="Thay Kính Lưng">
       <div class="section-bar"><h2>Thay Kính Lưng</h2></div>
       <p class="section-sub">Đã bao gồm công thay, chưa gồm sườn (SKKL)</p>
       <div class="price-table-wrap">
@@ -428,7 +507,9 @@
           </tbody>
         </table>
       </div>
+      </div>
 
+      <div class="repair-category" data-category="Thay Vỏ">
       <div class="section-bar"><h2>Thay Vỏ</h2></div>
       <p class="section-sub">Thay khung vỏ (sườn) nguyên bộ — đã bao gồm công thay</p>
       <div class="price-table-wrap">
@@ -473,7 +554,9 @@
           </tbody>
         </table>
       </div>
+      </div>
 
+      <div class="repair-category" data-category="Ép Kính">
       <div class="section-bar"><h2>Ép Kính</h2></div>
       <p class="section-sub">Ép lại mặt kính màn hình (không thay tấm nền) — đã bao gồm công thay</p>
       <div class="price-table-wrap">
@@ -518,7 +601,9 @@
           </tbody>
         </table>
       </div>
+      </div>
 
+      <div class="repair-category" data-category="Thay Camera Sau">
       <div class="section-bar"><h2>Thay Camera Sau</h2></div>
       <p class="section-sub">Đã bao gồm công thay</p>
       <div class="price-table-wrap">
@@ -563,7 +648,9 @@
           </tbody>
         </table>
       </div>
+      </div>
 
+      <div class="repair-category" data-category="Thay Camera Trước">
       <div class="section-bar"><h2>Thay Camera Trước</h2></div>
       <p class="section-sub">Đã bao gồm công thay</p>
       <div class="price-table-wrap">
@@ -608,7 +695,9 @@
           </tbody>
         </table>
       </div>
+      </div>
 
+      <div class="repair-category" data-category="Ép Cảm">
       <div class="section-bar"><h2>Ép Cảm</h2></div>
       <p class="section-sub">Ép lại cảm ứng màn hình — đã bao gồm công thay</p>
       <div class="price-table-wrap">
@@ -653,7 +742,9 @@
           </tbody>
         </table>
       </div>
+      </div>
 
+      <div class="repair-category" data-category="Thay Cụm Cảm Biến">
       <div class="section-bar"><h2>Thay Cụm Cảm Biến</h2></div>
       <p class="section-sub">Cụm cảm biến gần (Face ID / proximity)</p>
       <div class="price-table-wrap">
@@ -698,7 +789,9 @@
           </tbody>
         </table>
       </div>
+      </div>
 
+      <div class="repair-category" data-category="Sửa Face ID">
       <div class="section-bar"><h2>Sửa Face ID</h2></div>
       <p class="section-sub">Sửa lỗi Face ID (cảm biến khuôn mặt) — giá tùy tình trạng máy</p>
       <div class="price-table-wrap">
@@ -743,7 +836,9 @@
           </tbody>
         </table>
       </div>
+      </div>
 
+      <div class="repair-category" data-category="Sửa Main">
       <div class="section-bar"><h2>Sửa Main</h2></div>
       <p class="section-sub">Sửa lỗi mainboard (không lên nguồn, treo táo, vào nước...) — giá tùy tình trạng máy</p>
       <div class="price-table-wrap">
@@ -788,7 +883,9 @@
           </tbody>
         </table>
       </div>
+      </div>
 
+      <div class="repair-category" data-category="Thay Chân Sạc">
       <div class="section-bar"><h2>Thay Chân Sạc</h2></div>
       <p class="section-sub">Đã bao gồm công thay</p>
       <div class="price-table-wrap">
@@ -833,6 +930,9 @@
           </tbody>
         </table>
       </div>
+      </div>
+
+      <p class="no-results" id="noResultsRepair">Không tìm thấy dịch vụ sửa chữa phù hợp với từ khoá này.</p>
 
       <p class="price-note">Ghi chú: SKKL = Sườn không kính lưng. Giá dạng khoảng (VD: 1.450.000đ - 2.950.000đ) tùy theo màu/tình trạng máy. Giá trên chưa áp dụng cho các phiên bản/màu chưa được báo giá — vui lòng liên hệ hotline hoặc Zalo để được tư vấn giá chính xác theo tình trạng máy.</p>
 
@@ -948,6 +1048,160 @@
       var initBtn = document.getElementById(currentLang === 'ru' ? 'langBtnRu' : 'langBtnEn');
       if (initBtn) initBtn.classList.add('active');
     }
+
+    function normalizeSearchText(s) {
+      return s
+        .normalize('NFD').replace(/[̀-ͯ]/g, '')
+        .replace(/đ/gi, 'd')
+        .toLowerCase().trim()
+        .replace(/\s+/g, '');
+    }
+
+    function escapeHtml(s) {
+      return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+
+    function filterRepair(rawQuery) {
+      var query = normalizeSearchText(rawQuery);
+      var clearBtn = document.getElementById('searchClearBtn');
+      var info = document.getElementById('searchResultInfo');
+      var noResults = document.getElementById('noResultsRepair');
+      clearBtn.hidden = query.length === 0;
+
+      if (query.length === 0) {
+        document.querySelectorAll('.repair-category').forEach(function (cat) {
+          cat.classList.remove('search-hidden');
+          cat.querySelectorAll('tbody tr').forEach(function (row) { row.classList.remove('search-hidden'); });
+        });
+        noResults.classList.remove('show');
+        info.hidden = true;
+        return;
+      }
+
+      var totalVisibleRows = 0;
+      var anyCategoryVisible = false;
+      document.querySelectorAll('.repair-category').forEach(function (cat) {
+        var catName = normalizeSearchText(cat.dataset.category);
+        var catMatch = catName.indexOf(query) !== -1;
+        var rows = cat.querySelectorAll('tbody tr');
+        var visibleRows = 0;
+        rows.forEach(function (row) {
+          var model = row.querySelector('td').textContent;
+          var rowMatch = catMatch || normalizeSearchText(model).indexOf(query) !== -1;
+          row.classList.toggle('search-hidden', !rowMatch);
+          if (rowMatch) visibleRows++;
+        });
+        var catVisible = visibleRows > 0;
+        cat.classList.toggle('search-hidden', !catVisible);
+        if (catVisible) { anyCategoryVisible = true; totalVisibleRows += visibleRows; }
+      });
+
+      noResults.classList.toggle('show', !anyCategoryVisible);
+      info.hidden = false;
+      info.textContent = anyCategoryVisible
+        ? 'Tìm thấy ' + totalVisibleRows + ' dòng giá khớp với "' + rawQuery.trim() + '"'
+        : 'Không tìm thấy dịch vụ nào khớp với "' + rawQuery.trim() + '"';
+    }
+
+    function onSearchInput(rawQuery) {
+      filterRepair(rawQuery);
+      renderSuggestions(rawQuery);
+    }
+
+    function renderSuggestions(rawQuery) {
+      var box = document.getElementById('searchSuggestions');
+      var query = normalizeSearchText(rawQuery);
+      if (query.length === 0) {
+        hideSuggestions();
+        return;
+      }
+
+      var results = [];
+      document.querySelectorAll('.repair-category').forEach(function (cat) {
+        var catName = cat.dataset.category;
+        if (normalizeSearchText(catName).indexOf(query) !== -1) {
+          results.push({ type: 'category', name: catName, count: cat.querySelectorAll('tbody tr').length, el: cat });
+          return;
+        }
+        cat.querySelectorAll('tbody tr').forEach(function (row) {
+          var tds = row.querySelectorAll('td');
+          var model = tds[0].textContent;
+          if (normalizeSearchText(model).indexOf(query) !== -1) {
+            results.push({ type: 'row', model: model, category: catName, price: tds[1].textContent, el: row });
+          }
+        });
+      });
+
+      box.innerHTML = '';
+      if (results.length === 0) {
+        box.innerHTML = '<div class="sugg-empty">Không tìm thấy dịch vụ phù hợp</div>';
+      } else {
+        results.slice(0, 12).forEach(function (r) {
+          var item = document.createElement('div');
+          item.className = 'sugg-item';
+          if (r.type === 'category') {
+            item.innerHTML =
+              '<div class="sugg-main"><span class="sugg-name">📂 ' + escapeHtml(r.name) + '</span>' +
+              '<span class="sugg-badge">Xem cả mục</span></div>' +
+              '<span class="sugg-price">' + r.count + ' dòng giá</span>';
+            item.addEventListener('click', function () { selectSuggestionCategory(r.name, r.el); });
+          } else {
+            item.innerHTML =
+              '<div class="sugg-main"><span class="sugg-name">' + escapeHtml(r.model) + '</span>' +
+              '<span class="sugg-badge">' + escapeHtml(r.category) + '</span></div>' +
+              '<span class="sugg-price">' + escapeHtml(r.price) + '</span>';
+            item.addEventListener('click', function () { selectSuggestionRow(r.model, r.el); });
+          }
+          box.appendChild(item);
+        });
+        if (results.length > 12) {
+          var more = document.createElement('div');
+          more.className = 'sugg-empty';
+          more.textContent = 'và ' + (results.length - 12) + ' kết quả khác…';
+          box.appendChild(more);
+        }
+      }
+      box.hidden = false;
+    }
+
+    function selectSuggestionRow(model, rowEl) {
+      var input = document.getElementById('searchInput');
+      input.value = model;
+      filterRepair(model);
+      hideSuggestions();
+      rowEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      rowEl.classList.remove('search-flash');
+      void rowEl.offsetWidth;
+      rowEl.classList.add('search-flash');
+    }
+
+    function selectSuggestionCategory(catName, catEl) {
+      var input = document.getElementById('searchInput');
+      input.value = catName;
+      filterRepair(catName);
+      hideSuggestions();
+      var bar = catEl.querySelector('.section-bar');
+      (bar || catEl).scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function hideSuggestions() {
+      var box = document.getElementById('searchSuggestions');
+      box.hidden = true;
+      box.innerHTML = '';
+    }
+
+    function clearSearch() {
+      var input = document.getElementById('searchInput');
+      input.value = '';
+      filterRepair('');
+      hideSuggestions();
+      input.focus();
+    }
+
+    document.addEventListener('click', function (e) {
+      var wrap = document.querySelector('.header-search-wrap');
+      if (wrap && !wrap.contains(e.target)) hideSuggestions();
+    });
 
     function toggleMenu(event) {
       event.stopPropagation();
