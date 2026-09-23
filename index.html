@@ -220,9 +220,35 @@
     white-space:nowrap;
   }
   @keyframes hotsalePulse{0%,100%{transform:scale(1);}50%{transform:scale(1.08);}}
+  .hotsale-search-wrap{margin-left:auto;flex:0 1 240px;min-width:180px;}
+  .hotsale-search{
+    display:flex;align-items:center;gap:7px;
+    background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);
+    border-radius:999px;padding:7px 13px;
+  }
+  .hotsale-search:focus-within{background:#fff;box-shadow:0 0 0 2px rgba(255,255,255,.5);}
+  .hotsale-search .search-ic{font-size:13px;flex-shrink:0;color:#fff;}
+  .hotsale-search:focus-within .search-ic{color:var(--gray);}
+  .hotsale-search input{
+    flex:1;min-width:0;border:none;outline:none;
+    font-size:13px;font-family:inherit;background:transparent;color:#fff;
+  }
+  .hotsale-search:focus-within input{color:var(--dark);}
+  .hotsale-search input::placeholder{color:rgba(255,255,255,.8);}
+  .hotsale-search:focus-within input::placeholder{color:var(--gray);}
   .hotsale-sub{
     color:#C9C4BC;font-size:13.5px;padding:0 20px;
     max-width:1160px;margin:0 auto 24px;
+  }
+  .hotsale-no-results{
+    color:#C9C4BC;font-size:13.5px;text-align:center;padding:0 20px;
+    max-width:1160px;margin:-16px auto 24px;display:none;
+  }
+  .hotsale-no-results.show{display:block;}
+  .hotsale-track.hotsale-filtering{animation:none !important;flex-wrap:wrap;justify-content:center;width:auto;}
+  .hotsale-card.hotsale-hidden{display:none;}
+  @media (max-width:640px){
+    .hotsale-search-wrap{flex:1 1 100%;margin-left:0;}
   }
   .hotsale-track-wrap{
     overflow:hidden;
@@ -655,275 +681,283 @@
     <div class="hotsale-badge-row">
       <h2>🔥 <span data-i18n="hotsale_title">Máy Hot Sale Hôm Nay</span></h2>
       <span class="hotsale-flash">⚡ <span data-i18n="limited">Số lượng có hạn</span></span>
+      <div class="hotsale-search-wrap">
+        <div class="hotsale-search">
+          <span class="search-ic">🔍</span>
+          <input type="text" id="hotsaleSearchInput" placeholder="Tìm máy hot sale..." oninput="filterHotsale(this.value)" onkeydown="if(event.key==='Escape')clearHotsaleSearch()" autocomplete="off">
+          <button type="button" class="search-clear" id="hotsaleSearchClearBtn" onclick="clearHotsaleSearch()" hidden aria-label="Xoá tìm kiếm">✕</button>
+        </div>
+      </div>
     </div>
     <p class="hotsale-sub" data-i18n="hotsale_sub">Cập nhật mỗi ngày — giá tốt nhất, nhanh tay kẻo hết!</p>
+    <p class="hotsale-no-results" id="hotsaleNoResults" hidden>Không tìm thấy máy hot sale phù hợp.</p>
     <div class="hotsale-track-wrap">
       <div class="hotsale-track" id="hotsaleTrack">
         <div class="hotsale-card">
-          <div class="card-image"><img src="Ảnh máy 99/7Plus Đen.jpg" alt="iPhone 7 Plus 32GB (99%)" decoding="async"></div>
+          <div class="card-image"><img src="Ảnh máy 99/7Plus Đen.jpg" alt="iPhone 7 Plus 32GB (98%)" decoding="async"></div>
           <span class="hotsale-limit">⚡ <span data-i18n="limited">Số lượng có hạn</span></span>
-          <h4>iPhone 7 Plus 32GB (99%)</h4>
+          <h4>iPhone 7 Plus 32GB (98%)</h4>
           <div class="hotsale-price">1.968.000đ</div>
-          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone 7 Plus 32GB Hot Sale (Máy 99%)')">Tư vấn ngay</button>
+          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone 7 Plus 32GB Hot Sale (Máy 98%)')">Tư vấn ngay</button>
         </div>
         <div class="hotsale-card">
-          <div class="card-image"><img src="Ảnh máy 99/8Plus Đen.jpg" alt="iPhone 8 Plus 64GB (99%)" decoding="async"></div>
+          <div class="card-image"><img src="Ảnh máy 99/8Plus Đen.jpg" alt="iPhone 8 Plus 64GB (98%)" decoding="async"></div>
           <span class="hotsale-limit">⚡ <span data-i18n="limited">Số lượng có hạn</span></span>
-          <h4>iPhone 8 Plus 64GB (99%)</h4>
+          <h4>iPhone 8 Plus 64GB (98%)</h4>
           <div class="hotsale-price">3.568.000đ</div>
-          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone 8 Plus 64GB Hot Sale (Máy 99%)')">Tư vấn ngay</button>
+          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone 8 Plus 64GB Hot Sale (Máy 98%)')">Tư vấn ngay</button>
         </div>
         <div class="hotsale-card">
-          <div class="card-image"><img src="Ảnh máy 99/Xsmax Đen.png" alt="iPhone XS Max 64GB (99%)" decoding="async"></div>
+          <div class="card-image"><img src="Ảnh máy 99/Xsmax Đen.png" alt="iPhone XS Max 64GB (98%)" decoding="async"></div>
           <span class="hotsale-limit">⚡ <span data-i18n="limited">Số lượng có hạn</span></span>
-          <h4>iPhone XS Max 64GB (99%)</h4>
+          <h4>iPhone XS Max 64GB (98%)</h4>
           <div class="hotsale-price">5.968.000đ</div>
-          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone XS Max 64GB Hot Sale (Máy 99%)')">Tư vấn ngay</button>
+          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone XS Max 64GB Hot Sale (Máy 98%)')">Tư vấn ngay</button>
         </div>
         <div class="hotsale-card">
-          <div class="card-image"><img src="Ảnh máy 99/Xsmax Đen.png" alt="iPhone XS Max 256GB (99%)" decoding="async"></div>
+          <div class="card-image"><img src="Ảnh máy 99/Xsmax Đen.png" alt="iPhone XS Max 256GB (98%)" decoding="async"></div>
           <span class="hotsale-limit">⚡ <span data-i18n="limited">Số lượng có hạn</span></span>
-          <h4>iPhone XS Max 256GB (99%)</h4>
+          <h4>iPhone XS Max 256GB (98%)</h4>
           <div class="hotsale-price">6.968.000đ</div>
-          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone XS Max 256GB Hot Sale (Máy 99%)')">Tư vấn ngay</button>
+          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone XS Max 256GB Hot Sale (Máy 98%)')">Tư vấn ngay</button>
         </div>
         <div class="hotsale-card">
-          <div class="card-image"><img src="Ảnh máy 99/11 Đen.png" alt="iPhone 11 64GB (99%)" decoding="async"></div>
+          <div class="card-image"><img src="Ảnh máy 99/11 Đen.png" alt="iPhone 11 64GB (98%)" decoding="async"></div>
           <span class="hotsale-limit">⚡ <span data-i18n="limited">Số lượng có hạn</span></span>
-          <h4>iPhone 11 64GB (99%)</h4>
+          <h4>iPhone 11 64GB (98%)</h4>
           <div class="hotsale-price">5.268.000đ</div>
-          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone 11 64GB Hot Sale (Máy 99%)')">Tư vấn ngay</button>
+          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone 11 64GB Hot Sale (Máy 98%)')">Tư vấn ngay</button>
         </div>
         <div class="hotsale-card">
-          <div class="card-image"><img src="Ảnh máy 99/11Promax Đen.png" alt="iPhone 11 Pro Max 64GB (99%)" decoding="async"></div>
+          <div class="card-image"><img src="Ảnh máy 99/11Promax Đen.png" alt="iPhone 11 Pro Max 64GB (98%)" decoding="async"></div>
           <span class="hotsale-limit">⚡ <span data-i18n="limited">Số lượng có hạn</span></span>
-          <h4>iPhone 11 Pro Max 64GB (99%)</h4>
+          <h4>iPhone 11 Pro Max 64GB (98%)</h4>
           <div class="hotsale-price">6.968.000đ</div>
-          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone 11 Pro Max 64GB Hot Sale (Máy 99%)')">Tư vấn ngay</button>
+          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone 11 Pro Max 64GB Hot Sale (Máy 98%)')">Tư vấn ngay</button>
         </div>
         <div class="hotsale-card">
-          <div class="card-image"><img src="Ảnh máy 99/12 Đen.jpg" alt="iPhone 12 64GB (99%)" decoding="async"></div>
+          <div class="card-image"><img src="Ảnh máy 99/12 Đen.jpg" alt="iPhone 12 64GB (98%)" decoding="async"></div>
           <span class="hotsale-limit">⚡ <span data-i18n="limited">Số lượng có hạn</span></span>
-          <h4>iPhone 12 64GB (99%)</h4>
+          <h4>iPhone 12 64GB (98%)</h4>
           <div class="hotsale-price">6.268.000đ</div>
-          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone 12 64GB Hot Sale (Máy 99%)')">Tư vấn ngay</button>
+          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone 12 64GB Hot Sale (Máy 98%)')">Tư vấn ngay</button>
         </div>
         <div class="hotsale-card">
-          <div class="card-image"><img src="Ảnh máy 99/12Promax Đen.webp" alt="iPhone 12 Pro 128GB (99%)" decoding="async"></div>
+          <div class="card-image"><img src="Ảnh máy 99/12Promax Đen.webp" alt="iPhone 12 Pro 128GB (98%)" decoding="async"></div>
           <span class="hotsale-limit">⚡ <span data-i18n="limited">Số lượng có hạn</span></span>
-          <h4>iPhone 12 Pro 128GB (99%)</h4>
+          <h4>iPhone 12 Pro 128GB (98%)</h4>
           <div class="hotsale-price">7.968.000đ</div>
-          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone 12 Pro 128GB Hot Sale (Máy 99%)')">Tư vấn ngay</button>
+          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone 12 Pro 128GB Hot Sale (Máy 98%)')">Tư vấn ngay</button>
         </div>
         <div class="hotsale-card">
-          <div class="card-image"><img src="Ảnh máy 99/12Promax Đen.webp" alt="iPhone 12 Pro Max 128GB (99%)" decoding="async"></div>
+          <div class="card-image"><img src="Ảnh máy 99/12Promax Đen.webp" alt="iPhone 12 Pro Max 128GB (98%)" decoding="async"></div>
           <span class="hotsale-limit">⚡ <span data-i18n="limited">Số lượng có hạn</span></span>
-          <h4>iPhone 12 Pro Max 128GB (99%)</h4>
+          <h4>iPhone 12 Pro Max 128GB (98%)</h4>
           <div class="hotsale-price">9.968.000đ</div>
-          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone 12 Pro Max 128GB Hot Sale (Máy 99%)')">Tư vấn ngay</button>
+          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone 12 Pro Max 128GB Hot Sale (Máy 98%)')">Tư vấn ngay</button>
         </div>
         <div class="hotsale-card">
-          <div class="card-image"><img src="Ảnh máy 99/13 Đen.jpg" alt="iPhone 13 128GB (99%)" decoding="async"></div>
+          <div class="card-image"><img src="Ảnh máy 99/13 Đen.jpg" alt="iPhone 13 128GB (98%)" decoding="async"></div>
           <span class="hotsale-limit">⚡ <span data-i18n="limited">Số lượng có hạn</span></span>
-          <h4>iPhone 13 128GB (99%)</h4>
+          <h4>iPhone 13 128GB (98%)</h4>
           <div class="hotsale-price">7.968.000đ</div>
-          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone 13 128GB Hot Sale (Máy 99%)')">Tư vấn ngay</button>
+          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone 13 128GB Hot Sale (Máy 98%)')">Tư vấn ngay</button>
         </div>
         <div class="hotsale-card">
-          <div class="card-image"><img src="Ảnh máy 99/13Promax Đen.webp" alt="iPhone 13 Pro Max 128GB (99%)" decoding="async"></div>
+          <div class="card-image"><img src="Ảnh máy 99/13Promax Đen.webp" alt="iPhone 13 Pro Max 128GB (98%)" decoding="async"></div>
           <span class="hotsale-limit">⚡ <span data-i18n="limited">Số lượng có hạn</span></span>
-          <h4>iPhone 13 Pro Max 128GB (99%)</h4>
+          <h4>iPhone 13 Pro Max 128GB (98%)</h4>
           <div class="hotsale-price">10.968.000đ</div>
-          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone 13 Pro Max 128GB Hot Sale (Máy 99%)')">Tư vấn ngay</button>
+          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone 13 Pro Max 128GB Hot Sale (Máy 98%)')">Tư vấn ngay</button>
         </div>
         <div class="hotsale-card">
-          <div class="card-image"><img src="Ảnh máy 99/14Plus Đen.png" alt="iPhone 14 Plus 128GB (99%)" decoding="async"></div>
+          <div class="card-image"><img src="Ảnh máy 99/14Plus Đen.png" alt="iPhone 14 Plus 128GB (98%)" decoding="async"></div>
           <span class="hotsale-limit">⚡ <span data-i18n="limited">Số lượng có hạn</span></span>
-          <h4>iPhone 14 Plus 128GB (99%)</h4>
+          <h4>iPhone 14 Plus 128GB (98%)</h4>
           <div class="hotsale-price">10.968.000đ</div>
-          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone 14 Plus 128GB Hot Sale (Máy 99%)')">Tư vấn ngay</button>
+          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone 14 Plus 128GB Hot Sale (Máy 98%)')">Tư vấn ngay</button>
         </div>
         <div class="hotsale-card">
-          <div class="card-image"><img src="Ảnh máy 99/14Promax Đen.webp" alt="iPhone 14 Pro Max 128GB (99%)" decoding="async"></div>
+          <div class="card-image"><img src="Ảnh máy 99/14Promax Đen.webp" alt="iPhone 14 Pro Max 128GB (98%)" decoding="async"></div>
           <span class="hotsale-limit">⚡ <span data-i18n="limited">Số lượng có hạn</span></span>
-          <h4>iPhone 14 Pro Max 128GB (99%)</h4>
+          <h4>iPhone 14 Pro Max 128GB (98%)</h4>
           <div class="hotsale-price">14.568.000đ</div>
-          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone 14 Pro Max 128GB Hot Sale (Máy 99%)')">Tư vấn ngay</button>
+          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone 14 Pro Max 128GB Hot Sale (Máy 98%)')">Tư vấn ngay</button>
         </div>
         <div class="hotsale-card">
-          <div class="card-image"><img src="Ảnh máy 99/14Promax Đen.webp" alt="iPhone 14 Pro Max 256GB (99%)" decoding="async"></div>
+          <div class="card-image"><img src="Ảnh máy 99/14Promax Đen.webp" alt="iPhone 14 Pro Max 256GB (98%)" decoding="async"></div>
           <span class="hotsale-limit">⚡ <span data-i18n="limited">Số lượng có hạn</span></span>
-          <h4>iPhone 14 Pro Max 256GB (99%)</h4>
+          <h4>iPhone 14 Pro Max 256GB (98%)</h4>
           <div class="hotsale-price">15.568.000đ</div>
-          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone 14 Pro Max 256GB Hot Sale (Máy 99%)')">Tư vấn ngay</button>
+          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone 14 Pro Max 256GB Hot Sale (Máy 98%)')">Tư vấn ngay</button>
         </div>
         <div class="hotsale-card">
-          <div class="card-image"><img src="Ảnh máy 99/15Plus Đen.jpg" alt="iPhone 15 128GB (99%)" decoding="async"></div>
+          <div class="card-image"><img src="Ảnh máy 99/15Plus Đen.jpg" alt="iPhone 15 128GB (98%)" decoding="async"></div>
           <span class="hotsale-limit">⚡ <span data-i18n="limited">Số lượng có hạn</span></span>
-          <h4>iPhone 15 128GB (99%)</h4>
+          <h4>iPhone 15 128GB (98%)</h4>
           <div class="hotsale-price">11.968.000đ</div>
-          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone 15 128GB Hot Sale (Máy 99%)')">Tư vấn ngay</button>
+          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone 15 128GB Hot Sale (Máy 98%)')">Tư vấn ngay</button>
         </div>
         <div class="hotsale-card">
-          <div class="card-image"><img src="Ảnh máy 99/15Plus Đen.jpg" alt="iPhone 15 Plus 128GB (99%)" decoding="async"></div>
+          <div class="card-image"><img src="Ảnh máy 99/15Plus Đen.jpg" alt="iPhone 15 Plus 128GB (98%)" decoding="async"></div>
           <span class="hotsale-limit">⚡ <span data-i18n="limited">Số lượng có hạn</span></span>
-          <h4>iPhone 15 Plus 128GB (99%)</h4>
+          <h4>iPhone 15 Plus 128GB (98%)</h4>
           <div class="hotsale-price">14.568.000đ</div>
-          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone 15 Plus 128GB Hot Sale (Máy 99%)')">Tư vấn ngay</button>
+          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone 15 Plus 128GB Hot Sale (Máy 98%)')">Tư vấn ngay</button>
         </div>
         <div class="hotsale-card">
-          <div class="card-image"><img src="Ảnh máy 99/15Promax Đen.webp" alt="iPhone 15 Pro 128GB (99%)" decoding="async"></div>
+          <div class="card-image"><img src="Ảnh máy 99/15Promax Đen.webp" alt="iPhone 15 Pro 128GB (98%)" decoding="async"></div>
           <span class="hotsale-limit">⚡ <span data-i18n="limited">Số lượng có hạn</span></span>
-          <h4>iPhone 15 Pro 128GB (99%)</h4>
+          <h4>iPhone 15 Pro 128GB (98%)</h4>
           <div class="hotsale-price">15.568.000đ</div>
-          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone 15 Pro 128GB Hot Sale (Máy 99%)')">Tư vấn ngay</button>
+          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone 15 Pro 128GB Hot Sale (Máy 98%)')">Tư vấn ngay</button>
         </div>
         <div class="hotsale-card">
-          <div class="card-image"><img src="Ảnh máy 99/15Promax Đen.webp" alt="iPhone 15 Pro Max 256GB (99%)" decoding="async"></div>
+          <div class="card-image"><img src="Ảnh máy 99/15Promax Đen.webp" alt="iPhone 15 Pro Max 256GB (98%)" decoding="async"></div>
           <span class="hotsale-limit">⚡ <span data-i18n="limited">Số lượng có hạn</span></span>
-          <h4>iPhone 15 Pro Max 256GB (99%)</h4>
+          <h4>iPhone 15 Pro Max 256GB (98%)</h4>
           <div class="hotsale-price">18.568.000đ</div>
-          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone 15 Pro Max 256GB Hot Sale (Máy 99%)')">Tư vấn ngay</button>
+          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone 15 Pro Max 256GB Hot Sale (Máy 98%)')">Tư vấn ngay</button>
         </div>
         <div class="hotsale-card">
-          <div class="card-image"><img src="Ảnh máy 99/16Promax Trắng.png" alt="iPhone 16 Pro Max 256GB (99%)" decoding="async"></div>
+          <div class="card-image"><img src="Ảnh máy 99/16Promax Trắng.png" alt="iPhone 16 Pro Max 256GB (98%)" decoding="async"></div>
           <span class="hotsale-limit">⚡ <span data-i18n="limited">Số lượng có hạn</span></span>
-          <h4>iPhone 16 Pro Max 256GB (99%)</h4>
+          <h4>iPhone 16 Pro Max 256GB (98%)</h4>
           <div class="hotsale-price">22.568.000đ</div>
-          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone 16 Pro Max 256GB Hot Sale (Máy 99%)')">Tư vấn ngay</button>
+          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone 16 Pro Max 256GB Hot Sale (Máy 98%)')">Tư vấn ngay</button>
         </div>
         <div class="hotsale-card" aria-hidden="true">
-          <div class="card-image"><img src="Ảnh máy 99/7Plus Đen.jpg" alt="iPhone 7 Plus 32GB (99%)" decoding="async"></div>
+          <div class="card-image"><img src="Ảnh máy 99/7Plus Đen.jpg" alt="iPhone 7 Plus 32GB (98%)" decoding="async"></div>
           <span class="hotsale-limit">⚡ <span data-i18n="limited">Số lượng có hạn</span></span>
-          <h4>iPhone 7 Plus 32GB (99%)</h4>
+          <h4>iPhone 7 Plus 32GB (98%)</h4>
           <div class="hotsale-price">1.968.000đ</div>
-          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone 7 Plus 32GB Hot Sale (Máy 99%)')">Tư vấn ngay</button>
+          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone 7 Plus 32GB Hot Sale (Máy 98%)')">Tư vấn ngay</button>
         </div>
         <div class="hotsale-card" aria-hidden="true">
-          <div class="card-image"><img src="Ảnh máy 99/8Plus Đen.jpg" alt="iPhone 8 Plus 64GB (99%)" decoding="async"></div>
+          <div class="card-image"><img src="Ảnh máy 99/8Plus Đen.jpg" alt="iPhone 8 Plus 64GB (98%)" decoding="async"></div>
           <span class="hotsale-limit">⚡ <span data-i18n="limited">Số lượng có hạn</span></span>
-          <h4>iPhone 8 Plus 64GB (99%)</h4>
+          <h4>iPhone 8 Plus 64GB (98%)</h4>
           <div class="hotsale-price">3.568.000đ</div>
-          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone 8 Plus 64GB Hot Sale (Máy 99%)')">Tư vấn ngay</button>
+          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone 8 Plus 64GB Hot Sale (Máy 98%)')">Tư vấn ngay</button>
         </div>
         <div class="hotsale-card" aria-hidden="true">
-          <div class="card-image"><img src="Ảnh máy 99/Xsmax Đen.png" alt="iPhone XS Max 64GB (99%)" decoding="async"></div>
+          <div class="card-image"><img src="Ảnh máy 99/Xsmax Đen.png" alt="iPhone XS Max 64GB (98%)" decoding="async"></div>
           <span class="hotsale-limit">⚡ <span data-i18n="limited">Số lượng có hạn</span></span>
-          <h4>iPhone XS Max 64GB (99%)</h4>
+          <h4>iPhone XS Max 64GB (98%)</h4>
           <div class="hotsale-price">5.968.000đ</div>
-          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone XS Max 64GB Hot Sale (Máy 99%)')">Tư vấn ngay</button>
+          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone XS Max 64GB Hot Sale (Máy 98%)')">Tư vấn ngay</button>
         </div>
         <div class="hotsale-card" aria-hidden="true">
-          <div class="card-image"><img src="Ảnh máy 99/Xsmax Đen.png" alt="iPhone XS Max 256GB (99%)" decoding="async"></div>
+          <div class="card-image"><img src="Ảnh máy 99/Xsmax Đen.png" alt="iPhone XS Max 256GB (98%)" decoding="async"></div>
           <span class="hotsale-limit">⚡ <span data-i18n="limited">Số lượng có hạn</span></span>
-          <h4>iPhone XS Max 256GB (99%)</h4>
+          <h4>iPhone XS Max 256GB (98%)</h4>
           <div class="hotsale-price">6.968.000đ</div>
-          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone XS Max 256GB Hot Sale (Máy 99%)')">Tư vấn ngay</button>
+          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone XS Max 256GB Hot Sale (Máy 98%)')">Tư vấn ngay</button>
         </div>
         <div class="hotsale-card" aria-hidden="true">
-          <div class="card-image"><img src="Ảnh máy 99/11 Đen.png" alt="iPhone 11 64GB (99%)" decoding="async"></div>
+          <div class="card-image"><img src="Ảnh máy 99/11 Đen.png" alt="iPhone 11 64GB (98%)" decoding="async"></div>
           <span class="hotsale-limit">⚡ <span data-i18n="limited">Số lượng có hạn</span></span>
-          <h4>iPhone 11 64GB (99%)</h4>
+          <h4>iPhone 11 64GB (98%)</h4>
           <div class="hotsale-price">5.268.000đ</div>
-          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone 11 64GB Hot Sale (Máy 99%)')">Tư vấn ngay</button>
+          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone 11 64GB Hot Sale (Máy 98%)')">Tư vấn ngay</button>
         </div>
         <div class="hotsale-card" aria-hidden="true">
-          <div class="card-image"><img src="Ảnh máy 99/11Promax Đen.png" alt="iPhone 11 Pro Max 64GB (99%)" decoding="async"></div>
+          <div class="card-image"><img src="Ảnh máy 99/11Promax Đen.png" alt="iPhone 11 Pro Max 64GB (98%)" decoding="async"></div>
           <span class="hotsale-limit">⚡ <span data-i18n="limited">Số lượng có hạn</span></span>
-          <h4>iPhone 11 Pro Max 64GB (99%)</h4>
+          <h4>iPhone 11 Pro Max 64GB (98%)</h4>
           <div class="hotsale-price">6.968.000đ</div>
-          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone 11 Pro Max 64GB Hot Sale (Máy 99%)')">Tư vấn ngay</button>
+          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone 11 Pro Max 64GB Hot Sale (Máy 98%)')">Tư vấn ngay</button>
         </div>
         <div class="hotsale-card" aria-hidden="true">
-          <div class="card-image"><img src="Ảnh máy 99/12 Đen.jpg" alt="iPhone 12 64GB (99%)" decoding="async"></div>
+          <div class="card-image"><img src="Ảnh máy 99/12 Đen.jpg" alt="iPhone 12 64GB (98%)" decoding="async"></div>
           <span class="hotsale-limit">⚡ <span data-i18n="limited">Số lượng có hạn</span></span>
-          <h4>iPhone 12 64GB (99%)</h4>
+          <h4>iPhone 12 64GB (98%)</h4>
           <div class="hotsale-price">6.268.000đ</div>
-          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone 12 64GB Hot Sale (Máy 99%)')">Tư vấn ngay</button>
+          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone 12 64GB Hot Sale (Máy 98%)')">Tư vấn ngay</button>
         </div>
         <div class="hotsale-card" aria-hidden="true">
-          <div class="card-image"><img src="Ảnh máy 99/12Promax Đen.webp" alt="iPhone 12 Pro 128GB (99%)" decoding="async"></div>
+          <div class="card-image"><img src="Ảnh máy 99/12Promax Đen.webp" alt="iPhone 12 Pro 128GB (98%)" decoding="async"></div>
           <span class="hotsale-limit">⚡ <span data-i18n="limited">Số lượng có hạn</span></span>
-          <h4>iPhone 12 Pro 128GB (99%)</h4>
+          <h4>iPhone 12 Pro 128GB (98%)</h4>
           <div class="hotsale-price">7.968.000đ</div>
-          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone 12 Pro 128GB Hot Sale (Máy 99%)')">Tư vấn ngay</button>
+          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone 12 Pro 128GB Hot Sale (Máy 98%)')">Tư vấn ngay</button>
         </div>
         <div class="hotsale-card" aria-hidden="true">
-          <div class="card-image"><img src="Ảnh máy 99/12Promax Đen.webp" alt="iPhone 12 Pro Max 128GB (99%)" decoding="async"></div>
+          <div class="card-image"><img src="Ảnh máy 99/12Promax Đen.webp" alt="iPhone 12 Pro Max 128GB (98%)" decoding="async"></div>
           <span class="hotsale-limit">⚡ <span data-i18n="limited">Số lượng có hạn</span></span>
-          <h4>iPhone 12 Pro Max 128GB (99%)</h4>
+          <h4>iPhone 12 Pro Max 128GB (98%)</h4>
           <div class="hotsale-price">9.968.000đ</div>
-          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone 12 Pro Max 128GB Hot Sale (Máy 99%)')">Tư vấn ngay</button>
+          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone 12 Pro Max 128GB Hot Sale (Máy 98%)')">Tư vấn ngay</button>
         </div>
         <div class="hotsale-card" aria-hidden="true">
-          <div class="card-image"><img src="Ảnh máy 99/13 Đen.jpg" alt="iPhone 13 128GB (99%)" decoding="async"></div>
+          <div class="card-image"><img src="Ảnh máy 99/13 Đen.jpg" alt="iPhone 13 128GB (98%)" decoding="async"></div>
           <span class="hotsale-limit">⚡ <span data-i18n="limited">Số lượng có hạn</span></span>
-          <h4>iPhone 13 128GB (99%)</h4>
+          <h4>iPhone 13 128GB (98%)</h4>
           <div class="hotsale-price">7.968.000đ</div>
-          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone 13 128GB Hot Sale (Máy 99%)')">Tư vấn ngay</button>
+          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone 13 128GB Hot Sale (Máy 98%)')">Tư vấn ngay</button>
         </div>
         <div class="hotsale-card" aria-hidden="true">
-          <div class="card-image"><img src="Ảnh máy 99/13Promax Đen.webp" alt="iPhone 13 Pro Max 128GB (99%)" decoding="async"></div>
+          <div class="card-image"><img src="Ảnh máy 99/13Promax Đen.webp" alt="iPhone 13 Pro Max 128GB (98%)" decoding="async"></div>
           <span class="hotsale-limit">⚡ <span data-i18n="limited">Số lượng có hạn</span></span>
-          <h4>iPhone 13 Pro Max 128GB (99%)</h4>
+          <h4>iPhone 13 Pro Max 128GB (98%)</h4>
           <div class="hotsale-price">10.968.000đ</div>
-          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone 13 Pro Max 128GB Hot Sale (Máy 99%)')">Tư vấn ngay</button>
+          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone 13 Pro Max 128GB Hot Sale (Máy 98%)')">Tư vấn ngay</button>
         </div>
         <div class="hotsale-card" aria-hidden="true">
-          <div class="card-image"><img src="Ảnh máy 99/14Plus Đen.png" alt="iPhone 14 Plus 128GB (99%)" decoding="async"></div>
+          <div class="card-image"><img src="Ảnh máy 99/14Plus Đen.png" alt="iPhone 14 Plus 128GB (98%)" decoding="async"></div>
           <span class="hotsale-limit">⚡ <span data-i18n="limited">Số lượng có hạn</span></span>
-          <h4>iPhone 14 Plus 128GB (99%)</h4>
+          <h4>iPhone 14 Plus 128GB (98%)</h4>
           <div class="hotsale-price">10.968.000đ</div>
-          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone 14 Plus 128GB Hot Sale (Máy 99%)')">Tư vấn ngay</button>
+          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone 14 Plus 128GB Hot Sale (Máy 98%)')">Tư vấn ngay</button>
         </div>
         <div class="hotsale-card" aria-hidden="true">
-          <div class="card-image"><img src="Ảnh máy 99/14Promax Đen.webp" alt="iPhone 14 Pro Max 128GB (99%)" decoding="async"></div>
+          <div class="card-image"><img src="Ảnh máy 99/14Promax Đen.webp" alt="iPhone 14 Pro Max 128GB (98%)" decoding="async"></div>
           <span class="hotsale-limit">⚡ <span data-i18n="limited">Số lượng có hạn</span></span>
-          <h4>iPhone 14 Pro Max 128GB (99%)</h4>
+          <h4>iPhone 14 Pro Max 128GB (98%)</h4>
           <div class="hotsale-price">14.568.000đ</div>
-          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone 14 Pro Max 128GB Hot Sale (Máy 99%)')">Tư vấn ngay</button>
+          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone 14 Pro Max 128GB Hot Sale (Máy 98%)')">Tư vấn ngay</button>
         </div>
         <div class="hotsale-card" aria-hidden="true">
-          <div class="card-image"><img src="Ảnh máy 99/14Promax Đen.webp" alt="iPhone 14 Pro Max 256GB (99%)" decoding="async"></div>
+          <div class="card-image"><img src="Ảnh máy 99/14Promax Đen.webp" alt="iPhone 14 Pro Max 256GB (98%)" decoding="async"></div>
           <span class="hotsale-limit">⚡ <span data-i18n="limited">Số lượng có hạn</span></span>
-          <h4>iPhone 14 Pro Max 256GB (99%)</h4>
+          <h4>iPhone 14 Pro Max 256GB (98%)</h4>
           <div class="hotsale-price">15.568.000đ</div>
-          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone 14 Pro Max 256GB Hot Sale (Máy 99%)')">Tư vấn ngay</button>
+          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone 14 Pro Max 256GB Hot Sale (Máy 98%)')">Tư vấn ngay</button>
         </div>
         <div class="hotsale-card" aria-hidden="true">
-          <div class="card-image"><img src="Ảnh máy 99/15Plus Đen.jpg" alt="iPhone 15 128GB (99%)" decoding="async"></div>
+          <div class="card-image"><img src="Ảnh máy 99/15Plus Đen.jpg" alt="iPhone 15 128GB (98%)" decoding="async"></div>
           <span class="hotsale-limit">⚡ <span data-i18n="limited">Số lượng có hạn</span></span>
-          <h4>iPhone 15 128GB (99%)</h4>
+          <h4>iPhone 15 128GB (98%)</h4>
           <div class="hotsale-price">11.968.000đ</div>
-          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone 15 128GB Hot Sale (Máy 99%)')">Tư vấn ngay</button>
+          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone 15 128GB Hot Sale (Máy 98%)')">Tư vấn ngay</button>
         </div>
         <div class="hotsale-card" aria-hidden="true">
-          <div class="card-image"><img src="Ảnh máy 99/15Plus Đen.jpg" alt="iPhone 15 Plus 128GB (99%)" decoding="async"></div>
+          <div class="card-image"><img src="Ảnh máy 99/15Plus Đen.jpg" alt="iPhone 15 Plus 128GB (98%)" decoding="async"></div>
           <span class="hotsale-limit">⚡ <span data-i18n="limited">Số lượng có hạn</span></span>
-          <h4>iPhone 15 Plus 128GB (99%)</h4>
+          <h4>iPhone 15 Plus 128GB (98%)</h4>
           <div class="hotsale-price">14.568.000đ</div>
-          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone 15 Plus 128GB Hot Sale (Máy 99%)')">Tư vấn ngay</button>
+          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone 15 Plus 128GB Hot Sale (Máy 98%)')">Tư vấn ngay</button>
         </div>
         <div class="hotsale-card" aria-hidden="true">
-          <div class="card-image"><img src="Ảnh máy 99/15Promax Đen.webp" alt="iPhone 15 Pro 128GB (99%)" decoding="async"></div>
+          <div class="card-image"><img src="Ảnh máy 99/15Promax Đen.webp" alt="iPhone 15 Pro 128GB (98%)" decoding="async"></div>
           <span class="hotsale-limit">⚡ <span data-i18n="limited">Số lượng có hạn</span></span>
-          <h4>iPhone 15 Pro 128GB (99%)</h4>
+          <h4>iPhone 15 Pro 128GB (98%)</h4>
           <div class="hotsale-price">15.568.000đ</div>
-          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone 15 Pro 128GB Hot Sale (Máy 99%)')">Tư vấn ngay</button>
+          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone 15 Pro 128GB Hot Sale (Máy 98%)')">Tư vấn ngay</button>
         </div>
         <div class="hotsale-card" aria-hidden="true">
-          <div class="card-image"><img src="Ảnh máy 99/15Promax Đen.webp" alt="iPhone 15 Pro Max 256GB (99%)" decoding="async"></div>
+          <div class="card-image"><img src="Ảnh máy 99/15Promax Đen.webp" alt="iPhone 15 Pro Max 256GB (98%)" decoding="async"></div>
           <span class="hotsale-limit">⚡ <span data-i18n="limited">Số lượng có hạn</span></span>
-          <h4>iPhone 15 Pro Max 256GB (99%)</h4>
+          <h4>iPhone 15 Pro Max 256GB (98%)</h4>
           <div class="hotsale-price">18.568.000đ</div>
-          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone 15 Pro Max 256GB Hot Sale (Máy 99%)')">Tư vấn ngay</button>
+          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone 15 Pro Max 256GB Hot Sale (Máy 98%)')">Tư vấn ngay</button>
         </div>
         <div class="hotsale-card" aria-hidden="true">
-          <div class="card-image"><img src="Ảnh máy 99/16Promax Trắng.png" alt="iPhone 16 Pro Max 256GB (99%)" decoding="async"></div>
+          <div class="card-image"><img src="Ảnh máy 99/16Promax Trắng.png" alt="iPhone 16 Pro Max 256GB (98%)" decoding="async"></div>
           <span class="hotsale-limit">⚡ <span data-i18n="limited">Số lượng có hạn</span></span>
-          <h4>iPhone 16 Pro Max 256GB (99%)</h4>
+          <h4>iPhone 16 Pro Max 256GB (98%)</h4>
           <div class="hotsale-price">22.568.000đ</div>
-          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone 16 Pro Max 256GB Hot Sale (Máy 99%)')">Tư vấn ngay</button>
+          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModal('iPhone 16 Pro Max 256GB Hot Sale (Máy 98%)')">Tư vấn ngay</button>
         </div>
       </div>
     </div>
@@ -2637,6 +2671,42 @@
       input.value = '';
       filterProducts('');
       hideSuggestions();
+      input.focus();
+    }
+
+    function filterHotsale(rawQuery) {
+      var query = normalizeSearchText(rawQuery);
+      var clearBtn = document.getElementById('hotsaleSearchClearBtn');
+      var noResults = document.getElementById('hotsaleNoResults');
+      var track = document.getElementById('hotsaleTrack');
+      clearBtn.hidden = query.length === 0;
+      track.classList.toggle('hotsale-filtering', query.length > 0);
+
+      var cards = track.querySelectorAll('.hotsale-card');
+      var visible = 0;
+      cards.forEach(function (card) {
+        if (query.length === 0) {
+          card.classList.remove('hotsale-hidden');
+          if (card.getAttribute('aria-hidden') !== 'true') visible++;
+          return;
+        }
+        if (card.getAttribute('aria-hidden') === 'true') {
+          card.classList.add('hotsale-hidden');
+          return;
+        }
+        var name = normalizeSearchText(card.querySelector('h4').textContent);
+        var match = name.indexOf(query) !== -1;
+        card.classList.toggle('hotsale-hidden', !match);
+        if (match) visible++;
+      });
+
+      noResults.classList.toggle('show', query.length > 0 && visible === 0);
+    }
+
+    function clearHotsaleSearch() {
+      var input = document.getElementById('hotsaleSearchInput');
+      input.value = '';
+      filterHotsale('');
       input.focus();
     }
 
