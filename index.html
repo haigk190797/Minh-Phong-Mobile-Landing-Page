@@ -2930,6 +2930,9 @@
       var sections = [
         { gridSel: '#may-moi .product-grid', noResults: document.getElementById('noResultsNew') },
         { gridSel: '#may-99 .product-grid', noResults: document.getElementById('noResultsUsed') },
+        { gridSel: '#macbook .product-grid', noResults: document.getElementById('noResultsMacbook') },
+        { gridSel: '#ipad .product-grid', noResults: document.getElementById('noResultsIpad') },
+        { gridSel: '#phu-kien .product-grid', noResults: document.getElementById('noResultsAccessories') },
       ];
 
       var totalVisible = 0;
@@ -3018,15 +3021,20 @@
         return;
       }
 
-      var cards = document.querySelectorAll('#may-moi .product-card, #may-99 .product-card');
+      var CATEGORY_LABELS = {
+        'may-moi': 'Máy Mới', 'may-99': 'Máy 99%',
+        'macbook': 'MacBook', 'ipad': 'iPad', 'phu-kien': 'Phụ kiện',
+      };
+      var cards = document.querySelectorAll('#may-moi .product-card, #may-99 .product-card, #macbook .product-card, #ipad .product-card, #phu-kien .product-card');
       var results = [];
       cards.forEach(function (card) {
         var name = card.querySelector('h3').textContent;
         if (normalizeSearchText(name).indexOf(query) !== -1) {
+          var sectionId = card.closest('.product-section').id;
           results.push({
             name: name,
             card: card,
-            category: card.closest('#may-moi') ? 'Máy Mới' : 'Máy 99%',
+            category: CATEGORY_LABELS[sectionId] || '',
             price: card.querySelector('.price').textContent,
           });
         }
