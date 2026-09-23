@@ -535,25 +535,59 @@
   /* Floating fixed contact icons */
   .floating-contacts{
     position:fixed;right:14px;bottom:96px;z-index:70;
-    display:flex;flex-direction:column;gap:10px;
+    display:flex;flex-direction:column;align-items:flex-end;gap:10px;
   }
-  .floating-contacts a{
-    width:48px;height:48px;border-radius:50%;color:#fff;font-size:21px;
-    display:flex;align-items:center;justify-content:center;
-    box-shadow:0 6px 16px rgba(0,0,0,.28);
-    animation:fcPulse 2s infinite;
-  }
-  .floating-contacts .fc-call{background:#25D366;}
-  .floating-contacts .fc-zalo{background:#fff;padding:9px;}
-  .floating-contacts .fc-messenger{background:transparent;box-shadow:none;padding:0;}
-  .floating-contacts .fc-zalo svg,
-  .floating-contacts .fc-messenger svg{width:100%;height:100%;display:block;}
   .floating-contacts .fc-top{
     background:#fff;color:var(--dark);font-size:18px;font-weight:800;
-    border:1px solid var(--line);animation:none;width:40px;height:40px;align-self:center;
+    border:1px solid var(--line);width:40px;height:40px;align-self:center;
+    border-radius:50%;display:flex;align-items:center;justify-content:center;
+    box-shadow:0 6px 16px rgba(0,0,0,.28);
   }
   .floating-contacts .fc-top:hover{background:var(--gray-soft);}
+
+  /* Mascot contact widget */
+  .mascot-widget{position:relative;}
+  .mascot-bubble{
+    position:absolute;bottom:calc(100% + 6px);right:0;
+    background:#fff;color:var(--dark);font-size:12.5px;font-weight:700;
+    padding:9px 13px;border-radius:16px 16px 4px 16px;
+    box-shadow:0 8px 20px rgba(0,0,0,.22);border:2px solid var(--accent);
+    white-space:nowrap;animation:bubbleBounce 2.2s infinite;
+  }
+  .mascot-bubble.hide{display:none;}
+  @keyframes bubbleBounce{0%,100%{transform:translateY(0);}50%{transform:translateY(-5px);}}
+  .mascot-btn{
+    width:68px;height:68px;border-radius:50%;border:none;padding:0;cursor:pointer;
+    background:#fff;box-shadow:0 8px 20px rgba(0,0,0,.3);
+    animation:fcPulse 2s infinite;overflow:hidden;
+  }
+  .mascot-btn img{width:100%;height:100%;object-fit:cover;display:block;}
   @keyframes fcPulse{0%,100%{transform:scale(1);}50%{transform:scale(1.08);}}
+
+  .mascot-menu{
+    position:absolute;bottom:calc(100% + 10px);right:0;
+    width:220px;background:#fff;border-radius:16px;
+    box-shadow:0 16px 40px rgba(0,0,0,.3);padding:16px 14px 12px;
+    text-align:center;
+  }
+  .mascot-menu[hidden]{display:none;}
+  .mascot-menu-img{width:84px;height:84px;object-fit:cover;border-radius:50%;margin:0 auto 8px;display:block;}
+  .mascot-menu-title{font-size:13px;font-weight:700;color:var(--dark);margin-bottom:12px;line-height:1.4;}
+  .mascot-menu-item{
+    display:flex;align-items:center;gap:10px;padding:10px 10px;border-radius:10px;
+    font-size:13.5px;font-weight:700;color:var(--dark);margin-bottom:6px;
+    background:var(--gray-soft);text-align:left;
+  }
+  .mascot-menu-item:hover{background:var(--line);}
+  .mascot-menu-item:last-child{margin-bottom:0;}
+  .mmi-ic{
+    width:30px;height:30px;border-radius:50%;flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;font-size:16px;color:#fff;
+  }
+  .mmi-call{background:#25D366;}
+  .mmi-zalo{background:#fff;border:1px solid var(--line);padding:4px;}
+  .mmi-messenger{background:transparent;padding:0;}
+  .mmi-zalo svg,.mmi-messenger svg{width:100%;height:100%;display:block;}
 
   /* Thank-you modal */
   .thankyou-overlay{
@@ -2488,27 +2522,45 @@
 
   <div class="floating-contacts">
     <a class="fc-top" href="javascript:void(0)" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Lên đầu trang">↑</a>
-    <a class="fc-call" href="tel:0941319292" aria-label="Gọi ngay">📞</a>
-    <a class="fc-zalo" href="https://zalo.me/0941319292" aria-label="Chat Zalo">
-      <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-        <path d="M6 24C6 12 15 5 24 5c6 0 12 4 15 9-3 8-11 13-19 13a20 20 0 0 1-6-1L6 30V24z" fill="none"/>
-        <text x="24" y="29" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="15" fill="#0068FF" text-anchor="middle">Zalo</text>
-        <path d="M9 30c1 5 6 9 12 9-5 1-10-1-12-4z" fill="#0068FF"/>
-      </svg>
-    </a>
-    <a class="fc-messenger" href="https://m.me/MinhPhongMobile" target="_blank" rel="noopener" aria-label="Nhắn tin Messenger">
-      <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="fcMsgGrad" x1="0%" y1="100%" x2="100%" y2="0%">
-            <stop offset="0%" stop-color="#00B2FF"/>
-            <stop offset="50%" stop-color="#B03CFA"/>
-            <stop offset="100%" stop-color="#FF6A9C"/>
-          </linearGradient>
-        </defs>
-        <path fill="url(#fcMsgGrad)" d="M24 2C11.85 2 2 11.11 2 22.36c0 6.4 3.2 12.1 8.2 15.83V44l7.49-4.11c1.98.55 4.08.85 6.31.85 12.15 0 22-9.11 22-20.38C46 11.11 36.15 2 24 2z"/>
-        <path fill="#fff" d="M12.6 27.86l7.86-8.32 5.9 6.3 8.98-8.3-8.6 12.86-5.98-6.3-8.16 3.76z"/>
-      </svg>
-    </a>
+    <div class="mascot-widget">
+      <div class="mascot-bubble" id="mascotBubble">Nhấn vào để liên hệ ngay</div>
+      <div class="mascot-menu" id="mascotMenu" hidden>
+        <img src="assets/mascot-mp.png" class="mascot-menu-img" alt="Minh Phong Mobile">
+        <p class="mascot-menu-title">Liên hệ ngay với Minh Phong Mobile</p>
+        <a class="mascot-menu-item" href="tel:0941319292">
+          <span class="mmi-ic mmi-call">📞</span><span>Gọi trực tiếp</span>
+        </a>
+        <a class="mascot-menu-item" href="https://zalo.me/0941319292">
+          <span class="mmi-ic mmi-zalo">
+            <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 24C6 12 15 5 24 5c6 0 12 4 15 9-3 8-11 13-19 13a20 20 0 0 1-6-1L6 30V24z" fill="none"/>
+              <text x="24" y="29" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="15" fill="#0068FF" text-anchor="middle">Zalo</text>
+              <path d="M9 30c1 5 6 9 12 9-5 1-10-1-12-4z" fill="#0068FF"/>
+            </svg>
+          </span>
+          <span>Chat Zalo</span>
+        </a>
+        <a class="mascot-menu-item" href="https://m.me/MinhPhongMobile" target="_blank" rel="noopener">
+          <span class="mmi-ic mmi-messenger">
+            <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="fcMsgGrad2" x1="0%" y1="100%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#00B2FF"/>
+                  <stop offset="50%" stop-color="#B03CFA"/>
+                  <stop offset="100%" stop-color="#FF6A9C"/>
+                </linearGradient>
+              </defs>
+              <path fill="url(#fcMsgGrad2)" d="M24 2C11.85 2 2 11.11 2 22.36c0 6.4 3.2 12.1 8.2 15.83V44l7.49-4.11c1.98.55 4.08.85 6.31.85 12.15 0 22-9.11 22-20.38C46 11.11 36.15 2 24 2z"/>
+              <path fill="#fff" d="M12.6 27.86l7.86-8.32 5.9 6.3 8.98-8.3-8.6 12.86-5.98-6.3-8.16 3.76z"/>
+            </svg>
+          </span>
+          <span>Chat Messenger</span>
+        </a>
+      </div>
+      <button type="button" class="mascot-btn" onclick="toggleMascotMenu(event)" aria-label="Liên hệ ngay">
+        <img src="assets/mascot-mp.png" alt="Minh Phong Mobile">
+      </button>
+    </div>
   </div>
 
   <div class="order-overlay" id="orderOverlay" onclick="if(event.target===this) closeOrderModal()">
@@ -2913,6 +2965,22 @@
       var dropdown = document.getElementById('menuDropdown');
       if (dropdown.classList.contains('show') && !dropdown.contains(e.target)) {
         closeMenu();
+      }
+    });
+
+    function toggleMascotMenu(event) {
+      event.stopPropagation();
+      var menu = document.getElementById('mascotMenu');
+      var bubble = document.getElementById('mascotBubble');
+      menu.hidden = !menu.hidden;
+      if (bubble) bubble.classList.add('hide');
+    }
+
+    document.addEventListener('click', function (e) {
+      var menu = document.getElementById('mascotMenu');
+      var widget = document.querySelector('.mascot-widget');
+      if (menu && !menu.hidden && widget && !widget.contains(e.target)) {
+        menu.hidden = true;
       }
     });
 
