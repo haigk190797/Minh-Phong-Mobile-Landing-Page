@@ -101,43 +101,16 @@
 
   /* Hero */
   .hero{
-    position:relative;
     background:var(--accent-gradient);
-    color:#fff;
-    text-align:center;
-    padding:60px 20px;
     overflow:hidden;
-    min-height:380px;
-    display:flex;align-items:center;justify-content:center;
+    line-height:0;
   }
   .hero-video{
-    position:absolute;inset:0;width:100%;height:100%;
-    object-fit:cover;z-index:0;
+    display:block;width:100%;height:380px;
+    object-fit:cover;
   }
-  .hero-video-overlay{
-    position:absolute;inset:0;z-index:1;
-    background:linear-gradient(135deg,rgba(228,97,26,.68),rgba(196,49,20,.68));
-  }
-  .hero-content{max-width:640px;margin:0 auto;position:relative;z-index:2;}
-  .hero-content h1{
-    font-size:clamp(26px,4vw,42px);
-    line-height:1.2;
-    margin-bottom:14px;
-  }
-  .hero-content p{
-    color:#fbe6d6;font-size:16px;margin:0 auto 26px;max-width:460px;
-  }
-  .hero-cta{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;}
-  .btn{
-    display:inline-block;padding:13px 24px;border-radius:8px;
-    font-weight:700;font-size:15px;
-  }
-  .btn-primary{background:#fff;color:var(--accent);}
-  .btn-primary:hover{background:var(--accent-soft);}
-  .btn-outline{border:2px solid #fff;color:#fff;}
-  .btn-outline:hover{background:#fff;color:var(--dark);}
   @media (max-width:800px){
-    .hero{padding:44px 20px;min-height:300px;}
+    .hero-video{height:220px;}
   }
 
   /* Search (in header, replacing logo for now) */
@@ -206,14 +179,14 @@
     background:linear-gradient(135deg,var(--graybg),var(--graybg-2));
     padding:22px 20px;
   }
-  .slogan-text{
-    text-align:center;font-family:Georgia,'Times New Roman',serif;
-    font-size:clamp(14.5px,2.4vw,19px);font-weight:600;letter-spacing:.4px;
-    color:#F3DFC2;max-width:900px;margin:0 auto;line-height:1.6;
+  .slogan-brand{
+    display:flex;align-items:center;justify-content:center;gap:12px;
   }
-  .slogan-text .dot{color:var(--accent);margin:0 12px;font-weight:900;}
-  @media (max-width:600px){
-    .slogan-text .dot{display:block;margin:4px 0;}
+  .slogan-logo{height:40px;width:auto;object-fit:contain;}
+  .slogan-name{
+    font-family:Georgia,'Times New Roman',serif;
+    font-size:clamp(20px,3.4vw,28px);font-weight:800;letter-spacing:.4px;
+    color:#F3DFC2;
   }
 
   /* Hot Sale section */
@@ -699,22 +672,14 @@
     <video class="hero-video" autoplay loop muted playsinline preload="auto">
       <source src="Video Hero/hero-iphone18-promax.mp4" type="video/mp4">
     </video>
-    <div class="hero-video-overlay"></div>
-    <div class="hero-content">
-      <h1 data-i18n="hero_title">iPhone Chính Hãng &amp; Máy 99% Like-New Giá Tốt</h1>
-      <p data-i18n="hero_desc">Đầy đủ dòng máy mới nguyên seal và máy cũ like-new 99%, kiểm tra kỹ 100%, bảo hành rõ ràng, giao hàng nhanh toàn quốc.</p>
-      <div class="hero-cta">
-        <a href="#may-moi" class="btn btn-primary" data-i18n="nav_new">Máy Mới</a>
-        <a href="#may-99" class="btn btn-outline" data-i18n="nav_used">Máy 99%</a>
-        <a href="#hot-sale" class="btn btn-outline" data-i18n="cta_hotsale">Máy Hot Sale</a>
-        <a href="sua-chua.html" class="btn btn-outline" data-i18n="cta_repair">Sửa Chữa</a>
-      </div>
-    </div>
   </section>
 
   <section class="slogan-bar">
     <div class="wrap">
-      <p class="slogan-text"><span data-i18n="slogan_1">iPhone Chính Hãng</span> <span class="dot">•</span> <span data-i18n="slogan_2">Giá Cả Cạnh Tranh</span> <span class="dot">•</span> <span data-i18n="slogan_3">Hậu Mãi Trọn Đời</span></p>
+      <div class="slogan-brand">
+        <img src="assets/logo-mp.png" alt="Minh Phong Mobile" class="slogan-logo">
+        <span class="slogan-name">Minh Phong Mobile</span>
+      </div>
     </div>
   </section>
 
@@ -2935,9 +2900,6 @@
         menu_macbook:"MacBook", menu_ipad:"iPad", menu_accessories:"Accessories",
         nav_new:"New Phones", nav_used:"99% Used", nav_contact:"Contact",
         cta_hotsale:"Hot Sale", cta_repair:"Repair",
-        hero_title:"Genuine iPhones & 99% Like-New at Great Prices",
-        hero_desc:"Full range of brand-new sealed phones and 99% like-new used phones, thoroughly inspected, clearly warrantied, fast nationwide delivery.",
-        slogan_1:"Genuine iPhones", slogan_2:"Competitive Prices", slogan_3:"Lifetime After-Sales Support",
         hotsale_title:"Today's Hot Sale", limited:"Limited Stock",
         hotsale_sub:"Updated daily — best prices, grab them before they're gone!",
         order_now:"Consult Now",
@@ -2990,9 +2952,6 @@
         menu_macbook:"MacBook", menu_ipad:"iPad", menu_accessories:"Аксессуары",
         nav_new:"Новые телефоны", nav_used:"Б/у 99%", nav_contact:"Контакты",
         cta_hotsale:"Горячие предложения", cta_repair:"Ремонт",
-        hero_title:"Оригинальные iPhone и телефоны б/у 99% по отличным ценам",
-        hero_desc:"Полный ассортимент новых запечатанных телефонов и телефонов б/у в состоянии 99% как новые, тщательная проверка, чёткая гарантия, быстрая доставка по всей стране.",
-        slogan_1:"Оригинальные iPhone", slogan_2:"Конкурентные цены", slogan_3:"Пожизненная гарантийная поддержка",
         hotsale_title:"Горячие предложения сегодня", limited:"Ограниченное количество",
         hotsale_sub:"Обновляется ежедневно — лучшие цены, успейте купить!",
         order_now:"Проконсультироваться",
