@@ -545,8 +545,13 @@
   }
   .floating-contacts .fc-top:hover{background:var(--gray-soft);}
 
-  /* Mascot contact widget */
-  .mascot-widget{position:relative;}
+  /* Mascot contact widget — free-roaming, draggable */
+  .mascot-widget{
+    position:fixed;z-index:75;left:0;top:0;
+    touch-action:none;user-select:none;-webkit-user-select:none;
+  }
+  .mascot-widget.dragging{transition:none !important;}
+  .mascot-widget.dragging .mascot-btn{cursor:grabbing;}
   .mascot-bubble{
     position:absolute;bottom:calc(100% + 6px);right:0;
     background:#fff;color:var(--dark);font-size:12.5px;font-weight:700;
@@ -558,7 +563,7 @@
   @keyframes bubbleBounce{0%,100%{transform:translateY(0);}50%{transform:translateY(-5px);}}
   .mascot-tilt{transition:transform .18s ease-out;}
   .mascot-btn{
-    width:68px;height:68px;border-radius:50%;border:none;padding:0;cursor:pointer;
+    width:68px;height:68px;border-radius:50%;border:none;padding:0;cursor:grab;
     background:#fff;box-shadow:0 8px 20px rgba(0,0,0,.3);
     overflow:hidden;position:relative;display:block;
     animation:mascotBob 2.6s ease-in-out infinite;
@@ -573,6 +578,7 @@
   @keyframes mascotPop{0%,100%{transform:scale(1);}50%{transform:scale(1.12);}}
   .mascot-btn.anim-wiggle{animation:mascotWiggle .5s ease-in-out 2;}
   .mascot-btn.anim-pop{animation:mascotPop .4s ease-in-out;}
+  .mascot-btn.is-walking{animation:mascotBob .5s ease-in-out infinite;}
   @keyframes fcPulse{0%,100%{transform:scale(1);}50%{transform:scale(1.08);}}
 
   .mascot-menu{
@@ -2535,7 +2541,9 @@
 
   <div class="floating-contacts">
     <a class="fc-top" href="javascript:void(0)" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Lên đầu trang">↑</a>
-    <div class="mascot-widget">
+  </div>
+
+  <div class="mascot-widget" id="mascotWidget">
       <div class="mascot-bubble" id="mascotBubble">Nhấn vào để liên hệ ngay</div>
       <div class="mascot-menu" id="mascotMenu" hidden>
         <img src="assets/mascot-mp.png" class="mascot-menu-img" alt="Minh Phong Mobile">
@@ -2572,11 +2580,11 @@
         </a>
       </div>
       <div class="mascot-tilt" id="mascotTilt">
-        <button type="button" class="mascot-btn" id="mascotBtn" onclick="toggleMascotMenu(event)" aria-label="Liên hệ ngay">
-          <img src="assets/mascot-mp.png" alt="Minh Phong Mobile" id="mascotImg">
+        <button type="button" class="mascot-btn" id="mascotBtn" aria-label="Liên hệ ngay">
+          <img src="assets/mascot-mp.png" alt="Minh Phong Mobile" id="mascotImg" draggable="false">
         </button>
       </div>
-    </div>
+  </div>
   </div>
 
   <div class="order-overlay" id="orderOverlay" onclick="if(event.target===this) closeOrderModal()">
@@ -3003,7 +3011,7 @@
     });
 
     function toggleMascotMenu(event) {
-      event.stopPropagation();
+      if (event) event.stopPropagation();
       var menu = document.getElementById('mascotMenu');
       var bubble = document.getElementById('mascotBubble');
       menu.hidden = !menu.hidden;
@@ -3012,17 +3020,19 @@
 
     document.addEventListener('click', function (e) {
       var menu = document.getElementById('mascotMenu');
-      var widget = document.querySelector('.mascot-widget');
+      var widget = document.getElementById('mascotWidget');
       if (menu && !menu.hidden && widget && !widget.contains(e.target)) {
         menu.hidden = true;
       }
     });
 
     (function initMascotLife() {
+      var widget = document.getElementById('mascotWidget');
       var tilt = document.getElementById('mascotTilt');
       var btn = document.getElementById('mascotBtn');
       var img = document.getElementById('mascotImg');
-      if (!tilt || !btn || !img) return;
+      var menu = document.getElementById('mascotMenu');
+      if (!widget || !tilt || !btn || !img) return;
 
       var DEFAULT_IMG = 'assets/mascot-mp.png';
       var EXPRESSIONS = [
@@ -3034,7 +3044,14 @@
         'assets/mascot/san-sang-ho-tro.png'
       ];
 
+      // ---- Look-at-cursor tilt (combined with walking facing-direction flip) ----
       var maxTilt = 14;
+      var facing = 1;
+      var lastRotate = 0, lastLean = 0;
+      function applyTiltTransform() {
+        tilt.style.transform =
+          'scaleX(' + facing + ') translateX(' + lastLean.toFixed(1) + 'px) rotate(' + lastRotate.toFixed(1) + 'deg)';
+      }
       document.addEventListener('mousemove', function (e) {
         var rect = tilt.getBoundingClientRect();
         var cx = rect.left + rect.width / 2;
@@ -3044,9 +3061,9 @@
         var dist = Math.sqrt(dx * dx + dy * dy) || 1;
         var angle = Math.atan2(dy, dx) * (180 / Math.PI);
         var strength = Math.min(dist / 260, 1);
-        var rotate = Math.max(-maxTilt, Math.min(maxTilt, Math.cos((angle * Math.PI) / 180) * maxTilt * strength));
-        var lean = Math.max(-6, Math.min(6, (dx / dist) * 6 * strength));
-        tilt.style.transform = 'translateX(' + lean.toFixed(1) + 'px) rotate(' + rotate.toFixed(1) + 'deg)';
+        lastRotate = Math.max(-maxTilt, Math.min(maxTilt, Math.cos((angle * Math.PI) / 180) * maxTilt * strength));
+        lastLean = Math.max(-6, Math.min(6, (dx / dist) * 6 * strength));
+        applyTiltTransform();
       });
 
       var idleAnims = ['anim-wiggle', 'anim-pop'];
@@ -3069,14 +3086,106 @@
         }, 180);
       }
 
-      function scheduleNext() {
+      function scheduleNextExpression() {
         var delay = 4500 + Math.random() * 4500;
         setTimeout(function () {
           swapExpression();
-          scheduleNext();
+          scheduleNextExpression();
         }, delay);
       }
-      scheduleNext();
+      scheduleNextExpression();
+
+      // ---- Free-roaming walk ----
+      var dragging = false;
+      var walkTimer = null;
+
+      function bounds() {
+        var w = widget.offsetWidth || 68, h = widget.offsetHeight || 68;
+        return {
+          minX: 10, maxX: Math.max(10, window.innerWidth - w - 10),
+          minY: 84, maxY: Math.max(84, window.innerHeight - h - 90)
+        };
+      }
+      function pos() {
+        return { x: widget.offsetLeft, y: widget.offsetTop };
+      }
+      function place(x, y, animateSec) {
+        widget.style.transition = animateSec
+          ? ('left ' + animateSec + 's linear, top ' + animateSec + 's linear')
+          : 'none';
+        widget.style.left = x + 'px';
+        widget.style.top = y + 'px';
+      }
+
+      function scheduleWalk() {
+        clearTimeout(walkTimer);
+        walkTimer = setTimeout(walkStep, 2800 + Math.random() * 4200);
+      }
+      function walkStep() {
+        if (dragging || (menu && !menu.hidden)) { scheduleWalk(); return; }
+        var b = bounds();
+        var p = pos();
+        var tx = b.minX + Math.random() * (b.maxX - b.minX);
+        var ty = b.minY + Math.random() * (b.maxY - b.minY);
+        var dist = Math.sqrt(Math.pow(tx - p.x, 2) + Math.pow(ty - p.y, 2));
+        var duration = Math.max(1.4, dist / 65);
+        facing = tx < p.x ? -1 : 1;
+        applyTiltTransform();
+        btn.classList.add('is-walking');
+        place(tx, ty, duration);
+        setTimeout(function () {
+          btn.classList.remove('is-walking');
+          scheduleWalk();
+        }, duration * 1000);
+      }
+
+      // initial spot: bottom-right area
+      place(Math.max(10, window.innerWidth - 92), Math.max(84, window.innerHeight - 170), 0);
+      scheduleWalk();
+
+      window.addEventListener('resize', function () {
+        var b = bounds();
+        var p = pos();
+        place(Math.min(b.maxX, Math.max(b.minX, p.x)), Math.min(b.maxY, Math.max(b.minY, p.y)), 0);
+      });
+
+      // ---- Drag to reposition ----
+      var dragStart = null;
+      btn.addEventListener('pointerdown', function (e) {
+        e.preventDefault();
+        dragging = true;
+        widget.classList.add('dragging');
+        clearTimeout(walkTimer);
+        btn.classList.remove('is-walking');
+        var p = pos();
+        dragStart = { x: e.clientX, y: e.clientY, ox: p.x, oy: p.y, moved: false };
+        try { btn.setPointerCapture(e.pointerId); } catch (err) {}
+      });
+      btn.addEventListener('dragstart', function (e) { e.preventDefault(); });
+      btn.addEventListener('pointermove', function (e) {
+        if (!dragging || !dragStart) return;
+        var dx = e.clientX - dragStart.x;
+        var dy = e.clientY - dragStart.y;
+        if (Math.abs(dx) > 4 || Math.abs(dy) > 4) dragStart.moved = true;
+        var b = bounds();
+        var nx = Math.min(b.maxX, Math.max(b.minX, dragStart.ox + dx));
+        var ny = Math.min(b.maxY, Math.max(b.minY, dragStart.oy + dy));
+        place(nx, ny, 0);
+      });
+      function endDrag(e) {
+        if (!dragging) return;
+        dragging = false;
+        widget.classList.remove('dragging');
+        var wasMoved = dragStart && dragStart.moved;
+        dragStart = null;
+        if (!wasMoved) {
+          toggleMascotMenu(e);
+        } else {
+          scheduleWalk();
+        }
+      }
+      btn.addEventListener('pointerup', endDrag);
+      btn.addEventListener('pointercancel', endDrag);
     })();
 
     function openThankYou() {
