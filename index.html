@@ -578,7 +578,7 @@
   @keyframes mascotPop{0%,100%{transform:scale(1);}50%{transform:scale(1.12);}}
   .mascot-btn.anim-wiggle{animation:mascotWiggle .5s ease-in-out 2;}
   .mascot-btn.anim-pop{animation:mascotPop .4s ease-in-out;}
-  .mascot-btn.is-walking{animation:mascotBob .5s ease-in-out infinite;}
+  .mascot-btn.is-walking{animation:none;}
   @keyframes fcPulse{0%,100%{transform:scale(1);}50%{transform:scale(1.08);}}
 
   .mascot-menu{
@@ -3043,6 +3043,12 @@
         'assets/mascot/may-loi.png',
         'assets/mascot/san-sang-ho-tro.png'
       ];
+      var WALK_FRAMES = [
+        'assets/mascot/walk/walk-1.png',
+        'assets/mascot/walk/walk-2.png',
+        'assets/mascot/walk/walk-3.png',
+        'assets/mascot/walk/walk-4.png'
+      ];
 
       // ---- Look-at-cursor tilt (combined with walking facing-direction flip) ----
       var maxTilt = 14;
@@ -3074,7 +3080,9 @@
       }
 
       var currentSrc = DEFAULT_IMG;
+      var isWalking = false;
       function swapExpression() {
+        if (isWalking) return;
         var pool = EXPRESSIONS.filter(function (src) { return src !== currentSrc; });
         var next = pool[Math.floor(Math.random() * pool.length)];
         img.style.opacity = 0;
@@ -3094,6 +3102,25 @@
         }, delay);
       }
       scheduleNextExpression();
+
+      // ---- Walk-cycle sprite animation (real leg frames while moving) ----
+      var walkFrameTimer = null;
+      function startWalkAnim() {
+        isWalking = true;
+        img.style.opacity = 1;
+        var i = 0;
+        clearInterval(walkFrameTimer);
+        walkFrameTimer = setInterval(function () {
+          img.src = WALK_FRAMES[i % WALK_FRAMES.length];
+          i++;
+        }, 150);
+      }
+      function stopWalkAnim() {
+        clearInterval(walkFrameTimer);
+        walkFrameTimer = null;
+        isWalking = false;
+        img.src = currentSrc;
+      }
 
       // ---- Free-roaming walk ----
       var dragging = false;
@@ -3129,12 +3156,15 @@
         var ty = b.minY + Math.random() * (b.maxY - b.minY);
         var dist = Math.sqrt(Math.pow(tx - p.x, 2) + Math.pow(ty - p.y, 2));
         var duration = Math.max(1.4, dist / 65);
-        facing = tx < p.x ? -1 : 1;
+        // walk sprites face left natively: no-flip = moving left, flip = moving right
+        facing = tx < p.x ? 1 : -1;
         applyTiltTransform();
         btn.classList.add('is-walking');
+        startWalkAnim();
         place(tx, ty, duration);
         setTimeout(function () {
           btn.classList.remove('is-walking');
+          stopWalkAnim();
           scheduleWalk();
         }, duration * 1000);
       }
@@ -3157,6 +3187,7 @@
         widget.classList.add('dragging');
         clearTimeout(walkTimer);
         btn.classList.remove('is-walking');
+        stopWalkAnim();
         var p = pos();
         dragStart = { x: e.clientX, y: e.clientY, ox: p.x, oy: p.y, moved: false };
         try { btn.setPointerCapture(e.pointerId); } catch (err) {}
