@@ -556,12 +556,23 @@
   }
   .mascot-bubble.hide{display:none;}
   @keyframes bubbleBounce{0%,100%{transform:translateY(0);}50%{transform:translateY(-5px);}}
+  .mascot-tilt{transition:transform .18s ease-out;}
   .mascot-btn{
     width:68px;height:68px;border-radius:50%;border:none;padding:0;cursor:pointer;
     background:#fff;box-shadow:0 8px 20px rgba(0,0,0,.3);
-    animation:fcPulse 2s infinite;overflow:hidden;
+    overflow:hidden;position:relative;display:block;
+    animation:mascotBob 2.6s ease-in-out infinite;
   }
-  .mascot-btn img{width:100%;height:100%;object-fit:cover;display:block;}
+  .mascot-btn img{
+    width:112%;height:112%;object-fit:cover;display:block;pointer-events:none;
+    position:relative;left:-6%;top:-6%;
+    transition:opacity .18s ease;
+  }
+  @keyframes mascotBob{0%,100%{transform:translateY(0);}50%{transform:translateY(-4px);}}
+  @keyframes mascotWiggle{0%,100%{transform:rotate(0deg);}25%{transform:rotate(-8deg);}75%{transform:rotate(8deg);}}
+  @keyframes mascotPop{0%,100%{transform:scale(1);}50%{transform:scale(1.12);}}
+  .mascot-btn.anim-wiggle{animation:mascotWiggle .5s ease-in-out 2;}
+  .mascot-btn.anim-pop{animation:mascotPop .4s ease-in-out;}
   @keyframes fcPulse{0%,100%{transform:scale(1);}50%{transform:scale(1.08);}}
 
   .mascot-menu{
@@ -2560,9 +2571,11 @@
           <span>Chat Messenger</span>
         </a>
       </div>
-      <button type="button" class="mascot-btn" onclick="toggleMascotMenu(event)" aria-label="Liên hệ ngay">
-        <img src="assets/mascot-mp.png" alt="Minh Phong Mobile">
-      </button>
+      <div class="mascot-tilt" id="mascotTilt">
+        <button type="button" class="mascot-btn" id="mascotBtn" onclick="toggleMascotMenu(event)" aria-label="Liên hệ ngay">
+          <img src="assets/mascot-mp.png" alt="Minh Phong Mobile" id="mascotImg">
+        </button>
+      </div>
     </div>
   </div>
 
@@ -2986,6 +2999,67 @@
         menu.hidden = true;
       }
     });
+
+    (function initMascotLife() {
+      var tilt = document.getElementById('mascotTilt');
+      var btn = document.getElementById('mascotBtn');
+      var img = document.getElementById('mascotImg');
+      if (!tilt || !btn || !img) return;
+
+      var DEFAULT_IMG = 'assets/mascot-mp.png';
+      var EXPRESSIONS = [
+        'assets/mascot/vui-ve.png',
+        'assets/mascot/hao-hung.png',
+        'assets/mascot/suy-nghi.png',
+        'assets/mascot/tu-tin.png',
+        'assets/mascot/may-loi.png',
+        'assets/mascot/san-sang-ho-tro.png'
+      ];
+
+      var maxTilt = 14;
+      document.addEventListener('mousemove', function (e) {
+        var rect = tilt.getBoundingClientRect();
+        var cx = rect.left + rect.width / 2;
+        var cy = rect.top + rect.height / 2;
+        var dx = e.clientX - cx;
+        var dy = e.clientY - cy;
+        var dist = Math.sqrt(dx * dx + dy * dy) || 1;
+        var angle = Math.atan2(dy, dx) * (180 / Math.PI);
+        var strength = Math.min(dist / 260, 1);
+        var rotate = Math.max(-maxTilt, Math.min(maxTilt, Math.cos((angle * Math.PI) / 180) * maxTilt * strength));
+        var lean = Math.max(-6, Math.min(6, (dx / dist) * 6 * strength));
+        tilt.style.transform = 'translateX(' + lean.toFixed(1) + 'px) rotate(' + rotate.toFixed(1) + 'deg)';
+      });
+
+      var idleAnims = ['anim-wiggle', 'anim-pop'];
+      function playRandomIdleAnim() {
+        var cls = idleAnims[Math.floor(Math.random() * idleAnims.length)];
+        btn.classList.add(cls);
+        setTimeout(function () { btn.classList.remove(cls); }, 700);
+      }
+
+      var currentSrc = DEFAULT_IMG;
+      function swapExpression() {
+        var pool = EXPRESSIONS.filter(function (src) { return src !== currentSrc; });
+        var next = pool[Math.floor(Math.random() * pool.length)];
+        img.style.opacity = 0;
+        setTimeout(function () {
+          img.src = next;
+          currentSrc = next;
+          img.style.opacity = 1;
+          playRandomIdleAnim();
+        }, 180);
+      }
+
+      function scheduleNext() {
+        var delay = 4500 + Math.random() * 4500;
+        setTimeout(function () {
+          swapExpression();
+          scheduleNext();
+        }, delay);
+      }
+      scheduleNext();
+    })();
 
     function openThankYou() {
       document.getElementById('thankyouOverlay').classList.add('show');
