@@ -633,6 +633,9 @@
         <div class="menu-dropdown" id="menuDropdown">
           <a href="#may-moi" onclick="closeMenu()">🆕 <span data-i18n="menu_new">Máy NEW</span></a>
           <a href="#may-99" onclick="closeMenu()">♻️ <span data-i18n="menu_used">Máy 99%</span></a>
+          <a href="#macbook" onclick="closeMenu()">💻 <span data-i18n="menu_macbook">MacBook</span></a>
+          <a href="#ipad" onclick="closeMenu()">📱 <span data-i18n="menu_ipad">iPad</span></a>
+          <a href="#phu-kien" onclick="closeMenu()">🎧 <span data-i18n="menu_accessories">Phụ kiện</span></a>
           <a href="sua-chua.html">🔧 <span data-i18n="menu_repair">Sửa chữa</span></a>
         </div>
       </div>
@@ -647,6 +650,9 @@
       <nav class="nav-links">
         <a href="#may-moi" data-i18n="nav_new">Máy Mới</a>
         <a href="#may-99" data-i18n="nav_used">Máy 99%</a>
+        <a href="#macbook" data-i18n="menu_macbook">MacBook</a>
+        <a href="#ipad" data-i18n="menu_ipad">iPad</a>
+        <a href="#phu-kien" data-i18n="menu_accessories">Phụ kiện</a>
         <a href="#lien-he" data-i18n="nav_contact">Liên Hệ</a>
       </nav>
       <div class="lang-switch">
@@ -2224,6 +2230,283 @@
     </div>
   </section>
 
+  <!-- MACBOOK -->
+  <section id="macbook" class="product-section">
+    <div class="wrap">
+      <div class="section-bar"><h2 data-i18n="macbook_title">MacBook Chính Hãng</h2></div>
+      <p class="section-sub" data-i18n="macbook_sub">Nguyên hộp, đầy đủ phụ kiện, bảo hành chính hãng Apple</p>
+      <div class="product-grid">
+
+        <div class="product-card" data-base-name="MacBook NEO (Chính Hãng)" data-capacity="256GB" data-color="Bạc">
+          <div class="card-image">
+            <span class="badge-installment" data-i18n="installment">Trả góp 0%</span>
+            <span class="badge-hot">🔥 <span data-i18n="hot">Hot</span></span>
+            <img src="Ảnh MacBook/Macbook NEO Bạc.jpg" alt="MacBook NEO" loading="lazy" decoding="async">
+            <div class="card-float-icons">
+              <a class="ic-call" href="tel:0941319292" aria-label="Gọi ngay">📞</a>
+              <a class="ic-zalo" href="https://zalo.me/0941319292" aria-label="Chat Zalo">💬</a>
+            </div>
+          </div>
+          <h3>MacBook NEO</h3>
+          <div class="capacity-swatches">
+            <button type="button" class="capacity-btn active" onclick="selectCapacity(this,'256GB')">256GB</button>
+            <button type="button" class="capacity-btn" onclick="selectCapacity(this,'512GB')">512GB</button>
+          </div>
+          <div class="color-groups">
+            <div class="color-group" data-capacity="256GB">
+              <button type="button" class="swatch active" style="background:#C7C9CC" data-color="Bạc" data-price="17.568.000đ" data-img="Ảnh MacBook/Macbook NEO Bạc.jpg" onclick="selectColor99(this)" aria-label="Màu Bạc" title="Bạc"></button>
+              <button type="button" class="swatch" style="background:#F4B8C4" data-color="Hồng" data-price="17.968.000đ" data-img="Ảnh MacBook/Macbook NEO Hồng.jpg" onclick="selectColor99(this)" aria-label="Màu Hồng" title="Hồng"></button>
+              <button type="button" class="swatch" style="background:#3A6EA5" data-color="Xanh" data-price="17.568.000đ" data-img="Ảnh MacBook/Macbook NEO Xanh.jpg" onclick="selectColor99(this)" aria-label="Màu Xanh" title="Xanh"></button>
+              <button type="button" class="swatch" style="background:#E6C88C" data-color="Vàng" data-price="17.568.000đ" data-img="Ảnh MacBook/Macbook NEO Vàng.jpg" onclick="selectColor99(this)" aria-label="Màu Vàng" title="Vàng"></button>
+            </div>
+            <div class="color-group" data-capacity="512GB" hidden>
+              <button type="button" class="swatch active" style="background:#C7C9CC" data-color="Bạc" data-price="20.968.000đ" data-img="Ảnh MacBook/Macbook NEO Bạc.jpg" onclick="selectColor99(this)" aria-label="Màu Bạc" title="Bạc"></button>
+              <button type="button" class="swatch" style="background:#F4B8C4" data-color="Hồng" data-price="Liên hệ trực tiếp" data-img="Ảnh MacBook/Macbook NEO Hồng.jpg" onclick="selectColor99(this)" aria-label="Màu Hồng" title="Hồng"></button>
+              <button type="button" class="swatch" style="background:#3A6EA5" data-color="Xanh" data-price="20.968.000đ" data-img="Ảnh MacBook/Macbook NEO Xanh.jpg" onclick="selectColor99(this)" aria-label="Màu Xanh" title="Xanh"></button>
+              <button type="button" class="swatch" style="background:#E6C88C" data-color="Vàng" data-price="Liên hệ trực tiếp" data-img="Ảnh MacBook/Macbook NEO Vàng.jpg" onclick="selectColor99(this)" aria-label="Màu Vàng" title="Vàng"></button>
+            </div>
+          </div>
+          <span class="badge-condition" data-i18n="cond_new100">Máy mới 100%</span>
+          <div class="price">17.568.000đ</div>
+          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModalFromCard(this)">Tư vấn ngay</button>
+          <form class="lead-form" data-product="MacBook NEO (Chính Hãng)" onsubmit="return submitLead(event,this)">
+            <label data-i18n="lead_label">Để lại SĐT, shop tư vấn ngay:</label>
+            <div class="lead-form-row">
+              <input type="tel" name="phone" placeholder="09xxxxxxxx" required pattern="0[0-9]{8,10}">
+              <button type="submit" data-i18n="send">Gửi</button>
+            </div>
+            <p class="lead-msg"></p>
+          </form>
+        </div>
+
+      </div>
+      <p class="no-results" id="noResultsMacbook">Không tìm thấy MacBook phù hợp với từ khoá này.</p>
+    </div>
+  </section>
+
+  <!-- IPAD -->
+  <section id="ipad" class="product-section">
+    <div class="wrap">
+      <div class="section-bar"><h2 data-i18n="ipad_title">iPad Chính Hãng</h2></div>
+      <p class="section-sub" data-i18n="ipad_sub">Nguyên hộp, đầy đủ phụ kiện, bảo hành chính hãng Apple</p>
+      <div class="product-grid">
+
+        <div class="product-card" data-base-name="iPad Gen 11 (Chính Hãng)" data-capacity="128GB" data-color="Hồng">
+          <div class="card-image">
+            <span class="badge-installment" data-i18n="installment">Trả góp 0%</span>
+            <span class="badge-hot">🔥 <span data-i18n="hot">Hot</span></span>
+            <img src="Ảnh iPad/iPad Gen 11 Hồng.webp" alt="iPad Gen 11" loading="lazy" decoding="async">
+            <div class="card-float-icons">
+              <a class="ic-call" href="tel:0941319292" aria-label="Gọi ngay">📞</a>
+              <a class="ic-zalo" href="https://zalo.me/0941319292" aria-label="Chat Zalo">💬</a>
+            </div>
+          </div>
+          <h3>iPad Gen 11</h3>
+          <div class="capacity-swatches">
+            <button type="button" class="capacity-btn active" onclick="selectCapacity(this,'128GB')">128GB</button>
+            <button type="button" class="capacity-btn" onclick="selectCapacity(this,'256GB')">256GB</button>
+          </div>
+          <div class="color-groups">
+            <div class="color-group" data-capacity="128GB">
+              <button type="button" class="swatch active" style="background:#F4B8C4" data-color="Hồng" data-price="11.968.000đ" data-img="Ảnh iPad/iPad Gen 11 Hồng.webp" onclick="selectColor99(this)" aria-label="Màu Hồng" title="Hồng"></button>
+              <button type="button" class="swatch" style="background:#3A6EA5" data-color="Xanh" data-price="11.968.000đ" data-img="Ảnh iPad/iPad Gen 11 Xanh.webp" onclick="selectColor99(this)" aria-label="Màu Xanh" title="Xanh"></button>
+              <button type="button" class="swatch" style="background:#C7C9CC" data-color="Bạc" data-price="11.968.000đ" data-img="Ảnh iPad/iPad Gen 11 Bạc.jpg" onclick="selectColor99(this)" aria-label="Màu Bạc" title="Bạc"></button>
+              <button type="button" class="swatch" style="background:#E6C88C" data-color="Vàng" data-price="11.968.000đ" data-img="Ảnh iPad/iPad Gen 11 Vàng.jpg" onclick="selectColor99(this)" aria-label="Màu Vàng" title="Vàng"></button>
+            </div>
+            <div class="color-group" data-capacity="256GB" hidden>
+              <button type="button" class="swatch active" style="background:#F4B8C4" data-color="Hồng" data-price="Liên hệ trực tiếp" data-img="Ảnh iPad/iPad Gen 11 Hồng.webp" onclick="selectColor99(this)" aria-label="Màu Hồng" title="Hồng"></button>
+              <button type="button" class="swatch" style="background:#3A6EA5" data-color="Xanh" data-price="Liên hệ trực tiếp" data-img="Ảnh iPad/iPad Gen 11 Xanh.webp" onclick="selectColor99(this)" aria-label="Màu Xanh" title="Xanh"></button>
+              <button type="button" class="swatch" style="background:#C7C9CC" data-color="Bạc" data-price="Liên hệ trực tiếp" data-img="Ảnh iPad/iPad Gen 11 Bạc.jpg" onclick="selectColor99(this)" aria-label="Màu Bạc" title="Bạc"></button>
+              <button type="button" class="swatch" style="background:#E6C88C" data-color="Vàng" data-price="Liên hệ trực tiếp" data-img="Ảnh iPad/iPad Gen 11 Vàng.jpg" onclick="selectColor99(this)" aria-label="Màu Vàng" title="Vàng"></button>
+            </div>
+          </div>
+          <span class="badge-condition" data-i18n="cond_new100">Máy mới 100%</span>
+          <div class="price">11.968.000đ</div>
+          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModalFromCard(this)">Tư vấn ngay</button>
+          <form class="lead-form" data-product="iPad Gen 11 (Chính Hãng)" onsubmit="return submitLead(event,this)">
+            <label data-i18n="lead_label">Để lại SĐT, shop tư vấn ngay:</label>
+            <div class="lead-form-row">
+              <input type="tel" name="phone" placeholder="09xxxxxxxx" required pattern="0[0-9]{8,10}">
+              <button type="submit" data-i18n="send">Gửi</button>
+            </div>
+            <p class="lead-msg"></p>
+          </form>
+        </div>
+
+        <div class="product-card" data-base-name="iPad Air M4 (Chính Hãng)" data-capacity="128GB" data-color="Xám">
+          <div class="card-image">
+            <span class="badge-installment" data-i18n="installment">Trả góp 0%</span>
+            <span class="badge-hot">🔥 <span data-i18n="hot">Hot</span></span>
+            <img src="Ảnh iPad/iPad Air M4 Xám.jpg" alt="iPad Air M4" loading="lazy" decoding="async">
+            <div class="card-float-icons">
+              <a class="ic-call" href="tel:0941319292" aria-label="Gọi ngay">📞</a>
+              <a class="ic-zalo" href="https://zalo.me/0941319292" aria-label="Chat Zalo">💬</a>
+            </div>
+          </div>
+          <h3>iPad Air M4</h3>
+          <div class="capacity-swatches">
+            <button type="button" class="capacity-btn active" onclick="selectCapacity(this,'128GB')">128GB</button>
+            <button type="button" class="capacity-btn" onclick="selectCapacity(this,'256GB')">256GB</button>
+          </div>
+          <div class="color-groups">
+            <div class="color-group" data-capacity="128GB">
+              <button type="button" class="swatch active" style="background:#8E8E93" data-color="Xám" data-price="19.268.000đ" data-img="Ảnh iPad/iPad Air M4 Xám.jpg" onclick="selectColor99(this)" aria-label="Màu Xám" title="Xám"></button>
+              <button type="button" class="swatch" style="background:#EAE3D2" data-color="Starlight" data-price="19.268.000đ" data-img="Ảnh iPad/iPad Air M4 Starlight.jpg" onclick="selectColor99(this)" aria-label="Màu Starlight" title="Starlight"></button>
+              <button type="button" class="swatch" style="background:#6E5C85" data-color="Tím" data-price="19.268.000đ" data-img="Ảnh iPad/iPad Air M4 Tím.jpeg" onclick="selectColor99(this)" aria-label="Màu Tím" title="Tím"></button>
+              <button type="button" class="swatch" style="background:#3A6EA5" data-color="Xanh" data-price="19.268.000đ" data-img="Ảnh iPad/iPad Air M4 Xanh.jpg" onclick="selectColor99(this)" aria-label="Màu Xanh" title="Xanh"></button>
+            </div>
+            <div class="color-group" data-capacity="256GB" hidden>
+              <button type="button" class="swatch active" style="background:#EAE3D2" data-color="Starlight" data-price="Liên hệ trực tiếp" data-img="Ảnh iPad/iPad Air M4 Starlight.jpg" onclick="selectColor99(this)" aria-label="Màu Starlight" title="Starlight"></button>
+              <button type="button" class="swatch" style="background:#8E8E93" data-color="Xám" data-price="Liên hệ trực tiếp" data-img="Ảnh iPad/iPad Air M4 Xám.jpg" onclick="selectColor99(this)" aria-label="Màu Xám" title="Xám"></button>
+              <button type="button" class="swatch" style="background:#6E5C85" data-color="Tím" data-price="Liên hệ trực tiếp" data-img="Ảnh iPad/iPad Air M4 Tím.jpeg" onclick="selectColor99(this)" aria-label="Màu Tím" title="Tím"></button>
+              <button type="button" class="swatch" style="background:#3A6EA5" data-color="Xanh" data-price="Liên hệ trực tiếp" data-img="Ảnh iPad/iPad Air M4 Xanh.jpg" onclick="selectColor99(this)" aria-label="Màu Xanh" title="Xanh"></button>
+            </div>
+          </div>
+          <span class="badge-condition" data-i18n="cond_new100">Máy mới 100%</span>
+          <div class="price">19.268.000đ</div>
+          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModalFromCard(this)">Tư vấn ngay</button>
+          <form class="lead-form" data-product="iPad Air M4 (Chính Hãng)" onsubmit="return submitLead(event,this)">
+            <label data-i18n="lead_label">Để lại SĐT, shop tư vấn ngay:</label>
+            <div class="lead-form-row">
+              <input type="tel" name="phone" placeholder="09xxxxxxxx" required pattern="0[0-9]{8,10}">
+              <button type="submit" data-i18n="send">Gửi</button>
+            </div>
+            <p class="lead-msg"></p>
+          </form>
+        </div>
+
+      </div>
+      <p class="no-results" id="noResultsIpad">Không tìm thấy iPad phù hợp với từ khoá này.</p>
+    </div>
+  </section>
+
+  <!-- PHỤ KIỆN APPLE -->
+  <section id="phu-kien" class="product-section">
+    <div class="wrap">
+      <div class="section-bar"><h2 data-i18n="accessories_title">Phụ Kiện Apple Chính Hãng</h2></div>
+      <p class="section-sub" data-i18n="accessories_sub">AirPods, Apple Pencil và phụ kiện chính hãng Apple</p>
+      <div class="product-grid">
+
+        <div class="product-card" data-base-name="AirPods 4 (Chính Hãng)">
+          <div class="card-image">
+            <span class="badge-installment" data-i18n="installment">Trả góp 0%</span>
+            <img src="Ảnh Phụ Kiện Apple/AirPods 4.jpg" alt="AirPods 4" loading="lazy" decoding="async">
+            <div class="card-float-icons">
+              <a class="ic-call" href="tel:0941319292" aria-label="Gọi ngay">📞</a>
+              <a class="ic-zalo" href="https://zalo.me/0941319292" aria-label="Chat Zalo">💬</a>
+            </div>
+          </div>
+          <h3>AirPods 4</h3>
+          <span class="badge-condition" data-i18n="cond_new100">Máy mới 100%</span>
+          <div class="price">2.568.000đ</div>
+          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModalFromCard(this)">Tư vấn ngay</button>
+          <form class="lead-form" data-product="AirPods 4 (Chính Hãng)" onsubmit="return submitLead(event,this)">
+            <label data-i18n="lead_label">Để lại SĐT, shop tư vấn ngay:</label>
+            <div class="lead-form-row">
+              <input type="tel" name="phone" placeholder="09xxxxxxxx" required pattern="0[0-9]{8,10}">
+              <button type="submit" data-i18n="send">Gửi</button>
+            </div>
+            <p class="lead-msg"></p>
+          </form>
+        </div>
+
+        <div class="product-card" data-base-name="AirPods 5 (Chính Hãng)">
+          <div class="card-image">
+            <span class="badge-installment" data-i18n="installment">Trả góp 0%</span>
+            <img src="Ảnh Phụ Kiện Apple/Airpods 5.jpeg" alt="AirPods 5" loading="lazy" decoding="async">
+            <div class="card-float-icons">
+              <a class="ic-call" href="tel:0941319292" aria-label="Gọi ngay">📞</a>
+              <a class="ic-zalo" href="https://zalo.me/0941319292" aria-label="Chat Zalo">💬</a>
+            </div>
+          </div>
+          <h3>AirPods 5</h3>
+          <span class="badge-condition" data-i18n="cond_new100">Máy mới 100%</span>
+          <div class="price">3.568.000đ</div>
+          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModalFromCard(this)">Tư vấn ngay</button>
+          <form class="lead-form" data-product="AirPods 5 (Chính Hãng)" onsubmit="return submitLead(event,this)">
+            <label data-i18n="lead_label">Để lại SĐT, shop tư vấn ngay:</label>
+            <div class="lead-form-row">
+              <input type="tel" name="phone" placeholder="09xxxxxxxx" required pattern="0[0-9]{8,10}">
+              <button type="submit" data-i18n="send">Gửi</button>
+            </div>
+            <p class="lead-msg"></p>
+          </form>
+        </div>
+
+        <div class="product-card" data-base-name="AirPods Pro 3 (Chính Hãng)">
+          <div class="card-image">
+            <span class="badge-installment" data-i18n="installment">Trả góp 0%</span>
+            <img src="Ảnh Phụ Kiện Apple/Airpods Pro 3.jpeg" alt="AirPods Pro 3" loading="lazy" decoding="async">
+            <div class="card-float-icons">
+              <a class="ic-call" href="tel:0941319292" aria-label="Gọi ngay">📞</a>
+              <a class="ic-zalo" href="https://zalo.me/0941319292" aria-label="Chat Zalo">💬</a>
+            </div>
+          </div>
+          <h3>AirPods Pro 3</h3>
+          <span class="badge-condition" data-i18n="cond_new100">Máy mới 100%</span>
+          <div class="price">5.968.000đ</div>
+          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModalFromCard(this)">Tư vấn ngay</button>
+          <form class="lead-form" data-product="AirPods Pro 3 (Chính Hãng)" onsubmit="return submitLead(event,this)">
+            <label data-i18n="lead_label">Để lại SĐT, shop tư vấn ngay:</label>
+            <div class="lead-form-row">
+              <input type="tel" name="phone" placeholder="09xxxxxxxx" required pattern="0[0-9]{8,10}">
+              <button type="submit" data-i18n="send">Gửi</button>
+            </div>
+            <p class="lead-msg"></p>
+          </form>
+        </div>
+
+        <div class="product-card" data-base-name="Apple Pencil Pro (Chính Hãng)">
+          <div class="card-image">
+            <span class="badge-installment" data-i18n="installment">Trả góp 0%</span>
+            <img src="Ảnh Phụ Kiện Apple/Pen Pro.jpeg" alt="Apple Pencil Pro" loading="lazy" decoding="async">
+            <div class="card-float-icons">
+              <a class="ic-call" href="tel:0941319292" aria-label="Gọi ngay">📞</a>
+              <a class="ic-zalo" href="https://zalo.me/0941319292" aria-label="Chat Zalo">💬</a>
+            </div>
+          </div>
+          <h3>Apple Pencil Pro</h3>
+          <span class="badge-condition" data-i18n="cond_new100">Máy mới 100%</span>
+          <div class="price">3.268.000đ</div>
+          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModalFromCard(this)">Tư vấn ngay</button>
+          <form class="lead-form" data-product="Apple Pencil Pro (Chính Hãng)" onsubmit="return submitLead(event,this)">
+            <label data-i18n="lead_label">Để lại SĐT, shop tư vấn ngay:</label>
+            <div class="lead-form-row">
+              <input type="tel" name="phone" placeholder="09xxxxxxxx" required pattern="0[0-9]{8,10}">
+              <button type="submit" data-i18n="send">Gửi</button>
+            </div>
+            <p class="lead-msg"></p>
+          </form>
+        </div>
+
+        <div class="product-card" data-base-name="Apple Pencil USB-C (Chính Hãng)">
+          <div class="card-image">
+            <span class="badge-installment" data-i18n="installment">Trả góp 0%</span>
+            <img src="Ảnh Phụ Kiện Apple/Pen Type C.jpeg" alt="Apple Pencil USB-C" loading="lazy" decoding="async">
+            <div class="card-float-icons">
+              <a class="ic-call" href="tel:0941319292" aria-label="Gọi ngay">📞</a>
+              <a class="ic-zalo" href="https://zalo.me/0941319292" aria-label="Chat Zalo">💬</a>
+            </div>
+          </div>
+          <h3>Apple Pencil USB-C</h3>
+          <span class="badge-condition" data-i18n="cond_new100">Máy mới 100%</span>
+          <div class="price">2.468.000đ</div>
+          <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModalFromCard(this)">Tư vấn ngay</button>
+          <form class="lead-form" data-product="Apple Pencil USB-C (Chính Hãng)" onsubmit="return submitLead(event,this)">
+            <label data-i18n="lead_label">Để lại SĐT, shop tư vấn ngay:</label>
+            <div class="lead-form-row">
+              <input type="tel" name="phone" placeholder="09xxxxxxxx" required pattern="0[0-9]{8,10}">
+              <button type="submit" data-i18n="send">Gửi</button>
+            </div>
+            <p class="lead-msg"></p>
+          </form>
+        </div>
+
+      </div>
+      <p class="no-results" id="noResultsAccessories">Không tìm thấy phụ kiện phù hợp với từ khoá này.</p>
+    </div>
+  </section>
+
   <section id="khach-hang" class="customers-section">
     <div class="wrap">
       <div class="section-bar"><h2>💖 <span data-i18n="customers_title">Khách Hàng Minh Phong Mobile</span></h2></div>
@@ -2424,6 +2707,7 @@
     var I18N = {
       en: {
         menu_new:"New Phones", menu_used:"99% Used", menu_repair:"Repair",
+        menu_macbook:"MacBook", menu_ipad:"iPad", menu_accessories:"Accessories",
         nav_new:"New Phones", nav_used:"99% Used", nav_contact:"Contact",
         cta_hotsale:"Hot Sale", cta_repair:"Repair",
         hero_title:"Genuine iPhones & 99% Like-New at Great Prices",
@@ -2438,6 +2722,9 @@
         used_title:"Beautiful 99% Used iPhones",
         used_sub:"Like-new appearance, strong battery, thoroughly technically inspected",
         cond_used99:"Like-New 99%",
+        macbook_title:"Genuine MacBook", macbook_sub:"Original box, full accessories, official Apple warranty",
+        ipad_title:"Genuine iPad", ipad_sub:"Original box, full accessories, official Apple warranty",
+        accessories_title:"Genuine Apple Accessories", accessories_sub:"AirPods, Apple Pencil and genuine Apple accessories",
         customers_title:"Minh Phong Mobile Customers",
         customers_sub:"Customer photos receiving their phones — updated daily",
         customer_photo:"Customer photo",
@@ -2475,6 +2762,7 @@
       },
       ru: {
         menu_new:"Новые телефоны", menu_used:"Б/у 99%", menu_repair:"Ремонт",
+        menu_macbook:"MacBook", menu_ipad:"iPad", menu_accessories:"Аксессуары",
         nav_new:"Новые телефоны", nav_used:"Б/у 99%", nav_contact:"Контакты",
         cta_hotsale:"Горячие предложения", cta_repair:"Ремонт",
         hero_title:"Оригинальные iPhone и телефоны б/у 99% по отличным ценам",
@@ -2490,6 +2778,9 @@
         used_title:"Красивые iPhone б/у 99%",
         used_sub:"Внешний вид как новый, крепкий аккумулятор, тщательно проверены технически",
         cond_used99:"Как новый 99%",
+        macbook_title:"Оригинальные MacBook", macbook_sub:"Оригинальная коробка, полный комплект аксессуаров, официальная гарантия Apple",
+        ipad_title:"Оригинальные iPad", ipad_sub:"Оригинальная коробка, полный комплект аксессуаров, официальная гарантия Apple",
+        accessories_title:"Оригинальные аксессуары Apple", accessories_sub:"AirPods, Apple Pencil и оригинальные аксессуары Apple",
         customers_title:"Клиенты Minh Phong Mobile",
         customers_sub:"Фото клиентов с их новыми телефонами — обновляется ежедневно",
         customer_photo:"Фото клиента",
