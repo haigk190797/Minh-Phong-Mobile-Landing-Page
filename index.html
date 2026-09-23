@@ -448,17 +448,19 @@
   }
   .customer-track{
     display:flex;gap:14px;width:max-content;padding:0 20px;
-    animation:customerScroll 18s linear infinite;
+    animation:customerScroll 27s linear infinite;
   }
   .customer-track:hover{animation-play-state:paused;}
   @keyframes customerScroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
   .customer-photo{
     flex:0 0 130px;aspect-ratio:1/1;background:var(--gray-soft);border-radius:12px;
     display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;
-    border:1px dashed var(--line);color:var(--gray);
+    border:1px dashed var(--line);color:var(--gray);overflow:hidden;
   }
   .customer-photo .ic{font-size:26px;}
   .customer-photo .lbl{font-size:11px;font-weight:600;text-align:center;padding:0 6px;}
+  .customer-photo img{width:100%;height:100%;object-fit:cover;display:block;}
+  .customer-photo:has(img){border:none;}
   .customer-thanks{
     text-align:center;font-size:16px;font-style:italic;font-weight:600;
     color:var(--dark);max-width:560px;margin:0 auto;line-height:1.6;padding:0 20px;
@@ -481,6 +483,7 @@
     width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,.92);
     display:flex;align-items:center;justify-content:center;font-size:20px;color:var(--accent);
   }
+  .video-card video{aspect-ratio:9/16;width:100%;display:block;background:#000;}
   .video-caption{padding:12px;font-size:13.5px;color:var(--gray);text-align:center;font-weight:600;}
 
   footer{
@@ -2631,18 +2634,24 @@
     </div>
     <div class="customer-track-wrap">
       <div class="customer-track" id="customerTrack">
-        <div class="customer-photo"><span class="ic">📷</span><span class="lbl" data-i18n="customer_photo">Ảnh khách hàng</span></div>
-        <div class="customer-photo"><span class="ic">📷</span><span class="lbl" data-i18n="customer_photo">Ảnh khách hàng</span></div>
-        <div class="customer-photo"><span class="ic">📷</span><span class="lbl" data-i18n="customer_photo">Ảnh khách hàng</span></div>
-        <div class="customer-photo"><span class="ic">📷</span><span class="lbl" data-i18n="customer_photo">Ảnh khách hàng</span></div>
-        <div class="customer-photo"><span class="ic">📷</span><span class="lbl" data-i18n="customer_photo">Ảnh khách hàng</span></div>
-        <div class="customer-photo"><span class="ic">📷</span><span class="lbl" data-i18n="customer_photo">Ảnh khách hàng</span></div>
-        <div class="customer-photo" aria-hidden="true"><span class="ic">📷</span><span class="lbl" data-i18n="customer_photo">Ảnh khách hàng</span></div>
-        <div class="customer-photo" aria-hidden="true"><span class="ic">📷</span><span class="lbl" data-i18n="customer_photo">Ảnh khách hàng</span></div>
-        <div class="customer-photo" aria-hidden="true"><span class="ic">📷</span><span class="lbl" data-i18n="customer_photo">Ảnh khách hàng</span></div>
-        <div class="customer-photo" aria-hidden="true"><span class="ic">📷</span><span class="lbl" data-i18n="customer_photo">Ảnh khách hàng</span></div>
-        <div class="customer-photo" aria-hidden="true"><span class="ic">📷</span><span class="lbl" data-i18n="customer_photo">Ảnh khách hàng</span></div>
-        <div class="customer-photo" aria-hidden="true"><span class="ic">📷</span><span class="lbl" data-i18n="customer_photo">Ảnh khách hàng</span></div>
+        <div class="customer-photo"><img src="Ảnh khách hàng/818865596_1557434679732797_279348613573988115_n.jpg" alt="Khách hàng Minh Phong Mobile" loading="lazy" decoding="async"></div>
+        <div class="customer-photo"><img src="Ảnh khách hàng/819012125_1557434639732801_2799817139555111250_n.jpg" alt="Khách hàng Minh Phong Mobile" loading="lazy" decoding="async"></div>
+        <div class="customer-photo"><img src="Ảnh khách hàng/819175825_1557434656399466_5248783751257294121_n.jpg" alt="Khách hàng Minh Phong Mobile" loading="lazy" decoding="async"></div>
+        <div class="customer-photo"><img src="Ảnh khách hàng/819212213_1557434559732809_3558870126066304324_n.jpg" alt="Khách hàng Minh Phong Mobile" loading="lazy" decoding="async"></div>
+        <div class="customer-photo"><img src="Ảnh khách hàng/819276303_1557434606399471_287828601833641975_n.jpg" alt="Khách hàng Minh Phong Mobile" loading="lazy" decoding="async"></div>
+        <div class="customer-photo"><img src="Ảnh khách hàng/819746311_1557434516399480_9016113089916625399_n.jpg" alt="Khách hàng Minh Phong Mobile" loading="lazy" decoding="async"></div>
+        <div class="customer-photo"><img src="Ảnh khách hàng/820013179_1557434566399475_3313680461997803834_n.jpg" alt="Khách hàng Minh Phong Mobile" loading="lazy" decoding="async"></div>
+        <div class="customer-photo"><img src="Ảnh khách hàng/820131533_1557434526399479_4869822992699040169_n.jpg" alt="Khách hàng Minh Phong Mobile" loading="lazy" decoding="async"></div>
+        <div class="customer-photo"><img src="Ảnh khách hàng/820455022_1557434616399470_2596194680980689608_n.jpg" alt="Khách hàng Minh Phong Mobile" loading="lazy" decoding="async"></div>
+        <div class="customer-photo" aria-hidden="true"><img src="Ảnh khách hàng/818865596_1557434679732797_279348613573988115_n.jpg" alt="Khách hàng Minh Phong Mobile" loading="lazy" decoding="async"></div>
+        <div class="customer-photo" aria-hidden="true"><img src="Ảnh khách hàng/819012125_1557434639732801_2799817139555111250_n.jpg" alt="Khách hàng Minh Phong Mobile" loading="lazy" decoding="async"></div>
+        <div class="customer-photo" aria-hidden="true"><img src="Ảnh khách hàng/819175825_1557434656399466_5248783751257294121_n.jpg" alt="Khách hàng Minh Phong Mobile" loading="lazy" decoding="async"></div>
+        <div class="customer-photo" aria-hidden="true"><img src="Ảnh khách hàng/819212213_1557434559732809_3558870126066304324_n.jpg" alt="Khách hàng Minh Phong Mobile" loading="lazy" decoding="async"></div>
+        <div class="customer-photo" aria-hidden="true"><img src="Ảnh khách hàng/819276303_1557434606399471_287828601833641975_n.jpg" alt="Khách hàng Minh Phong Mobile" loading="lazy" decoding="async"></div>
+        <div class="customer-photo" aria-hidden="true"><img src="Ảnh khách hàng/819746311_1557434516399480_9016113089916625399_n.jpg" alt="Khách hàng Minh Phong Mobile" loading="lazy" decoding="async"></div>
+        <div class="customer-photo" aria-hidden="true"><img src="Ảnh khách hàng/820013179_1557434566399475_3313680461997803834_n.jpg" alt="Khách hàng Minh Phong Mobile" loading="lazy" decoding="async"></div>
+        <div class="customer-photo" aria-hidden="true"><img src="Ảnh khách hàng/820131533_1557434526399479_4869822992699040169_n.jpg" alt="Khách hàng Minh Phong Mobile" loading="lazy" decoding="async"></div>
+        <div class="customer-photo" aria-hidden="true"><img src="Ảnh khách hàng/820455022_1557434616399470_2596194680980689608_n.jpg" alt="Khách hàng Minh Phong Mobile" loading="lazy" decoding="async"></div>
       </div>
     </div>
     <p class="customer-thanks" data-i18n="customer_thanks">"Cảm ơn Quý khách vì đã cho phép Minh Phong Mobile được đồng hành."</p>
@@ -2654,16 +2663,40 @@
       <p class="section-sub" data-i18n="video_sub">Video review thật từ khách hàng — cập nhật thường xuyên</p>
       <div class="video-grid">
         <div class="video-card">
-          <div class="video-thumb"><span class="play">▶️</span></div>
-          <div class="video-caption" data-i18n="video_caption">Video đang cập nhật</div>
+          <video controls preload="metadata" playsinline muted>
+            <source src="Video Khách unbox/AD2C1BBA-63EA-4476-B153-0A7056AC473E.MOV" type="video/mp4">
+          </video>
+          <div class="video-caption" data-i18n="video_caption">Video khách hàng review</div>
         </div>
         <div class="video-card">
-          <div class="video-thumb"><span class="play">▶️</span></div>
-          <div class="video-caption" data-i18n="video_caption">Video đang cập nhật</div>
+          <video controls preload="metadata" playsinline muted>
+            <source src="Video Khách unbox/copy_0748CD71-4D7E-446B-B303-6469C65CEE8E.MOV" type="video/mp4">
+          </video>
+          <div class="video-caption" data-i18n="video_caption">Video khách hàng review</div>
         </div>
         <div class="video-card">
-          <div class="video-thumb"><span class="play">▶️</span></div>
-          <div class="video-caption" data-i18n="video_caption">Video đang cập nhật</div>
+          <video controls preload="metadata" playsinline muted>
+            <source src="Video Khách unbox/copy_237A6CA8-6028-472F-A032-BA24CB227AAB.MOV" type="video/mp4">
+          </video>
+          <div class="video-caption" data-i18n="video_caption">Video khách hàng review</div>
+        </div>
+        <div class="video-card">
+          <video controls preload="metadata" playsinline muted>
+            <source src="Video Khách unbox/copy_B08EE05B-50A5-4475-BE2F-ECE614064D01.MOV" type="video/mp4">
+          </video>
+          <div class="video-caption" data-i18n="video_caption">Video khách hàng review</div>
+        </div>
+        <div class="video-card">
+          <video controls preload="metadata" playsinline muted>
+            <source src="Video Khách unbox/copy_B582EB6D-6FE6-499B-A5A7-E651ED7D121D.MOV" type="video/mp4">
+          </video>
+          <div class="video-caption" data-i18n="video_caption">Video khách hàng review</div>
+        </div>
+        <div class="video-card">
+          <video controls preload="metadata" playsinline muted>
+            <source src="Video Khách unbox/copy_D609651A-7E4D-4997-9481-2EB460EEF7E6.MOV" type="video/mp4">
+          </video>
+          <div class="video-caption" data-i18n="video_caption">Video khách hàng review</div>
         </div>
       </div>
     </div>
