@@ -2858,9 +2858,9 @@
         entries.forEach(function (entry) {
           var v = entry.target;
           if (entry.isIntersecting) {
-            v.play().catch(function () {});
+            if (v.paused) v.play().catch(function () {});
           } else {
-            v.pause();
+            if (!v.paused) v.pause();
           }
         });
       }, { threshold: 0.2 });
