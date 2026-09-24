@@ -563,14 +563,14 @@
   @keyframes bubbleBounce{0%,100%{transform:translateY(0);}50%{transform:translateY(-5px);}}
   .mascot-tilt{transition:transform .18s ease-out;}
   .mascot-btn{
-    width:68px;height:68px;border-radius:50%;border:none;padding:0;cursor:grab;
-    background:#fff;box-shadow:0 8px 20px rgba(0,0,0,.3);
-    overflow:hidden;position:relative;display:block;
+    width:82px;height:108px;border:none;padding:0;cursor:grab;
+    background:transparent;box-shadow:none;
+    overflow:visible;position:relative;display:block;
     animation:mascotBob 2.6s ease-in-out infinite;
   }
   .mascot-btn img{
-    width:112%;height:112%;object-fit:cover;display:block;pointer-events:none;
-    position:relative;left:-6%;top:-6%;
+    width:100%;height:100%;object-fit:contain;display:block;pointer-events:none;
+    filter:drop-shadow(0 8px 8px rgba(0,0,0,.32));
     transition:opacity .18s ease;
   }
   @keyframes mascotBob{0%,100%{transform:translateY(0);}50%{transform:translateY(-4px);}}
@@ -3127,7 +3127,7 @@
       var walkTimer = null;
 
       function bounds() {
-        var w = widget.offsetWidth || 68, h = widget.offsetHeight || 68;
+        var w = widget.offsetWidth || 82, h = widget.offsetHeight || 108;
         return {
           minX: 10, maxX: Math.max(10, window.innerWidth - w - 10),
           minY: 84, maxY: Math.max(84, window.innerHeight - h - 90)
@@ -3170,7 +3170,7 @@
       }
 
       // initial spot: bottom-right area
-      place(Math.max(10, window.innerWidth - 92), Math.max(84, window.innerHeight - 170), 0);
+      place(Math.max(10, window.innerWidth - 106), Math.max(84, window.innerHeight - 210), 0);
       scheduleWalk();
 
       window.addEventListener('resize', function () {
