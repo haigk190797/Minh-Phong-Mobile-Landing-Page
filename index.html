@@ -182,24 +182,7 @@
   .slogan-brand{
     display:flex;align-items:center;justify-content:center;
   }
-  .slogan-logo-wrap{position:relative;width:100%;max-width:520px;}
-  .slogan-logo-full{height:auto;width:100%;object-fit:contain;display:block;position:relative;z-index:1;}
-  .slogan-logo-glow{
-    position:absolute;left:50%;top:50%;width:104.9%;height:104.9%;
-    transform:translate(-50%,-50%) rotate(0deg);
-    background:repeating-conic-gradient(from 0deg,
-      #fff 0deg 2deg,
-      rgba(255,170,60,.95) 2deg 5deg,
-      transparent 5deg 16deg);
-    -webkit-mask-image:url(assets/logo-mp-ring-mask.png);
-    mask-image:url(assets/logo-mp-ring-mask.png);
-    -webkit-mask-size:100% 100%;mask-size:100% 100%;
-    -webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;
-    -webkit-mask-position:center;mask-position:center;
-    animation:logoGlowSpin 2.4s linear infinite;
-    pointer-events:none;
-  }
-  @keyframes logoGlowSpin{ to { transform:translate(-50%,-50%) rotate(360deg); } }
+  .slogan-logo-full{height:auto;width:100%;max-width:520px;object-fit:contain;display:block;}
 
   /* Hot Sale section */
   .hotsale-section{
@@ -724,10 +707,7 @@
   <section class="slogan-bar">
     <div class="wrap">
       <div class="slogan-brand">
-        <div class="slogan-logo-wrap">
-          <span class="slogan-logo-glow" aria-hidden="true"></span>
-          <img src="assets/logo-mp-full.png" alt="Minh Phong Mobile - iPhone Chính Hãng - Giá Cả Cạnh Tranh - Hậu Mãi Trọn Đời" class="slogan-logo-full">
-        </div>
+        <img src="assets/logo-mp-full.png" alt="Minh Phong Mobile - iPhone Chính Hãng - Giá Cả Cạnh Tranh - Hậu Mãi Trọn Đời" class="slogan-logo-full">
       </div>
     </div>
   </section>
