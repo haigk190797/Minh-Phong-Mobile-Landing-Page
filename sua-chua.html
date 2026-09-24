@@ -1089,6 +1089,16 @@
       if (initBtn) initBtn.classList.add('active');
     }
 
+    window.addEventListener('storage', function (e) {
+      if (e.key !== 'mpm_lang') return;
+      currentLang = e.newValue || 'vi';
+      applyTranslations(currentLang);
+      var btnRu = document.getElementById('langBtnRu');
+      var btnEn = document.getElementById('langBtnEn');
+      if (btnRu) btnRu.classList.toggle('active', currentLang === 'ru');
+      if (btnEn) btnEn.classList.toggle('active', currentLang === 'en');
+    });
+
     function normalizeSearchText(s) {
       return s
         .normalize('NFD').replace(/[̀-ͯ]/g, '')

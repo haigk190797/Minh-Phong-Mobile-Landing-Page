@@ -725,14 +725,14 @@
           <img src="assets/logo-mp-full.png" alt="Minh Phong Mobile - iPhone Chính Hãng - Giá Cả Cạnh Tranh - Hậu Mãi Trọn Đời" class="slogan-logo-full">
         </div>
         <div class="slogan-why">
-          <h3>Tại sao Minh Phong Mobile lại được khách hàng tin chọn?</h3>
+          <h3 data-i18n="why2_title">Tại sao Minh Phong Mobile lại được khách hàng tin chọn?</h3>
           <ul>
-            <li>Máy chuẩn, đúng mô tả, giá tiền đi đôi chất lượng.</li>
-            <li>Hỗ trợ góp 0Đ - Hỗ trợ nợ chú ý.</li>
-            <li>Bảo hành RƠI VỠ ĐỘC QUYỀN - 1 ĐỔI 1 ĐẾN 12 THÁNG.</li>
-            <li>Đội ngũ hỗ trợ online nhanh chóng, hoạt động 14/24.</li>
-            <li>Thu cũ đổi mới trợ giá cao nhất thị trường.</li>
-            <li>3 Chi nhánh ở Khánh Hoà - Thuận lợi cho việc bảo hành - hậu mãi.</li>
+            <li data-i18n="why2_li1">Máy chuẩn, đúng mô tả, giá tiền đi đôi chất lượng.</li>
+            <li data-i18n="why2_li2">Hỗ trợ góp 0Đ - Hỗ trợ nợ chú ý.</li>
+            <li data-i18n="why2_li3">Bảo hành RƠI VỠ ĐỘC QUYỀN - 1 ĐỔI 1 ĐẾN 12 THÁNG.</li>
+            <li data-i18n="why2_li4">Đội ngũ hỗ trợ online nhanh chóng, hoạt động 14/24.</li>
+            <li data-i18n="why2_li5">Thu cũ đổi mới trợ giá cao nhất thị trường.</li>
+            <li data-i18n="why2_li6">3 Chi nhánh ở Khánh Hoà - Thuận lợi cho việc bảo hành - hậu mãi.</li>
           </ul>
         </div>
       </div>
@@ -2571,7 +2571,7 @@
   </div>
 
   <div class="mascot-widget" id="mascotWidget">
-      <div class="mascot-bubble" id="mascotBubble">Nhấn vào để liên hệ ngay</div>
+      <div class="mascot-bubble" id="mascotBubble" data-i18n="mascot_cta">Nhấn vào để liên hệ ngay</div>
       <div class="mascot-menu" id="mascotMenu" hidden>
         <img src="assets/mascot-mp.png" class="mascot-menu-img" alt="Minh Phong Mobile">
         <p class="mascot-menu-title">Liên hệ ngay với Minh Phong Mobile</p>
@@ -2676,6 +2676,14 @@
         why3_p:"New phones warrantied by the manufacturer, 99% phones warrantied in-store.",
         why4_h:"Fast delivery",
         why4_p:"Nationwide delivery, inspect the phone before you pay.",
+        why2_title:"Why Do Customers Trust Minh Phong Mobile?",
+        why2_li1:"Genuine phones, accurately described — quality matches the price.",
+        why2_li2:"0% installment support - flexible payment assistance.",
+        why2_li3:"Exclusive DROP & CRACK warranty - 1-to-1 replacement for up to 12 months.",
+        why2_li4:"Fast online support team, active 14/24.",
+        why2_li5:"Trade-in for a new phone at the market's best value.",
+        why2_li6:"3 branches in Khánh Hòa - convenient for warranty & after-sales service.",
+        mascot_cta:"Tap to contact us now",
         contact_title:"Need Advice? Contact Us Now",
         contact_sub:"The Minh Phong Mobile team is ready to help you choose the right phone",
         call_word:"Call",
@@ -2728,6 +2736,14 @@
         why3_p:"Новые телефоны — гарантия производителя, телефоны б/у 99% — гарантия магазина.",
         why4_h:"Быстрая доставка",
         why4_p:"Доставка по всей стране, проверка телефона перед оплатой.",
+        why2_title:"Почему клиенты доверяют Minh Phong Mobile?",
+        why2_li1:"Подлинные телефоны, точное описание — качество соответствует цене.",
+        why2_li2:"Рассрочка 0% - гибкая поддержка оплаты.",
+        why2_li3:"Эксклюзивная гарантия от падений и трещин - замена 1 к 1 до 12 месяцев.",
+        why2_li4:"Быстрая онлайн-поддержка, работаем 14/24.",
+        why2_li5:"Trade-in вашего телефона по лучшей цене на рынке.",
+        why2_li6:"3 филиала в Кханьхоа - удобно для гарантии и сервиса.",
+        mascot_cta:"Нажмите, чтобы связаться с нами",
         contact_title:"Нужна консультация? Свяжитесь с нами",
         contact_sub:"Команда Minh Phong Mobile готова помочь вам выбрать подходящий телефон",
         call_word:"Позвонить",
@@ -2793,6 +2809,16 @@
       var initBtn = document.getElementById(currentLang === 'ru' ? 'langBtnRu' : 'langBtnEn');
       if (initBtn) initBtn.classList.add('active');
     }
+
+    window.addEventListener('storage', function (e) {
+      if (e.key !== 'mpm_lang') return;
+      currentLang = e.newValue || 'vi';
+      applyTranslations(currentLang);
+      var btnRu = document.getElementById('langBtnRu');
+      var btnEn = document.getElementById('langBtnEn');
+      if (btnRu) btnRu.classList.toggle('active', currentLang === 'ru');
+      if (btnEn) btnEn.classList.toggle('active', currentLang === 'en');
+    });
 
     function normalizeSearchText(s) {
       return s
