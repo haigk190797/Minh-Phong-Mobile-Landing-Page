@@ -187,16 +187,16 @@
   .slogan-logo-glow{
     position:absolute;left:50%;top:50%;width:104.9%;height:104.9%;
     transform:translate(-50%,-50%) rotate(0deg);
-    background:conic-gradient(from 0deg,
-      transparent 0%, transparent 78%,
-      rgba(255,196,102,.9) 86%, #fff 90%, rgba(255,196,102,.9) 94%,
-      transparent 100%);
+    background:repeating-conic-gradient(from 0deg,
+      #fff 0deg 2deg,
+      rgba(255,170,60,.95) 2deg 5deg,
+      transparent 5deg 16deg);
     -webkit-mask-image:url(assets/logo-mp-ring-mask.png);
     mask-image:url(assets/logo-mp-ring-mask.png);
     -webkit-mask-size:100% 100%;mask-size:100% 100%;
     -webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;
     -webkit-mask-position:center;mask-position:center;
-    animation:logoGlowSpin 3.2s linear infinite;
+    animation:logoGlowSpin 2.4s linear infinite;
     pointer-events:none;
   }
   @keyframes logoGlowSpin{ to { transform:translate(-50%,-50%) rotate(360deg); } }
