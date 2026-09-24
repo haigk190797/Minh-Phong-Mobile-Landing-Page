@@ -3035,14 +3035,13 @@
       if (!widget || !tilt || !btn || !img) return;
 
       var DEFAULT_IMG = 'assets/mascot-mp.png';
+      var EXPR_DIR = 'assets/mascot/expr/';
       var EXPRESSIONS = [
-        'assets/mascot/vui-ve.png',
-        'assets/mascot/hao-hung.png',
-        'assets/mascot/suy-nghi.png',
-        'assets/mascot/tu-tin.png',
-        'assets/mascot/may-loi.png',
-        'assets/mascot/san-sang-ho-tro.png'
-      ];
+        'xin-chao', 'hello', 'cam-on', 'da', 'ngau', 'co-lien', 'sua-ngay', 'tuyet-voi', 'yeu-khach', 'ok',
+        'haha', 'chu-y', 'wow', 'thac-mac', 'hmm', 'quyet-liet', 'huhu', 'de-thuong', 'team-mp', 'dang-ban',
+        'co-len', 'chot-don', 'giau-len', 'yeu-qua', 'nghe-ne', 'ca-phe-khong', 'lam-ngay', 'da-xong', 'qua-da', 'co-san',
+        'xin-loi', 'da-vang', 'troi-oi', 'de-em-xem', 'dinh', 'qua-cho-ban', 'inbox-ngay', 'nhanh-gon', 'minh-phong-mobile', 'i-love-mp'
+      ].map(function (n) { return EXPR_DIR + n + '.png'; });
       var WALK_FRAMES_RIGHT = [
         'assets/mascot/walk/walk-right-1.png',
         'assets/mascot/walk/walk-right-2.png',
