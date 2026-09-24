@@ -177,12 +177,32 @@
   /* Slogan bar */
   .slogan-bar{
     background:linear-gradient(135deg,var(--graybg),var(--graybg-2));
-    padding:22px 20px;
+    padding:32px 20px;
+  }
+  .slogan-row{
+    display:flex;align-items:center;gap:40px;flex-wrap:wrap;
   }
   .slogan-brand{
-    display:flex;align-items:center;justify-content:center;
+    flex:1 1 320px;display:flex;align-items:center;justify-content:center;
   }
-  .slogan-logo-full{height:auto;width:100%;max-width:520px;object-fit:contain;display:block;}
+  .slogan-logo-full{height:auto;width:100%;max-width:460px;object-fit:contain;display:block;}
+  .slogan-why{flex:1 1 320px;min-width:280px;}
+  .slogan-why h3{
+    color:#fff;font-size:19px;font-weight:800;line-height:1.35;margin-bottom:14px;
+  }
+  .slogan-why ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
+  .slogan-why li{
+    position:relative;padding-left:24px;
+    font-size:13.5px;line-height:1.5;color:#E8E3DA;
+  }
+  .slogan-why li::before{
+    content:"✓";position:absolute;left:0;top:0;
+    color:var(--accent);font-weight:800;
+  }
+  @media (max-width:760px){
+    .slogan-row{flex-direction:column;}
+    .slogan-brand{max-width:360px;}
+  }
 
   /* Hot Sale section */
   .hotsale-section{
@@ -700,8 +720,21 @@
 
   <section class="slogan-bar">
     <div class="wrap">
-      <div class="slogan-brand">
-        <img src="assets/logo-mp-full.png" alt="Minh Phong Mobile - iPhone Chính Hãng - Giá Cả Cạnh Tranh - Hậu Mãi Trọn Đời" class="slogan-logo-full">
+      <div class="slogan-row">
+        <div class="slogan-brand">
+          <img src="assets/logo-mp-full.png" alt="Minh Phong Mobile - iPhone Chính Hãng - Giá Cả Cạnh Tranh - Hậu Mãi Trọn Đời" class="slogan-logo-full">
+        </div>
+        <div class="slogan-why">
+          <h3>Tại sao Minh Phong Mobile lại được khách hàng tin chọn?</h3>
+          <ul>
+            <li>Máy chuẩn, đúng mô tả, giá tiền đi đôi chất lượng.</li>
+            <li>Hỗ trợ góp 0Đ - Hỗ trợ nợ chú ý.</li>
+            <li>Bảo hành RƠI VỠ ĐỘC QUYỀN - 1 ĐỔI 1 ĐẾN 12 THÁNG.</li>
+            <li>Đội ngũ hỗ trợ online nhanh chóng, hoạt động 14/24.</li>
+            <li>Thu cũ đổi mới trợ giá cao nhất thị trường.</li>
+            <li>3 Chi nhánh ở Khánh Hoà - Thuận lợi cho việc bảo hành - hậu mãi.</li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
