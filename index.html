@@ -1043,7 +1043,7 @@
       <p class="section-sub" data-i18n="new_sub">Nguyên hộp, đầy đủ phụ kiện, bảo hành chính hãng</p>
       <div class="product-grid">
 
-        <div class="product-card" data-base-name="iPhone 18 Pro Max (Máy Mới)" data-color="Đen">
+        <div class="product-card" data-base-name="iPhone 18 Pro Max (Máy Mới)" data-capacity="256GB" data-color="Đen">
           <div class="card-image">
             <span class="badge-installment" data-i18n="installment">Trả góp 0%</span>
             <span class="badge-hot">🔥 <span data-i18n="hot">Hot</span></span>
@@ -1054,18 +1054,37 @@
             </div>
           </div>
           <h3>iPhone 18 Pro Max</h3>
-          <div class="color-swatches">
-            <button type="button" class="swatch" style="background:#5C1A2C" onclick="selectColor(this,'Đỏ','45.868.000đ','ảnh Máy NEW/18Promax Đỏ NEw.webp')" aria-label="Màu Đỏ" title="Đỏ"></button>
-            <button type="button" class="swatch" style="background:#AFD8E8" onclick="selectColor(this,'Xanh','45.868.000đ','ảnh Máy NEW/18Promax Xanh NEW.jpg')" aria-label="Màu Xanh" title="Xanh"></button>
-            <button type="button" class="swatch" style="background:#CBCFD3" onclick="selectColor(this,'Trắng','45.868.000đ','ảnh Máy NEW/18Promax Trắng NEW.webp')" aria-label="Màu Trắng" title="Trắng"></button>
-            <button type="button" class="swatch active" style="background:#1C1C1E" onclick="selectColor(this,'Đen','43.568.000đ','ảnh Máy NEW/18Promax Đen NEW.webp')" aria-label="Màu Đen" title="Đen"></button>
+          <div class="capacity-swatches">
+            <button type="button" class="capacity-btn active" onclick="selectCapacity(this,'256GB')">256GB</button>
+            <button type="button" class="capacity-btn" onclick="selectCapacity(this,'512GB')">512GB</button>
+            <button type="button" class="capacity-btn" onclick="selectCapacity(this,'1TB')">1TB</button>
+          </div>
+          <div class="color-groups">
+            <div class="color-group" data-capacity="256GB">
+              <button type="button" class="swatch active" style="background:#1C1C1E" data-color="Đen" data-price="43.568.000đ" data-img="ảnh Máy NEW/18Promax Đen NEW.webp" onclick="selectColor99(this)" aria-label="Màu Đen" title="Đen"></button>
+              <button type="button" class="swatch" style="background:#5C1A2C" data-color="Đỏ Rượu Vang" data-price="47.968.000đ" data-img="ảnh Máy NEW/18Promax Đỏ NEw.webp" onclick="selectColor99(this)" aria-label="Màu Đỏ Rượu Vang" title="Đỏ Rượu Vang"></button>
+              <button type="button" class="swatch" style="background:#AFD8E8" data-color="Xanh Băng Thanh" data-price="45.968.000đ" data-img="ảnh Máy NEW/18Promax Xanh NEW.jpg" onclick="selectColor99(this)" aria-label="Màu Xanh Băng Thanh" title="Xanh Băng Thanh"></button>
+              <button type="button" class="swatch" style="background:#CBCFD3" data-color="Bạc" data-price="45.868.000đ" data-img="ảnh Máy NEW/18Promax Trắng NEW.webp" onclick="selectColor99(this)" aria-label="Màu Bạc" title="Bạc"></button>
+            </div>
+            <div class="color-group" data-capacity="512GB" hidden>
+              <button type="button" class="swatch active" style="background:#1C1C1E" data-color="Đen" data-price="49.968.000đ" data-img="ảnh Máy NEW/18Promax Đen NEW.webp" onclick="selectColor99(this)" aria-label="Màu Đen" title="Đen"></button>
+              <button type="button" class="swatch" style="background:#5C1A2C" data-color="Đỏ Rượu Vang" data-price="53.568.000đ" data-img="ảnh Máy NEW/18Promax Đỏ NEw.webp" onclick="selectColor99(this)" aria-label="Màu Đỏ Rượu Vang" title="Đỏ Rượu Vang"></button>
+              <button type="button" class="swatch" style="background:#AFD8E8" data-color="Xanh Băng Thanh" data-price="51.568.000đ" data-img="ảnh Máy NEW/18Promax Xanh NEW.jpg" onclick="selectColor99(this)" aria-label="Màu Xanh Băng Thanh" title="Xanh Băng Thanh"></button>
+              <button type="button" class="swatch" style="background:#CBCFD3" data-color="Bạc" data-price="49.968.000đ" data-img="ảnh Máy NEW/18Promax Trắng NEW.webp" onclick="selectColor99(this)" aria-label="Màu Bạc" title="Bạc"></button>
+            </div>
+            <div class="color-group" data-capacity="1TB" hidden>
+              <button type="button" class="swatch active" style="background:#1C1C1E" data-color="Đen" data-price="Liên hệ trực tiếp" data-img="ảnh Máy NEW/18Promax Đen NEW.webp" onclick="selectColor99(this)" aria-label="Màu Đen" title="Đen"></button>
+              <button type="button" class="swatch" style="background:#5C1A2C" data-color="Đỏ Rượu Vang" data-price="Liên hệ trực tiếp" data-img="ảnh Máy NEW/18Promax Đỏ NEw.webp" onclick="selectColor99(this)" aria-label="Màu Đỏ Rượu Vang" title="Đỏ Rượu Vang"></button>
+              <button type="button" class="swatch" style="background:#AFD8E8" data-color="Xanh Băng Thanh" data-price="Liên hệ trực tiếp" data-img="ảnh Máy NEW/18Promax Xanh NEW.jpg" onclick="selectColor99(this)" aria-label="Màu Xanh Băng Thanh" title="Xanh Băng Thanh"></button>
+              <button type="button" class="swatch" style="background:#CBCFD3" data-color="Bạc" data-price="Liên hệ trực tiếp" data-img="ảnh Máy NEW/18Promax Trắng NEW.webp" onclick="selectColor99(this)" aria-label="Màu Bạc" title="Bạc"></button>
+            </div>
           </div>
           <span class="badge-condition" data-i18n="cond_new100">Máy mới 100%</span>
           <div class="price">43.568.000đ</div>
           <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModalFromCard(this)">Tư vấn ngay</button>
         </div>
 
-        <div class="product-card" data-base-name="iPhone 18 Pro (Máy Mới)" data-color="Đỏ Rượu Vang">
+        <div class="product-card" data-base-name="iPhone 18 Pro (Máy Mới)" data-capacity="256GB" data-color="Đỏ Rượu Vang">
           <div class="card-image">
             <span class="badge-installment" data-i18n="installment">Trả góp 0%</span>
             <span class="badge-hot">🔥 <span data-i18n="hot">Hot</span></span>
@@ -1076,18 +1095,30 @@
             </div>
           </div>
           <h3>iPhone 18 Pro</h3>
-          <div class="color-swatches">
-            <button type="button" class="swatch active" style="background:#5C1A2C" onclick="selectColor(this,'Đỏ','39.568.000đ','ảnh Máy NEW/18Pro Đỏ NEw.webp')" aria-label="Màu Đỏ" title="Đỏ"></button>
-            <button type="button" class="swatch" style="background:#AFD8E8" onclick="selectColor(this,'Xanh','39.568.000đ','ảnh Máy NEW/18Pro Xanh NEW.jpg')" aria-label="Màu Xanh" title="Xanh"></button>
-            <button type="button" class="swatch" style="background:#CBCFD3" onclick="selectColor(this,'Trắng','39.568.000đ','ảnh Máy NEW/18Pro Trắng NEW.webp')" aria-label="Màu Trắng" title="Trắng"></button>
-            <button type="button" class="swatch" style="background:#1C1C1E" onclick="selectColor(this,'Đen','39.568.000đ','ảnh Máy NEW/18Pro Đen NEW.webp')" aria-label="Màu Đen" title="Đen"></button>
+          <div class="capacity-swatches">
+            <button type="button" class="capacity-btn active" onclick="selectCapacity(this,'256GB')">256GB</button>
+            <button type="button" class="capacity-btn" onclick="selectCapacity(this,'512GB')">512GB</button>
+          </div>
+          <div class="color-groups">
+            <div class="color-group" data-capacity="256GB">
+              <button type="button" class="swatch active" style="background:#5C1A2C" data-color="Đỏ Rượu Vang" data-price="39.968.000đ" data-img="ảnh Máy NEW/18Pro Đỏ NEw.webp" onclick="selectColor99(this)" aria-label="Màu Đỏ Rượu Vang" title="Đỏ Rượu Vang"></button>
+              <button type="button" class="swatch" style="background:#AFD8E8" data-color="Xanh Băng Thanh" data-price="39.968.000đ" data-img="ảnh Máy NEW/18Pro Xanh NEW.jpg" onclick="selectColor99(this)" aria-label="Màu Xanh Băng Thanh" title="Xanh Băng Thanh"></button>
+              <button type="button" class="swatch" style="background:#CBCFD3" data-color="Bạc" data-price="39.968.000đ" data-img="ảnh Máy NEW/18Pro Trắng NEW.webp" onclick="selectColor99(this)" aria-label="Màu Bạc" title="Bạc"></button>
+              <button type="button" class="swatch" style="background:#1C1C1E" data-color="Đen" data-price="39.968.000đ" data-img="ảnh Máy NEW/18Pro Đen NEW.webp" onclick="selectColor99(this)" aria-label="Màu Đen" title="Đen"></button>
+            </div>
+            <div class="color-group" data-capacity="512GB" hidden>
+              <button type="button" class="swatch active" style="background:#5C1A2C" data-color="Đỏ Rượu Vang" data-price="Liên hệ trực tiếp" data-img="ảnh Máy NEW/18Pro Đỏ NEw.webp" onclick="selectColor99(this)" aria-label="Màu Đỏ Rượu Vang" title="Đỏ Rượu Vang"></button>
+              <button type="button" class="swatch" style="background:#AFD8E8" data-color="Xanh Băng Thanh" data-price="Liên hệ trực tiếp" data-img="ảnh Máy NEW/18Pro Xanh NEW.jpg" onclick="selectColor99(this)" aria-label="Màu Xanh Băng Thanh" title="Xanh Băng Thanh"></button>
+              <button type="button" class="swatch" style="background:#CBCFD3" data-color="Bạc" data-price="Liên hệ trực tiếp" data-img="ảnh Máy NEW/18Pro Trắng NEW.webp" onclick="selectColor99(this)" aria-label="Màu Bạc" title="Bạc"></button>
+              <button type="button" class="swatch" style="background:#1C1C1E" data-color="Đen" data-price="Liên hệ trực tiếp" data-img="ảnh Máy NEW/18Pro Đen NEW.webp" onclick="selectColor99(this)" aria-label="Màu Đen" title="Đen"></button>
+            </div>
           </div>
           <span class="badge-condition" data-i18n="cond_new100">Máy mới 100%</span>
-          <div class="price">39.568.000đ</div>
+          <div class="price">39.968.000đ</div>
           <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModalFromCard(this)">Tư vấn ngay</button>
         </div>
 
-        <div class="product-card" data-base-name="iPhone 17 Pro Max (Máy Mới)" data-color="Cam">
+        <div class="product-card" data-base-name="iPhone 17 Pro Max (Máy Mới)" data-capacity="256GB" data-color="Cam">
           <div class="card-image">
             <span class="badge-installment" data-i18n="installment">Trả góp 0%</span>
             <span class="badge-hot">🔥 <span data-i18n="hot">Hot</span></span>
@@ -1098,17 +1129,34 @@
             </div>
           </div>
           <h3>iPhone 17 Pro Max</h3>
-          <div class="color-swatches">
-            <button type="button" class="swatch active" style="background:#D9642B" onclick="selectColor(this,'Cam','33.968.000đ','ảnh Máy NEW/17Promax Cam.webp')" aria-label="Màu Cam" title="Cam"></button>
-            <button type="button" class="swatch" style="background:#CBCFD3" onclick="selectColor(this,'Trắng','33.968.000đ','ảnh Máy NEW/17Promax Trắng NEW.png')" aria-label="Màu Trắng" title="Trắng"></button>
-            <button type="button" class="swatch" style="background:#232E45" onclick="selectColor(this,'Xanh','33.968.000đ','ảnh Máy NEW/17Promax Xanh NEW.jpg')" aria-label="Màu Xanh" title="Xanh"></button>
+          <div class="capacity-swatches">
+            <button type="button" class="capacity-btn active" onclick="selectCapacity(this,'256GB')">256GB</button>
+            <button type="button" class="capacity-btn" onclick="selectCapacity(this,'512GB')">512GB</button>
+            <button type="button" class="capacity-btn" onclick="selectCapacity(this,'1TB')">1TB</button>
+          </div>
+          <div class="color-groups">
+            <div class="color-group" data-capacity="256GB">
+              <button type="button" class="swatch active" style="background:#D9642B" data-color="Cam" data-price="33.968.000đ" data-img="ảnh Máy NEW/17Promax Cam.webp" onclick="selectColor99(this)" aria-label="Màu Cam" title="Cam"></button>
+              <button type="button" class="swatch" style="background:#CBCFD3" data-color="Bạc" data-price="33.968.000đ" data-img="ảnh Máy NEW/17Promax Trắng NEW.png" onclick="selectColor99(this)" aria-label="Màu Bạc" title="Bạc"></button>
+              <button type="button" class="swatch" style="background:#232E45" data-color="Xanh" data-price="33.968.000đ" data-img="ảnh Máy NEW/17Promax Xanh NEW.jpg" onclick="selectColor99(this)" aria-label="Màu Xanh" title="Xanh"></button>
+            </div>
+            <div class="color-group" data-capacity="512GB" hidden>
+              <button type="button" class="swatch active" style="background:#D9642B" data-color="Cam" data-price="40.968.000đ" data-img="ảnh Máy NEW/17Promax Cam.webp" onclick="selectColor99(this)" aria-label="Màu Cam" title="Cam"></button>
+              <button type="button" class="swatch" style="background:#CBCFD3" data-color="Bạc" data-price="40.968.000đ" data-img="ảnh Máy NEW/17Promax Trắng NEW.png" onclick="selectColor99(this)" aria-label="Màu Bạc" title="Bạc"></button>
+              <button type="button" class="swatch" style="background:#232E45" data-color="Xanh" data-price="40.968.000đ" data-img="ảnh Máy NEW/17Promax Xanh NEW.jpg" onclick="selectColor99(this)" aria-label="Màu Xanh" title="Xanh"></button>
+            </div>
+            <div class="color-group" data-capacity="1TB" hidden>
+              <button type="button" class="swatch active" style="background:#D9642B" data-color="Cam" data-price="Liên hệ trực tiếp" data-img="ảnh Máy NEW/17Promax Cam.webp" onclick="selectColor99(this)" aria-label="Màu Cam" title="Cam"></button>
+              <button type="button" class="swatch" style="background:#CBCFD3" data-color="Bạc" data-price="Liên hệ trực tiếp" data-img="ảnh Máy NEW/17Promax Trắng NEW.png" onclick="selectColor99(this)" aria-label="Màu Bạc" title="Bạc"></button>
+              <button type="button" class="swatch" style="background:#232E45" data-color="Xanh" data-price="Liên hệ trực tiếp" data-img="ảnh Máy NEW/17Promax Xanh NEW.jpg" onclick="selectColor99(this)" aria-label="Màu Xanh" title="Xanh"></button>
+            </div>
           </div>
           <span class="badge-condition" data-i18n="cond_new100">Máy mới 100%</span>
           <div class="price">33.968.000đ</div>
           <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModalFromCard(this)">Tư vấn ngay</button>
         </div>
 
-        <div class="product-card" data-base-name="iPhone 17 Pro (Máy Mới)" data-color="Cam">
+        <div class="product-card" data-base-name="iPhone 17 Pro (Máy Mới)" data-capacity="256GB" data-color="Cam">
           <div class="card-image">
             <span class="badge-installment" data-i18n="installment">Trả góp 0%</span>
             <span class="badge-hot">🔥 <span data-i18n="hot">Hot</span></span>
@@ -1119,17 +1167,34 @@
             </div>
           </div>
           <h3>iPhone 17 Pro</h3>
-          <div class="color-swatches">
-            <button type="button" class="swatch active" style="background:#D9642B" onclick="selectColor(this,'Cam','31.968.000đ','ảnh Máy NEW/17Promax Cam.webp')" aria-label="Màu Cam" title="Cam"></button>
-            <button type="button" class="swatch" style="background:#CBCFD3" onclick="selectColor(this,'Trắng','31.968.000đ','ảnh Máy NEW/17Promax Trắng NEW.png')" aria-label="Màu Trắng" title="Trắng"></button>
-            <button type="button" class="swatch" style="background:#232E45" onclick="selectColor(this,'Xanh','31.968.000đ','ảnh Máy NEW/17Promax Xanh NEW.jpg')" aria-label="Màu Xanh" title="Xanh"></button>
+          <div class="capacity-swatches">
+            <button type="button" class="capacity-btn active" onclick="selectCapacity(this,'256GB')">256GB</button>
+            <button type="button" class="capacity-btn" onclick="selectCapacity(this,'512GB')">512GB</button>
+            <button type="button" class="capacity-btn" onclick="selectCapacity(this,'1TB')">1TB</button>
+          </div>
+          <div class="color-groups">
+            <div class="color-group" data-capacity="256GB">
+              <button type="button" class="swatch active" style="background:#D9642B" data-color="Cam" data-price="31.968.000đ" data-img="ảnh Máy NEW/17Promax Cam.webp" onclick="selectColor99(this)" aria-label="Màu Cam" title="Cam"></button>
+              <button type="button" class="swatch" style="background:#CBCFD3" data-color="Bạc" data-price="31.968.000đ" data-img="ảnh Máy NEW/17Promax Trắng NEW.png" onclick="selectColor99(this)" aria-label="Màu Bạc" title="Bạc"></button>
+              <button type="button" class="swatch" style="background:#232E45" data-color="Xanh" data-price="31.968.000đ" data-img="ảnh Máy NEW/17Promax Xanh NEW.jpg" onclick="selectColor99(this)" aria-label="Màu Xanh" title="Xanh"></button>
+            </div>
+            <div class="color-group" data-capacity="512GB" hidden>
+              <button type="button" class="swatch active" style="background:#D9642B" data-color="Cam" data-price="Liên hệ trực tiếp" data-img="ảnh Máy NEW/17Promax Cam.webp" onclick="selectColor99(this)" aria-label="Màu Cam" title="Cam"></button>
+              <button type="button" class="swatch" style="background:#CBCFD3" data-color="Bạc" data-price="Liên hệ trực tiếp" data-img="ảnh Máy NEW/17Promax Trắng NEW.png" onclick="selectColor99(this)" aria-label="Màu Bạc" title="Bạc"></button>
+              <button type="button" class="swatch" style="background:#232E45" data-color="Xanh" data-price="Liên hệ trực tiếp" data-img="ảnh Máy NEW/17Promax Xanh NEW.jpg" onclick="selectColor99(this)" aria-label="Màu Xanh" title="Xanh"></button>
+            </div>
+            <div class="color-group" data-capacity="1TB" hidden>
+              <button type="button" class="swatch active" style="background:#D9642B" data-color="Cam" data-price="Liên hệ trực tiếp" data-img="ảnh Máy NEW/17Promax Cam.webp" onclick="selectColor99(this)" aria-label="Màu Cam" title="Cam"></button>
+              <button type="button" class="swatch" style="background:#CBCFD3" data-color="Bạc" data-price="Liên hệ trực tiếp" data-img="ảnh Máy NEW/17Promax Trắng NEW.png" onclick="selectColor99(this)" aria-label="Màu Bạc" title="Bạc"></button>
+              <button type="button" class="swatch" style="background:#232E45" data-color="Xanh" data-price="Liên hệ trực tiếp" data-img="ảnh Máy NEW/17Promax Xanh NEW.jpg" onclick="selectColor99(this)" aria-label="Màu Xanh" title="Xanh"></button>
+            </div>
           </div>
           <span class="badge-condition" data-i18n="cond_new100">Máy mới 100%</span>
           <div class="price">31.968.000đ</div>
           <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModalFromCard(this)">Tư vấn ngay</button>
         </div>
 
-        <div class="product-card" data-base-name="iPhone 17 (Máy Mới)" data-color="Trắng">
+        <div class="product-card" data-base-name="iPhone 17 (Máy Mới)" data-capacity="256GB" data-color="Trắng">
           <div class="card-image">
             <span class="badge-installment" data-i18n="installment">Trả góp 0%</span>
             <span class="badge-hot">🔥 <span data-i18n="hot">Hot</span></span>
@@ -1140,12 +1205,25 @@
             </div>
           </div>
           <h3>iPhone 17</h3>
-          <div class="color-swatches">
-            <button type="button" class="swatch active" style="background:#F5F5F0" onclick="selectColor(this,'Trắng','25.968.000đ','ảnh Máy NEW/17 Trắng NEW.jpg')" aria-label="Màu Trắng" title="Trắng"></button>
-            <button type="button" class="swatch" style="background:#1C1C1E" onclick="selectColor(this,'Đen','25.968.000đ','ảnh Máy NEW/17 Đen NEW.jpg')" aria-label="Màu Đen" title="Đen"></button>
-            <button type="button" class="swatch" style="background:#2E7D4F" onclick="selectColor(this,'Xanh Lá','25.968.000đ','ảnh Máy NEW/17 Xanh Lá NEW.jpg')" aria-label="Màu Xanh Lá" title="Xanh Lá"></button>
-            <button type="button" class="swatch" style="background:#1F6FA5" onclick="selectColor(this,'Xanh biển','25.968.000đ','ảnh Máy NEW/17 Xanh Biển NEW.jpg')" aria-label="Màu Xanh biển" title="Xanh biển"></button>
-            <button type="button" class="swatch" style="background:#8E7CC3" onclick="selectColor(this,'Tím','25.968.000đ','ảnh Máy NEW/17 Tím NEw.webp')" aria-label="Màu Tím" title="Tím"></button>
+          <div class="capacity-swatches">
+            <button type="button" class="capacity-btn active" onclick="selectCapacity(this,'256GB')">256GB</button>
+            <button type="button" class="capacity-btn" onclick="selectCapacity(this,'512GB')">512GB</button>
+          </div>
+          <div class="color-groups">
+            <div class="color-group" data-capacity="256GB">
+              <button type="button" class="swatch active" style="background:#F5F5F0" data-color="Trắng" data-price="25.968.000đ" data-img="ảnh Máy NEW/17 Trắng NEW.jpg" onclick="selectColor99(this)" aria-label="Màu Trắng" title="Trắng"></button>
+              <button type="button" class="swatch" style="background:#1C1C1E" data-color="Đen" data-price="25.968.000đ" data-img="ảnh Máy NEW/17 Đen NEW.jpg" onclick="selectColor99(this)" aria-label="Màu Đen" title="Đen"></button>
+              <button type="button" class="swatch" style="background:#2E7D4F" data-color="Xanh Lá" data-price="25.968.000đ" data-img="ảnh Máy NEW/17 Xanh Lá NEW.jpg" onclick="selectColor99(this)" aria-label="Màu Xanh Lá" title="Xanh Lá"></button>
+              <button type="button" class="swatch" style="background:#1F6FA5" data-color="Xanh biển" data-price="25.968.000đ" data-img="ảnh Máy NEW/17 Xanh Biển NEW.jpg" onclick="selectColor99(this)" aria-label="Màu Xanh biển" title="Xanh biển"></button>
+              <button type="button" class="swatch" style="background:#8E7CC3" data-color="Tím" data-price="25.968.000đ" data-img="ảnh Máy NEW/17 Tím NEw.webp" onclick="selectColor99(this)" aria-label="Màu Tím" title="Tím"></button>
+            </div>
+            <div class="color-group" data-capacity="512GB" hidden>
+              <button type="button" class="swatch active" style="background:#F5F5F0" data-color="Trắng" data-price="Liên hệ trực tiếp" data-img="ảnh Máy NEW/17 Trắng NEW.jpg" onclick="selectColor99(this)" aria-label="Màu Trắng" title="Trắng"></button>
+              <button type="button" class="swatch" style="background:#1C1C1E" data-color="Đen" data-price="Liên hệ trực tiếp" data-img="ảnh Máy NEW/17 Đen NEW.jpg" onclick="selectColor99(this)" aria-label="Màu Đen" title="Đen"></button>
+              <button type="button" class="swatch" style="background:#2E7D4F" data-color="Xanh Lá" data-price="Liên hệ trực tiếp" data-img="ảnh Máy NEW/17 Xanh Lá NEW.jpg" onclick="selectColor99(this)" aria-label="Màu Xanh Lá" title="Xanh Lá"></button>
+              <button type="button" class="swatch" style="background:#1F6FA5" data-color="Xanh biển" data-price="Liên hệ trực tiếp" data-img="ảnh Máy NEW/17 Xanh Biển NEW.jpg" onclick="selectColor99(this)" aria-label="Màu Xanh biển" title="Xanh biển"></button>
+              <button type="button" class="swatch" style="background:#8E7CC3" data-color="Tím" data-price="Liên hệ trực tiếp" data-img="ảnh Máy NEW/17 Tím NEw.webp" onclick="selectColor99(this)" aria-label="Màu Tím" title="Tím"></button>
+            </div>
           </div>
           <span class="badge-condition" data-i18n="cond_new100">Máy mới 100%</span>
           <div class="price">25.968.000đ</div>
@@ -1164,10 +1242,10 @@
           </div>
           <h3>iPhone 17 Air</h3>
           <div class="color-swatches">
-            <button type="button" class="swatch" style="background:#F5F5F0" onclick="selectColor(this,'Trắng','Liên hệ trực tiếp','ảnh Máy NEW/17 Air Trắng NEW.jpg')" aria-label="Màu Trắng" title="Trắng"></button>
-            <button type="button" class="swatch" style="background:#1C1C1E" onclick="selectColor(this,'Đen','Liên hệ trực tiếp','ảnh Máy NEW/17 Air Đen NEW.jpg')" aria-label="Màu Đen" title="Đen"></button>
             <button type="button" class="swatch active" style="background:#1F6FA5" onclick="selectColor(this,'Xanh biển','22.968.000đ','ảnh Máy NEW/17 Air Xanh NEW.png')" aria-label="Màu Xanh biển" title="Xanh biển"></button>
             <button type="button" class="swatch" style="background:#E8C547" onclick="selectColor(this,'Vàng','Liên hệ trực tiếp','ảnh Máy NEW/17 Air Vàng NEW.jpg')" aria-label="Màu Vàng" title="Vàng"></button>
+            <button type="button" class="swatch" style="background:#F5F5F0" onclick="selectColor(this,'Trắng','Liên hệ trực tiếp','ảnh Máy NEW/17 Air Trắng NEW.jpg')" aria-label="Màu Trắng" title="Trắng"></button>
+            <button type="button" class="swatch" style="background:#1C1C1E" onclick="selectColor(this,'Đen','Liên hệ trực tiếp','ảnh Máy NEW/17 Air Đen NEW.jpg')" aria-label="Màu Đen" title="Đen"></button>
           </div>
           <span class="badge-condition" data-i18n="cond_new100">Máy mới 100%</span>
           <div class="price">22.968.000đ</div>
@@ -1194,7 +1272,6 @@
           <div class="price">Liên hệ trực tiếp</div>
           <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModalFromCard(this)">Tư vấn ngay</button>
         </div>
-
       </div>
       <p class="no-results" id="noResultsNew">Không tìm thấy máy mới phù hợp với từ khoá này.</p>
     </div>
