@@ -512,12 +512,15 @@
   }
   footer strong{color:#fff;}
   .footer-inner{max-width:1160px;margin:0 auto;}
-  .footer-brand{text-align:center;margin-bottom:28px;}
+  .footer-top-row{display:flex;gap:36px;align-items:center;margin-bottom:26px;}
+  .footer-logo{flex:0 0 260px;display:flex;align-items:center;justify-content:center;}
+  .footer-logo-img{width:100%;max-width:260px;height:auto;object-fit:contain;display:block;}
+  .footer-brand-col{flex:1 1 380px;min-width:280px;}
+  .footer-brand{text-align:left;margin-bottom:16px;}
   .footer-brand h3{color:#fff;font-size:18px;margin-bottom:6px;}
   .footer-brand p{font-size:13.5px;}
   .footer-branches{
-    display:grid;grid-template-columns:repeat(3,1fr);gap:18px;
-    margin-bottom:26px;
+    display:flex;flex-direction:column;gap:14px;
   }
   .branch-card{
     background:var(--graybg-2);border-radius:10px;padding:14px 16px;
@@ -548,8 +551,9 @@
   .footer-bottom{
     text-align:center;border-top:1px solid var(--graybg-2);padding-top:16px;font-size:12.5px;
   }
-  @media (max-width:820px){
-    .footer-branches{grid-template-columns:1fr;}
+  @media (max-width:700px){
+    .footer-top-row{flex-direction:column;}
+    .footer-brand{text-align:center;}
   }
 
   /* Sticky mobile bottom bar */
@@ -2614,6 +2618,11 @@
 
   <footer>
     <div class="footer-inner">
+      <div class="footer-top-row">
+        <div class="footer-logo">
+          <img src="assets/logo-mp-full.png" alt="Minh Phong Mobile - iPhone Chính Hãng - Giá Cả Cạnh Tranh - Hậu Mãi Trọn Đời" class="footer-logo-img">
+        </div>
+        <div class="footer-brand-col">
       <div class="footer-brand">
         <h3>🍎 <span data-i18n="footer_brand_h">Hệ Thống Apple Chính Hãng Minh Phong Mobile Khánh Hòa</span></h3>
         <p data-i18n="footer_brand_p">Chuyên iPhone chính hãng &amp; máy cũ like-new</p>
@@ -2651,6 +2660,8 @@
             <iframe src="https://maps.google.com/maps?q=12.4947431,109.1311569&z=16&output=embed" loading="lazy" tabindex="-1" aria-hidden="true" title="Bản đồ CN3 197 Trần Quý Cáp"></iframe>
             <span class="branch-map-badge">📍</span>
           </a>
+        </div>
+      </div>
         </div>
       </div>
       <div class="footer-bottom">
