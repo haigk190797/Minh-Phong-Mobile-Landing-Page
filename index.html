@@ -182,16 +182,15 @@
   /* Slogan bar */
   .slogan-bar{
     background:linear-gradient(135deg,var(--graybg),var(--graybg-2));
-    padding:32px 20px;
+    padding:28px 20px;
   }
-  .slogan-row{
-    display:flex;align-items:center;gap:40px;flex-wrap:wrap;
-  }
+  .slogan-bar--top{padding:14px 20px 20px;}
+  .slogan-bar--why{padding:26px 20px 30px;}
   .slogan-brand{
-    flex:1 1 320px;display:flex;align-items:center;justify-content:center;
+    display:flex;align-items:center;justify-content:center;
   }
   .slogan-logo-full{height:auto;width:100%;max-width:460px;object-fit:contain;display:block;}
-  .slogan-why{flex:1 1 320px;min-width:280px;}
+  .slogan-why{max-width:640px;margin:0 auto;}
   .slogan-why h3{
     color:#fff;font-size:19px;font-weight:800;line-height:1.35;margin-bottom:14px;
   }
@@ -217,8 +216,7 @@
     left:14px;top:11px;font-size:15px;
   }
   @media (max-width:760px){
-    .slogan-row{flex-direction:column;}
-    .slogan-brand{max-width:360px;}
+    .slogan-brand{max-width:360px;margin:0 auto;}
   }
 
   /* Hot Sale section */
@@ -736,23 +734,56 @@
     <p class="search-result-info" id="searchResultInfo" hidden></p>
   </header>
 
-  <section class="slogan-bar">
+  <section class="slogan-bar slogan-bar--top">
     <div class="wrap">
-      <div class="slogan-row">
-        <div class="slogan-brand">
-          <img src="assets/logo-mp-full.png" alt="Minh Phong Mobile - iPhone Chính Hãng - Giá Cả Cạnh Tranh - Hậu Mãi Trọn Đời" class="slogan-logo-full">
-        </div>
-        <div class="slogan-why">
-          <h3 data-i18n="why2_title">Tại sao Minh Phong Mobile lại được khách hàng tin chọn?</h3>
-          <ul>
-            <li class="why-highlight" data-i18n="why2_li3">Bảo hành RƠI VỠ ĐỘC QUYỀN - 1 ĐỔI 1 ĐẾN 12 THÁNG.</li>
-            <li class="why-highlight" data-i18n="why2_li5">Thu cũ đổi mới trợ giá cao nhất thị trường.</li>
-            <li class="why-highlight" data-i18n="why2_li2">Hỗ trợ góp 0Đ - Hỗ trợ nợ chú ý.</li>
-            <li data-i18n="why2_li1">Máy chuẩn, đúng mô tả, giá tiền đi đôi chất lượng.</li>
-            <li data-i18n="why2_li4">Đội ngũ hỗ trợ online nhanh chóng, hoạt động 14/24.</li>
-            <li data-i18n="why2_li6">3 Chi nhánh ở Khánh Hoà - Thuận lợi cho việc bảo hành - hậu mãi.</li>
-          </ul>
-        </div>
+      <div class="slogan-brand">
+        <img src="assets/logo-mp-full.png" alt="Minh Phong Mobile - iPhone Chính Hãng - Giá Cả Cạnh Tranh - Hậu Mãi Trọn Đời" class="slogan-logo-full">
+      </div>
+    </div>
+  </section>
+
+  <section id="khach-hang" class="customers-section">
+    <div class="wrap">
+      <div class="section-bar"><h2>💖 <span data-i18n="customers_title">Khách Hàng Minh Phong Mobile</span></h2></div>
+      <p class="section-sub" data-i18n="customers_sub">Hình ảnh khách hàng nhận máy — cập nhật mỗi ngày</p>
+    </div>
+    <div class="customer-track-wrap">
+      <div class="customer-track" id="customerTrack">
+        <div class="customer-photo"><img src="Ảnh khách hàng/818865596_1557434679732797_279348613573988115_n.jpg" alt="Khách hàng Minh Phong Mobile" loading="lazy" decoding="async"></div>
+        <div class="customer-photo"><img src="Ảnh khách hàng/819012125_1557434639732801_2799817139555111250_n.jpg" alt="Khách hàng Minh Phong Mobile" loading="lazy" decoding="async"></div>
+        <div class="customer-photo"><img src="Ảnh khách hàng/819175825_1557434656399466_5248783751257294121_n.jpg" alt="Khách hàng Minh Phong Mobile" loading="lazy" decoding="async"></div>
+        <div class="customer-photo"><img src="Ảnh khách hàng/819212213_1557434559732809_3558870126066304324_n.jpg" alt="Khách hàng Minh Phong Mobile" loading="lazy" decoding="async"></div>
+        <div class="customer-photo"><img src="Ảnh khách hàng/819276303_1557434606399471_287828601833641975_n.jpg" alt="Khách hàng Minh Phong Mobile" loading="lazy" decoding="async"></div>
+        <div class="customer-photo"><img src="Ảnh khách hàng/819746311_1557434516399480_9016113089916625399_n.jpg" alt="Khách hàng Minh Phong Mobile" loading="lazy" decoding="async"></div>
+        <div class="customer-photo"><img src="Ảnh khách hàng/820013179_1557434566399475_3313680461997803834_n.jpg" alt="Khách hàng Minh Phong Mobile" loading="lazy" decoding="async"></div>
+        <div class="customer-photo"><img src="Ảnh khách hàng/820131533_1557434526399479_4869822992699040169_n.jpg" alt="Khách hàng Minh Phong Mobile" loading="lazy" decoding="async"></div>
+        <div class="customer-photo"><img src="Ảnh khách hàng/820455022_1557434616399470_2596194680980689608_n.jpg" alt="Khách hàng Minh Phong Mobile" loading="lazy" decoding="async"></div>
+        <div class="customer-photo" aria-hidden="true"><img src="Ảnh khách hàng/818865596_1557434679732797_279348613573988115_n.jpg" alt="Khách hàng Minh Phong Mobile" loading="lazy" decoding="async"></div>
+        <div class="customer-photo" aria-hidden="true"><img src="Ảnh khách hàng/819012125_1557434639732801_2799817139555111250_n.jpg" alt="Khách hàng Minh Phong Mobile" loading="lazy" decoding="async"></div>
+        <div class="customer-photo" aria-hidden="true"><img src="Ảnh khách hàng/819175825_1557434656399466_5248783751257294121_n.jpg" alt="Khách hàng Minh Phong Mobile" loading="lazy" decoding="async"></div>
+        <div class="customer-photo" aria-hidden="true"><img src="Ảnh khách hàng/819212213_1557434559732809_3558870126066304324_n.jpg" alt="Khách hàng Minh Phong Mobile" loading="lazy" decoding="async"></div>
+        <div class="customer-photo" aria-hidden="true"><img src="Ảnh khách hàng/819276303_1557434606399471_287828601833641975_n.jpg" alt="Khách hàng Minh Phong Mobile" loading="lazy" decoding="async"></div>
+        <div class="customer-photo" aria-hidden="true"><img src="Ảnh khách hàng/819746311_1557434516399480_9016113089916625399_n.jpg" alt="Khách hàng Minh Phong Mobile" loading="lazy" decoding="async"></div>
+        <div class="customer-photo" aria-hidden="true"><img src="Ảnh khách hàng/820013179_1557434566399475_3313680461997803834_n.jpg" alt="Khách hàng Minh Phong Mobile" loading="lazy" decoding="async"></div>
+        <div class="customer-photo" aria-hidden="true"><img src="Ảnh khách hàng/820131533_1557434526399479_4869822992699040169_n.jpg" alt="Khách hàng Minh Phong Mobile" loading="lazy" decoding="async"></div>
+        <div class="customer-photo" aria-hidden="true"><img src="Ảnh khách hàng/820455022_1557434616399470_2596194680980689608_n.jpg" alt="Khách hàng Minh Phong Mobile" loading="lazy" decoding="async"></div>
+      </div>
+    </div>
+    <p class="customer-thanks" data-i18n="customer_thanks">"Cảm ơn Quý khách vì đã cho phép Minh Phong Mobile được đồng hành."</p>
+  </section>
+
+  <section class="slogan-bar slogan-bar--why">
+    <div class="wrap">
+      <div class="slogan-why">
+        <h3 data-i18n="why2_title">Tại sao Minh Phong Mobile lại được khách hàng tin chọn?</h3>
+        <ul>
+          <li class="why-highlight" data-i18n="why2_li3">Bảo hành RƠI VỠ ĐỘC QUYỀN - 1 ĐỔI 1 ĐẾN 12 THÁNG.</li>
+          <li class="why-highlight" data-i18n="why2_li5">Thu cũ đổi mới trợ giá cao nhất thị trường.</li>
+          <li class="why-highlight" data-i18n="why2_li2">Hỗ trợ góp 0Đ - Hỗ trợ nợ chú ý.</li>
+          <li data-i18n="why2_li1">Máy chuẩn, đúng mô tả, giá tiền đi đôi chất lượng.</li>
+          <li data-i18n="why2_li4">Đội ngũ hỗ trợ online nhanh chóng, hoạt động 14/24.</li>
+          <li data-i18n="why2_li6">3 Chi nhánh ở Khánh Hoà - Thuận lợi cho việc bảo hành - hậu mãi.</li>
+        </ul>
       </div>
     </div>
   </section>
@@ -2448,36 +2479,6 @@
       </div>
       <p class="no-results" id="noResultsAccessories">Không tìm thấy phụ kiện phù hợp với từ khoá này.</p>
     </div>
-  </section>
-
-  <section id="khach-hang" class="customers-section">
-    <div class="wrap">
-      <div class="section-bar"><h2>💖 <span data-i18n="customers_title">Khách Hàng Minh Phong Mobile</span></h2></div>
-      <p class="section-sub" data-i18n="customers_sub">Hình ảnh khách hàng nhận máy — cập nhật mỗi ngày</p>
-    </div>
-    <div class="customer-track-wrap">
-      <div class="customer-track" id="customerTrack">
-        <div class="customer-photo"><img src="Ảnh khách hàng/818865596_1557434679732797_279348613573988115_n.jpg" alt="Khách hàng Minh Phong Mobile" loading="lazy" decoding="async"></div>
-        <div class="customer-photo"><img src="Ảnh khách hàng/819012125_1557434639732801_2799817139555111250_n.jpg" alt="Khách hàng Minh Phong Mobile" loading="lazy" decoding="async"></div>
-        <div class="customer-photo"><img src="Ảnh khách hàng/819175825_1557434656399466_5248783751257294121_n.jpg" alt="Khách hàng Minh Phong Mobile" loading="lazy" decoding="async"></div>
-        <div class="customer-photo"><img src="Ảnh khách hàng/819212213_1557434559732809_3558870126066304324_n.jpg" alt="Khách hàng Minh Phong Mobile" loading="lazy" decoding="async"></div>
-        <div class="customer-photo"><img src="Ảnh khách hàng/819276303_1557434606399471_287828601833641975_n.jpg" alt="Khách hàng Minh Phong Mobile" loading="lazy" decoding="async"></div>
-        <div class="customer-photo"><img src="Ảnh khách hàng/819746311_1557434516399480_9016113089916625399_n.jpg" alt="Khách hàng Minh Phong Mobile" loading="lazy" decoding="async"></div>
-        <div class="customer-photo"><img src="Ảnh khách hàng/820013179_1557434566399475_3313680461997803834_n.jpg" alt="Khách hàng Minh Phong Mobile" loading="lazy" decoding="async"></div>
-        <div class="customer-photo"><img src="Ảnh khách hàng/820131533_1557434526399479_4869822992699040169_n.jpg" alt="Khách hàng Minh Phong Mobile" loading="lazy" decoding="async"></div>
-        <div class="customer-photo"><img src="Ảnh khách hàng/820455022_1557434616399470_2596194680980689608_n.jpg" alt="Khách hàng Minh Phong Mobile" loading="lazy" decoding="async"></div>
-        <div class="customer-photo" aria-hidden="true"><img src="Ảnh khách hàng/818865596_1557434679732797_279348613573988115_n.jpg" alt="Khách hàng Minh Phong Mobile" loading="lazy" decoding="async"></div>
-        <div class="customer-photo" aria-hidden="true"><img src="Ảnh khách hàng/819012125_1557434639732801_2799817139555111250_n.jpg" alt="Khách hàng Minh Phong Mobile" loading="lazy" decoding="async"></div>
-        <div class="customer-photo" aria-hidden="true"><img src="Ảnh khách hàng/819175825_1557434656399466_5248783751257294121_n.jpg" alt="Khách hàng Minh Phong Mobile" loading="lazy" decoding="async"></div>
-        <div class="customer-photo" aria-hidden="true"><img src="Ảnh khách hàng/819212213_1557434559732809_3558870126066304324_n.jpg" alt="Khách hàng Minh Phong Mobile" loading="lazy" decoding="async"></div>
-        <div class="customer-photo" aria-hidden="true"><img src="Ảnh khách hàng/819276303_1557434606399471_287828601833641975_n.jpg" alt="Khách hàng Minh Phong Mobile" loading="lazy" decoding="async"></div>
-        <div class="customer-photo" aria-hidden="true"><img src="Ảnh khách hàng/819746311_1557434516399480_9016113089916625399_n.jpg" alt="Khách hàng Minh Phong Mobile" loading="lazy" decoding="async"></div>
-        <div class="customer-photo" aria-hidden="true"><img src="Ảnh khách hàng/820013179_1557434566399475_3313680461997803834_n.jpg" alt="Khách hàng Minh Phong Mobile" loading="lazy" decoding="async"></div>
-        <div class="customer-photo" aria-hidden="true"><img src="Ảnh khách hàng/820131533_1557434526399479_4869822992699040169_n.jpg" alt="Khách hàng Minh Phong Mobile" loading="lazy" decoding="async"></div>
-        <div class="customer-photo" aria-hidden="true"><img src="Ảnh khách hàng/820455022_1557434616399470_2596194680980689608_n.jpg" alt="Khách hàng Minh Phong Mobile" loading="lazy" decoding="async"></div>
-      </div>
-    </div>
-    <p class="customer-thanks" data-i18n="customer_thanks">"Cảm ơn Quý khách vì đã cho phép Minh Phong Mobile được đồng hành."</p>
   </section>
 
   <section id="video-review" class="video-section">
