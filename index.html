@@ -378,10 +378,6 @@
   .swatch.active{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent-soft);}
   .color-label{font-size:11.5px;color:var(--gray);margin-bottom:10px;font-weight:600;}
   .capacity-swatches{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:10px;}
-  .cap-note{
-    flex-basis:100%;text-align:center;font-size:13px;font-weight:800;line-height:1.35;
-    color:#B85400;background:var(--accent-soft);border:1px solid #FFC999;border-radius:8px;padding:5px 10px;
-  }
   .capacity-btn{
     padding:7px 13px;border-radius:8px;border:2px solid var(--line);
     background:#fff;font-size:12.5px;font-weight:700;color:var(--dark);
@@ -1268,7 +1264,6 @@
           <div class="capacity-swatches">
             <button type="button" class="capacity-btn active" onclick="selectCapacity(this,'256GB')">256GB</button>
             <button type="button" class="capacity-btn" onclick="selectCapacity(this,'256GB LL/A')">256GB LL/A</button>
-            <span class="cap-note" data-capacity="256GB LL/A">LL/A: Máy NEW Active, chưa sử dụng</span>
             <button type="button" class="capacity-btn" onclick="selectCapacity(this,'512GB')">512GB</button>
             <button type="button" class="capacity-btn" onclick="selectCapacity(this,'1TB')">1TB</button>
           </div>
@@ -1296,6 +1291,7 @@
           </div>
           <span class="badge-condition" data-i18n="cond_new100">Máy mới 100%</span>
           <div class="price">34.568.000đ</div>
+          <p class="card-note">LL/A: Máy NEW Active, chưa sử dụng</p>
           <button type="button" class="btn-order" data-i18n="order_now" onclick="openOrderModalFromCard(this)">Tư vấn ngay</button>
         </div>
 
